@@ -1,0 +1,96 @@
+
+% !TeX encoding = UTF-8
+% !TeX program = pdflatex
+% !BIB program = biber
+
+\NeedsTeXFormat{LaTeX2e}[2019-10-01]
+% **************************************************
+% Document Class Definition
+% **************************************************
+\documentclass[%
+    paper=A4,               % paper size --> A4 is default in Germany
+    oneside,           % onesite or twoside printing
+    openright,              % doublepage cleaning ends up right side
+    parskip=half,           % spacing value / method for paragraphs
+    chapterprefix=true,     % prefix for chapter marks
+    11pt,                   % font size
+    headings=normal,        % size of headings
+    bibliography=totoc,     % include bib in toc
+    listof=totoc,           % include listof entries in toc
+    titlepage=on,           % own page for each title page
+    captions=tableabove,    % display table captions above the float env
+    chapterprefix=false,    % do not display a prefix for chapters
+    appendixprefix=false,    % but display a prefix for appendix chapter
+    draft=false,            % value for draft version
+]{scrreprt}%
+% config for titlepage
+\input{config}
+\usepackage[utf8]{inputenc}
+\usepackage{scrlayer-scrpage}
+\usepackage{scrhack}
+
+\usepackage[a-1b]{pdfx}[2019-02-27]
+\usepackage[T1]{fontenc}
+\usepackage{helvet,mathpazo}
+\usepackage{microtype}
+% \usepackage[naustrian,english]{babel}
+\usepackage[absolute]{textpos}
+\usepackage{amsmath,siunitx}
+
+
+% \usepackage[onehalfspacing]{setspace}
+% \usepackage[section]{placeins} %\FloatBarrier
+\usepackage{float} %[H]
+\usepackage{enumitem}
+\usepackage{subfiles}
+\usepackage{scrhack}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\usepackage[bibfile=references]{cleanthesis}
+\usepackage{pdfpages}
+\usepackage{blindtext}
+
+\addbibresource{references.bib}
+
+\begin{document}
+
+\pagenumbering{roman}			% roman page numbing (invisible for empty page style)
+\pagestyle{empty}				% no header or footers
+\begin{titlepage}
+    \setcounter{page}{0}
+    \include{cover/coversheet}
+\end{titlepage}
+\clearpage
+
+\pagestyle{plain}				% display just page numbers
+\input{content/abstract}		% INCLUDE: the abstracts (english and german)
+\clearpage
+\input{content/acknowledgement} % INCLUDE: acknowledgement
+\clearpage
+% 
+\currentpdfbookmark{\contentsname}{toc}
+\setcounter{tocdepth}{2}		% define depth of toc
+\tableofcontents				% display table of contents
+% 
+\clearpage
+
+% --------------------------
+% Body matter
+% --------------------------
+\pagenumbering{arabic}			% arabic page numbering
+\setcounter{page}{1}			% set page counter
+\pagestyle{scrheadings}			% header and footer style
+
+% \mainmatter
+\include{content/introduction}
+\include{content/publications}
+\include{content/conclusion}
+
+%%%%%%%%%%%%%%%%%%
+\printbibliography
+
+%%%%%%%%%
+\appendix
+
+\end{document}

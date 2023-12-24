@@ -1,0 +1,63 @@
+\def\skippdf{1}
+
+\chapter{Publications\label{chap:publications}}
+This chapter presents publications as originally published, reprinted with permission
+from the corresponding publishers. The copyright of the original publications is held
+by the respective copyright holders. In order to fit the paper dimension, reprinted
+publications may be scaled in size and/or cropped.
+
+\clearpage
+\thispagestyle{plain}
+\section{On Failure Modes in Molecule Generation and Optimization\label{sec:failure-modes}}
+
+\ifx\skippdf\undefined
+    \includepdf[
+        pages=-,
+        frame,
+        width=1.2\linewidth,
+        pagecommand={\thispagestyle{scrheadings}},
+        offset=0cm 0.9cm,
+        trim=0.5cm 0.1cm 0.5cm 0.1cm,
+    ]{papers/failure-modes.pdf}
+    \includepdf[
+        pages=-,
+        frame,
+        % height=\textheight,
+        width=1.2\linewidth,
+        pagecommand={\thispagestyle{scrheadings}},
+        offset=0.0cm 0.9cm,
+        trim=2.1cm 1.5cm 2.1cm 2cm,
+    ]{papers/failure-modes-si-recompiled.pdf}
+\fi
+
+\clearpage
+\thispagestyle{plain}
+\section{Improving Few- and Zero-Shot Reaction Template Prediction Using
+  Modern Hopﬁeld Networks\label{sec:mhn-react}}
+
+\ifx\skippdf\undefined
+    \includepdf[
+        pages=-,
+        frame,
+        width=1.1\linewidth,
+        % height=\textheight,
+        pagecommand={\thispagestyle{scrheadings}},
+        offset=0.0cm 0.9cm,
+        trim=0cm 0.0cm 0cm 0.0cm,
+    ]{papers/mhn-react.pdf}
+
+    \includepdf[
+        pages=-,
+        frame,
+        width=1.1\linewidth,
+        % height=\textheight,
+        pagecommand={\thispagestyle{scrheadings}},
+        offset=0.0cm 0.8cm,
+        trim=1cm 0.5cm 1cm 0.5cm,
+    ]{papers/mhn-react-si.pdf}
+\fi
+
+\clearpage
+\thispagestyle{plain}
+\section{Benchmarking the Efficiency of Generative Models in Diverse de
+  Novo Optimization\label{sec:diverse-efficiency}}
