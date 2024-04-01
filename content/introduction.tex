@@ -1,52 +1,122 @@
 \chapter{Introduction\label{chap:introduction}}
-% Drug discovery is important and ML can help
+% \section{Machine Learning in Drug Discovery}
+% Drug discovery is important. 
 Drug discovery is the process of identifying and bringing to market new
-medicines and our quality of life greatly depends on it. The use of machine
-learning (ML) and deep learning (DL) has the potential to accelerate the drug
-discovery process. Advances in ML and DL have recently led to breakthroughs
-in many areas, and led to a surge in interest in applying ML and DL to drug
-discovery.
+medicines, which are a major contributor to our quality of life. However, the
+process of bringing a new drug to market is a long, expensive, and risky endeavor.
+Estimates of bringing a new drug to market range between 2.6 and xxx 
+billion USD \citep{TODO}. When successful, however, a new drug can be a major source of
+relief for patients.
 
-% Identification of drug candidates is expensive. ML can help
+% Traditional way of finding candidates.
 One of the key challenges of the drug discovery process is the identification
 of novel promising drug candidates. Traditionally, this is done by synthesizing
-molecules in a laboratory and testing them for their efficacy against a target.
-However, this process is very expensive and time-consuming. Using ML and DL
-to identify promising drug candidates has the potential to accelerate the
-drug discovery process by first identifying promising candidates in a virtual
-environment.
+and testing the molecules efficacy in a laboratory and clinical studies. 
+However, this process is usually very expensive, time-consuming and can be risky for 
+patients. 
 
+% ML can help to find promising candidates
+Machine learning (ML) and deep learning (DL) have the potential to accelerate
+the drug discovery process. Recent advances in ML, especially in the subfield of deep learning
+have led to a surge in interest in applying ML and DL to drug discovery, 
+culminating in breakthroughs such as AlphaFold \citep{TODO}. 
+In this thesis, we focus on two key areas where ML and DL can help to accelerate
+the drug discovery process: generative models for molecules and computer-aided
+synthesis planning (CASP).
+
+\section{Generative Models for Molecules}
 % Generative models help to find promising candidates
-Generative models for molecules aim to address the challenge, of finding novel
-molecular structures satisfying a property profile of interest. Given a scoring
+{Goal-directed molecule generators} aim to address the challenge, of finding novel
+molecular structures satisfying a property profile of interest. Given a computational scoring
 function that encodes these properties, generative models create molecular
 structures in a feedback loop, where the scoring function guides the generation
-process. In contrast to the traditional approach of brute-force searching a
-fixed virtual library of molecules, generative models are able
-navigate the chemical space more efficiently.
+process. This contrasts with the traditional approach of virtual screening, where
+a fixed virtual library of molecules is searched in a brute-force manner. This simple way 
+of searching the chemical space is inefficient and is not able to 
+tap into the possibilities provided by the vastness of drug-like chemical space, which is 
+estimated to contain between $10^{23}$-$10^{60}$ molecules.
+Generative models, on the other hand, hold the promise of being able to more efficiently find
+promising drug candidates.
+
+In contrast to these goal-directed models, \emph{distribution-learning} models aim to 
+to learn the distribution of molecules in a dataset, and can then be used to 
+sample novel molecules that resemble the distribution of the training data.
+These models often form the basis of goal-directed models, as they can be pre-trained on a large
+dataset of molecules \citep{segler,reinvent}. 
 
 % The evaluation of generative models is challenging. 
-However, the evaluation of generative models is challenging. While
-discriminative models have non-ambiguous prediction targets, that can easily be
-evaluated, using relevant hold-out datasets, the evaluation of generative models
-differs by some key aspects. Firstly, prediction tasks have many possible
-solutions. In general it is favourable for a generative model to generate a
-diverse set of high-scoring molecules. Secondly, they should be able to be
-``inventive'' and generate solutions that are considered sufficiently succinct
-from the training data used to inform the scoring function. Thirdly, the
-performance of generative models depends heavily on available compute budget.
-While the performance of discriminative models in drug discovery is often
-limited by the small amount available data, generative models can effectively do
-an exhaustive search of the chemical space, given a large enough compute budget.
+However, the evaluation of generative models is challenging. This can mainly be attributed to
+the fact that the generative tasks usually allow for multiple correct solutions and 
+that the outputs of these models are usually complex, structured objects. 
+In this thesis we focussed on the following aspects of evaluating generative models.
 
+\paragraph{Evaluation of Distribution-Learning Models} The evaluation of distribution-learning
+methods has posed challenges in different applications. While likelihood-based models, such as 
+autoregressive models or flow-based models, can be evaluated using the negative log-likelihood, 
+this metric is not available for other models, such as generative adversarial networks (GANs).
+Therefore, alternative metrics have been proposed, such as the Frechet ChemNet Distance \citep{preuerFrechetChemNetDistance2018}
+which has been included amoung others in the \emph{GuacaMol} \citep{brownGuacaMolBenchmarkingModels2019}
+and \emph{MOSES} \citep{polykovskiyMolecularSets2018} distribution-learning benchmarks.
+
+In \citep{renzFailureModesMolecule2019} we show the limitations of some commonly
+used benchmarks for generative models for molecules. We show that the
+\emph{GuacaMol} distribution-learning benchmark
+\citep{brownGuacaMolBenchmarkingModels2019} is not able to distinguish between
+sophisticated deep-learning models and a simple baseline model that generates
+molecules by introducing minor variations of known molecules. 
+
+\paragraph{Overfitting to machine learning based scoring functions} 
+The scoring functions used in goal-directed generation tasks are often based on
+machine learning models trained on experimental data. It is a well-known problem
+that optimizing the inputs of discriminative machine learning model 
+to maximize the class-probability of a certain class can lead to unsatisfactory results.
+The generative models often optimize these outputs by adapting input features that 
+are not actually relevant for the desired property. This can lead to overfitting to
+artifacts of the scoring function and biased molecule generation.
+
+In \citep{renzFailureModesMolecule2019} we address this issue, by introducing \emph{control scores} that give information
+about whether the optimization overfits to "artifacts" of the scoring functions, 
+by training additional scoring functions, with different random seeds and also on 
+different subsets of available training data. Using this approach, 
+we show how some popular generative models are heavily biased towards the exact training data
+and how the optimization overfits to artifacts of the scoring function. \autoref{sec:failure-modes} 
+reprints the corresponding publication.
+
+\paragraph{Diversity focussed benchmark for generative models}
+In many applications, it is crucial to generate a diverse, high-scoring sets of molecules. 
+This is especially true in early stage drug discovery, where the goal is to find a wide variety of
+promising drug candidates. This is because the used scoring functions are usually only an imperfect
+approximation of the true properties of the molecules. Additionally some properties, are hard to model 
+in-silico and are only discovered in the later stages of the drug discovery process.
+This introduces a layer of uncertainty throughout the downstream stages of the drug discovery process. 
+Finding a range of diverse candidates increases the success chances. However, little is known 
+about how well existing approaches to diverse optimization perform in practice.
+This is due to a combination of three main reasons. Firstly, many commonly used diversity metrics 
+are inadequate for evaluating diverse optimization approaches. Secondly, a meaningful comparison of
+optimization algorithms necessitates a standardized compute budget. 
+
+In \citep{renzBenchmarkingEfficiencyGenerative2024} we introduce a benchmark 
+for diverse optimization that addresses the above-mentioned issues. In this benchmark, we
+evaluate the diversity of the generated molecules using a recently proposed diversity metric
+\#Circles \citep{xie}. We compare the performance of diverse optimization approaches under two
+different compute budgets, namely a fixed number of scoring function evaluations and a fixed time budget.
+The first setting is relevant for applications where the cost of evaluating the scoring function 
+dominates the optimization process, while the second setting is relevant for scoring functions that are
+cheap to evaluate. 
+Using this setup we test 14 goal-directed optimization methods and show how 
+SMILES-based auto-regressive models dominate the benchmark. 
+\autoref{sec:diverse-efficiency} reprints the corresponding publication.
+
+\section{Retrosynthesis Prediction}
 % Retrosynthesis planning is important and ML can help
-Synthesis planning is another crucial step in drug discovery.
-In order to be able to actually synthesize a molecule, a chemist needs to
-identify a sequence of chemical reactions that transform a set of available starting
-materials into the target molecule. Camputer-aided synthesis planning (CASP)
-aims to assist chemists in this task. CASP usually combine a planning method
-with a computational model of chemical reactions. The quality of the
-synthesis plan depends heavily on the accuracy of the used reaction model.
+Drug candidates, whether suggested by generative models or found by other means,
+need at some point to be synthesized in a laboratory in order to be of any use.
+To arrive at a desired molecule, often multiple steps of chemical reactions are
+necessary. Computer-aided synthesis planning (CASP) aims to assist chemists in
+this task. To arrive at a synthesis plan, CASP tools rely on computational
+models of chemical reactions to predict which reactions can be used to
+synthesize a target molecule. The quality of the synthesis plan depends heavily
+on the accuracy of the used reaction model.
 
 % A prominent approach to CASP is template-based planning
 A prominent approach to CASP is template-based planning. In this approach
@@ -58,30 +128,25 @@ However, this results in a large number of classes, with many classes only
 represented by few training samples. This makes it difficult to train a model
 that generalizes well for rare templates.
 
-\paragraph{Do generative models exhibit biases towards the used scoring
-    functions and training data, and how can we effectively detect this?} The
-scoring functions optimized by generative models are often statistical
-machine learning models, which usually exhibit biases towards the training
-data and model the data distribution in a unique way that depends on the
-random initialization of the model. A generative model that overfits to
-these biases will be less useful in practice as it is likely to generate
-molecules that are similar to the training data. Furthermore, reported
-performance metrics may be misleading and give an overoptimistic estimate of
-the performance of the generative model. To clarify this issue we proposed a
-set of control scores that give us insights whether generative models adapt
-to the biases of the scoring function and training data.
-\Cref{sec:overview-failure-modes} describes our findings in more detail and
-\cref{sec:failure-modes} reprints the corresponding publication.
+In \citep{seidlImprovingFewZeroShot2022} we study the problem of single-step
+retrosynthesis prediction. Given a target molecule, the goal is to predict a
+set of reactants that can be used to synthesize the target molecule.
+Template-based models are a popular approach to single-step retrosynthesis
+prediction. These models use so called reaction templates, which are
+either extracted from a reaction database or hand-coded by a chemist.
+Given a target molecule, the goal is then reframed as a classification task,
+where the model predicts which templates can be used to synthesize the target.
 
-\paragraph{How do generative models compare in finding diverse high-scoring molecules?}
-Meaningfully comparing generative models in diverse optimization settings is challenging.
-Firstly, there is no consensus on how to best measure diversity and commonly used
-diversity metrics are not relevant for the problem at hand. Secondly, a meaningful
-comparison of optimization algorithms necessitates a standardized compute budget.
-To address the issue of a lacking, meaningful benchmark we define a
-benchmark for diverse optimization that considers the above-mentioned issues.
-\Cref{sec:overview-diverse-efficiency} gives an overview over this topic
-and the corresponding publication is reprinted in \cref{sec:diverse-efficiency}.
+While previous work has modelled the templates as distinct categories, we
+propose a model that can leverage structural information about the templates.
+For this we use a Modern Hopfield Network \citep{ramsauerHopfieldNetworksAll2020}, which
+learns to associate relevant templates to product molecules.
+This allows for generalization over templates and improves performance, especially
+for templates with few training samples and even for unseen templates.
+
+We could show that our models showed state-of-the-art performance in
+the single-step retrosynthesis prediction task, and that our model is several
+times faster than other methods.ddhtdhtdhtdhtdht
 
 \paragraph{Can we improve the performance of reaction modelling using modern DL approaches?}
 In \cref{sec:overview-mhn-react} we describe our work on improving the performance
@@ -113,150 +178,3 @@ contributed to the following publications:
     \item \fullcite{hofmarcherLargescaleLigandbasedVirtual2020}
     \item \fullcite{renzLowCountTimeSeries2023}
 \end{itemize}
-
-\section{Overview}
-The following provides an overview over the publications that are part of this
-thesis.
-
-\subsection{On Failure Modes in Molecule Generation and Optimization}
-Generative models for molecules are often categorized into two groups:
-\emph{distribution-learning} and \emph{goal-directed} models.
-Distribution-learning models are trained to learn the distribution of
-molecules in a dataset, and can be used to generate novel molecules.
-Goal-directed models are trained to optimize a scoring function, and can be
-used to generate molecules with desired properties.
-
-A common distribution-learning benchmark is the \emph{GuacaMol} benchmark
-\citep{brownGuacaMolBenchmarkingModels2019}. In \citep{renzFailureModesMolecule2019}
-we show how this benchmark is not able to distinguish between sophisticated
-generative models and a simple baseline model that generates molecules
-by introducing minor variations of known molecules.
-
-For goal-directed models, we study the optimization of scoring functions that are
-based on machine learning models. We introduce control scores that give us information
-about whether the optimization overfits to artifacts of the scoring function and
-whether molecule generation is biased towards the training data.
-
-\subsection{Evaluation of Models for Diverse Molecule Generation\label{sec:overview-diverse-efficiency}}
-Generative models for molecules are most often evaluated by the average score of
-the top scoring molecules. However, this metric is not suited when the goal is to
-generate a wide variety of molecules, as is often the case in early stage drug
-discovery. However, little is known about how well different approaches to
-diverse optimization perform in practice, which is due to three main reasons.
-Firstly, there is no consensus on how to measure diversity and commonly used
-diversity metrics are not suited for evaluating diverse optimization approaches.
-Secondly, a meaningful comparison of optimization algorithms necessitates a
-standardized compute budget. Thirdly, there exists no benchmark that compares
-a wide range of diverse optimization approaches.
-
-In \citep{renzBenchmarkingEfficiencyGenerative2024} we address these issues by
-proposing a benchmark for diverse optimization that addresses the above-mentioned
-issues. Firstly, we make use of a recently proposed diversity metric that is
-suited for evaluating diverse optimization approaches. Secondly, we evaluate
-the methods under two different settings. In the first setting, the methods are
-compared under a fixed number of scoring function evaluations, which is relevant
-for applications where the scoring function is expensive to evaluate. Generative
-models are only useful if they are sample efficient and reach a high score with a
-minimal number of scoring function evaluations. In the second setting, the methods
-are compared using a time budget, which is relevant for scoring functions that are
-cheap to evaluate. In this setting, the methods should be computationally efficient.
-
-In our paper we establish a ranking of diverse optimization approaches under both settings.
-We find that it depends on the used compute budget which method performs best.
-Furthermore, we find that some methods performing well for single-molecule optimization
-perform less well for diverse optimization.
-
-\subsection{Single-step Retrosynthesis Prediction\label{sec:overview-mhn-react}}
-% In a template-based approach, reaction templates are ﬁrst
-% extracted from a reaction database or hand-coded by a chemist.
-% If the product side of a template is a subgraph of a molecule,
-% the template is called applicable to the molecule and can be
-% used to transform it to a reactant set. However, even if a
-% template can be applied to a molecule, the resulting reaction
-% might not be viable in the laboratory.11 Hence, a core task,
-% which we refer to as template-relevance prediction, in such an
-% approach is to predict with which templates a molecule can be
-% combined with to yield a viable reaction. In prior work, this
-% problem has often been tackled using machine learning
-% methods that are trained at this task on a set of recorded
-% reactions
-
-% Template-based methods usually view the problem as a
-% classiﬁcation task in which the templates are modeled as
-% distinct categories. However, this can be problematic as
-% automatic template extraction leads to many templates that are
-% represented by few training samples,9,26 Somnath et al.25
-% argued that template-based approaches suﬀer from bad
-% performance, particularly for rare reaction templates. Segler9
-% and Struble et al.10 noted that machine learning (ML) has not
-% been applied successfully for CASP in low-data regimes. To
-% address the low-data issue, Fortunato et al.26 pretrained their
-% template-relevance model to predict which templates are
-% applicable and then ﬁne-tuned it on recorded reactions in a
-% database. This improved template-relevance prediction,
-% especially for rare templates, as well as the average applicability
-% of the top-ranked templates. Overall, a challenge of template-
-% based methods arises from modeling reaction templates as
-% distinct categories, which leads to many classes with few
-% examples (see the section entitled “Methods”).
-% To avoid the above-mentioned problems, we propose a new
-% model that does not consider templates as distinct categories,
-% but can leverage structural information about the template.
-% This allows for generalization over templates and improves
-% performance in the tasks deﬁned in ref 26, especially for
-% templates with few training samples and even for unseen
-% templates. This model learns to associate relevant templates to
-% product molecules using a modern Hopﬁeld network
-% (MHN).33,34 To this end, we adapted MHNs to associate
-% objects of diﬀerent modalities, namely input molecules and
-% reaction templates. A depiction of our approach is illustrated in
-% Figure 1.
-% In contrast to popular ML approaches, in which variable or
-% input-dependent subsets of the data are associated,22,33,35,36
-% our architecture maintains a ﬁxed set of representations,
-% considered as a static memory independent of the input.
-% In this study, we propose a template-based method, which
-% are often reported to be computationally expensive, because of
-% the NP-complete subgraph-isomorphism calculations involved
-% in template execution.24−26,28 To address this issue Fortunato
-% et al.,26 Bjerrum et al.28 trained neural networks to predict
-% which templates are applicable, given a molecule to ﬁlter
-% inapplicable templates during inference. We ﬁnd that using a
-% substructure screen, i.e., a fast check of a necessary condition
-% for a graph to be a subgraph of another improves inference
-% speed, which may also be of interest for other template-based
-% methods.
-% The main advance of our model over Fortunato et al.,26
-% Hasic and Ishida,37 or other template-based methods, is that by
-% representing and encoding reaction templates we are able to
-% predict relevant templates, even if few training data is available,
-% which is a common issue in reaction datasets.
-% This work is structured as follows: In the “Methods” section,
-% we propose a template relevance model that predicts template
-% relevance by applying a multimodal learning approach using a
-% modern Hopﬁeld network. In the sections entitled “Template
-% Prediction” and “Single-Step Retrosynthesis”, we demonstrate
-% that our architecture improves predictive performance for
-% template relevance prediction and single-step retrosynthesis. In
-% the section enetitled “Inference Speed”, we show that our
-% method is several times faster than baseline methods.
-
-In \citep{seidlImprovingFewZeroShot2022} we study the problem of single-step
-retrosynthesis prediction. Given a target molecule, the goal is to predict a
-set of reactants that can be used to synthesize the target molecule.
-Template-based models are a popular approach to single-step retrosynthesis
-prediction. These models use so called reaction templates, which are
-either extracted from a reaction database or hand-coded by a chemist.
-Given a target molecule, the goal is then reframed as a classification task,
-where the model predicts which templates can be used to synthesize the target.
-
-While previous work has modelled the templates as distinct categories, we
-propose a model that can leverage structural information about the templates.
-For this we use a Modern Hopfield Network \citep{ramsauerHopfieldNetworksAll2020}, which
-learns to associate relevant templates to product molecules.
-This allows for generalization over templates and improves performance, especially
-for templates with few training samples and even for unseen templates.
-
-We could show that our models showed state-of-the-art performance in
-the single-step retrosynthesis prediction task, and that our model is several
-times faster than other methods.
