@@ -1,11 +1,71 @@
 \chapter{Introduction\label{chap:introduction}}
-% \section{Machine Learning in Drug Discovery}
+\section{Background}
 % Drug discovery is important. 
-Drug discovery is the process of identifying and bringing to market new
-medicines, which are a major contributor to our quality of life. However, the
-process of bringing a new drug to market is a long, expensive, and risky endeavor.
+Drug discovery is the process of identifying new medicines and bringing them to
+market. The discovery of novel pharmaceutical treatments has been a major driver
+of quality of life over the centuries. Historically, drugs were identified 
+by serendipitous discovery in a trial-and-error fashion. Traditional medicines 
+established themselves in all parts of the world up to X thousand years ago.
+
+Advances in our understanding of chemistry, bio-chemistry and molecular
+biology made a new approach to drug discovery possible: Rational drug discovery.
+This approach starts with the identification of a biological target in the body 
+which is hypothesized to be associated with a disease phenotype. 
+One then attempts to find a small molecule that can change the activity of 
+the target in the desired way. While this way of searching for new drugs 
+is more direct than phenotypic drug discovery the identification of 
+drug targets can be challenging and given the complex interconnectedness 
+of biochemical pathways, it is not fully understood how some drugs work, 
+which goes even for highly popular ones.
+
+
+
+% Phenotypic drug discovery takes this trial-and-error approach and applies it 
+% in a systematic manner. The focus in this approach, which is also called forward 
+% pharmacology, lies on screening collections of small molecules or other potential 
+% medicines for pharmaceutical effects. Once a pharmacologically active molecule 
+% has been found the aim is to discover how to use it's effect therapeutically. 
+% This process can proceed without knowing the biochemical mode of action, of how 
+% a drug actually achieves its effect. 
+
+
+
+% How were new medicines discovered?
+% David C. Swinney & Jason Anthony 
+% Lots of molecules also by phenotypic screening
+One of core goals in both approaches is to find molecules with a desired
+pharmacological profile, which includes primarily the ability of a molecule to
+modify a target, but also other important
+properties, e.g. absorption, distribution, metabolism, excretion or toxicity. 
+To find such molecules, specially designed wet-lab experiments called \emph{assays} 
+are usually use to measure these properties of interest. The number of tested 
+molecules can range from numbers in the tens to millions of tested molecules
+in high-througput screening. 
+
+\emph{Computer-aided drug design} aims to reduce the need 
+for these expensive experiments using computational methods. 
+The field of quantitative structure activity/property relationship (QSAR/QSPR)
+aims to find an accurate computational model of the drug-target interaction. 
+Structure-based methods make use of the known structures of the drug and target 
+and calculate binding affinity using physical modelling. 
+In contrast, ligand-based methods find links between molecular structures
+and measured experimental outcomes. In recent years, machine learning methods 
+have shown great promise at modelling these relationships. 
+Using these models one can prioritize which of the molecules available in a screening 
+collection to test next, to avoid wasting ressources on unpromising compounds.
+
+However, this approach of virtual screening is limited to existing screening collections
+and computational constraints. The $~10^{12}$ \citep{todo} molecules that can be realistically 
+evaluated fall far short of the $10^{23}$-$10^{60}$ drug-like molecules 
+which are estimated to exist \citep{todo}, and necessarily miss out on promising drug candidates.
+Generative models aim to alleviate this problem, by using the QSAR/QSPR function as a guiding signal 
+in order to be able to explore chemical space in a goal-directed manner. 
+The evaluation 
+
+
+However, the process of bringing a new drug to market is a long, expensive, and risky endeavor.
 Estimates of bringing a new drug to market range between 2.6 and xxx 
-billion USD \citep{TODO}. When successful, however, a new drug can be a major source of
+billion USD \citep{todo}. When successful, however, a new drug can be a major source of
 relief for patients.
 
 % Traditional way of finding candidates.
@@ -24,7 +84,7 @@ In this thesis, we focus on two key areas where ML and DL can help to accelerate
 the drug discovery process: generative models for molecules and computer-aided
 synthesis planning (CASP).
 
-\section{Generative Models for Molecules}
+\section{Advancing the Evaluation of Generative Models for Molecules}
 % Generative models help to find promising candidates
 {Goal-directed molecule generators} aim to address the challenge, of finding novel
 molecular structures satisfying a property profile of interest. Given a computational scoring
