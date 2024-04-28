@@ -1,10 +1,12 @@
 \chapter{Introduction\label{chap:introduction}}
+\section{Motivation}
 % Drug discovery is important. 
 Drug discovery is the process of identifying new medicines and bringing them to
 market. The discovery of novel pharmaceutical treatments has been a major driver
 of quality of life over the centuries. While discovery of new drugs has started 
 in serendipitous and lucky discoveries, advances in science and technology  
-allowed for a more systematic and data-driven approach over the last decades. 
+led to an ever more systematic and data-driven approach, especially over the
+last decades. 
 
 % Traditional way of finding candidates.
 One of the key challenges of the drug discovery process is the identification
@@ -16,7 +18,7 @@ and can involve risks for patients.
 
 % Computer aided drug discovery
 Computer aided drug discovery (CADD) aims to accelerate the drug discovery
-process by using computational methods. Applications range from basic chemical
+process using computational methods. Applications range from basic chemical
 information processing, over physical simulation of molecular interactions, to
 sophisticated machine learning methods. Advances in deep learning
 \citep{chenRiseDeepLearning2018} have led to breakthroughs in many different
@@ -136,8 +138,114 @@ the thesis and gives an outlook on future work.
 % synthesis planning (CASP).
 % \end{minipage}
 
-\section{Advancing the Evaluation of Generative Models for Molecules\label{sec:generative-models}}
-% Generative models help to find promising candidates
+\section{Small molecule drug design}
+\subsection{Requirements for small molecule drugs}
+Small molecule drugs are the major kind of medicines in use, with as much as
+90\% of global sales \citep{makurvetBiologicsVsSmall2021}.
+For a small molecule to be a viable drug candidate it needs to fulfill a whole range 
+of properties \citep{todo}:
+\begin{itemize}
+    \item \textbf{On-target activity:} The molecule needs to be active against
+    the desired target in order for it to show the desired therapeutic effect.
+    On a molecular level this means that the molecule needs to bind to the target
+    and modulate its activity in the desired way. 
+    \item \textbf{Pharmacokinetics:} The molecule must have favourable
+    pharmacokinetic properties such as adsorption, distribution, metabolism and
+    excretion (ADME). ADME determine how the molecule is absorbed into the
+    body, how it is distributed in the body, how it is metabolized and how it is
+    excreted from the body. These properties are crucial for the molecule to
+    reach the target in the body and to be metabolized in a safe manner and to 
+    finally be excreted from the body.
+    \item \textbf{Toxicity:}  The absence of toxic effects is crucial, as the
+    molecule must be well-tolerated and devoid of any potential harmful side
+    effects. Toxicity can be caused by a range of factors, including off-target
+    interactions, metabolic byproducts or allergies.
+    \item \textbf{Specificity:}  The molecule should exhibit high specificity,
+    selectively interacting with the intended target while minimizing
+    undesirable off-target interactions. Off-target binding can lead to adverse
+    side effects and potentially compromise the drug's safety and efficacy
+    profile.
+    \item \textbf{Synthesis:} The molecule must be synthesizable in a
+    cost-effective manner to be practically useful.
+    \item \textbf{Patentability:} The molecule must be novel and not infringe on
+    any existing patents. While in general this is not needed for a drug to work, 
+    this constitutes a significant issue in practice.
+\end{itemize}
+
+\subsection{The drug discovery pipeline}
+The process of discovering a new drug is a complex and multi-faceted task. The
+cost of bringing a new drug to market is estimated to be between 2.6 and 3.0
+billion USD \citep{todo} and the process can take up to 10-15 years
+\citep{todo}. The chances of success are low, with only about 10\% of drugs that
+enter clinical trials eventually being approved by regulatory agencies
+More specifically, the success rates
+in Phase I/II/III and the final regulatory approval are 63\%, 31\%, 58\% and
+85\% respectively \citep{mullardParsingClinicalSuccess2016}. This translates to
+63\%, 19.5\%, 11.3\% and 9.6\% of projects that make it to the respective stages
+\citep{mullardParsingClinicalSuccess2016}.
+
+The drug discovery pipeline is usually divided into multiple stages, depicted in
+\Cref{fig:drug-discovery-pipeline}. The stages are as follows:
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/drug-discovery-pipeline.pdf}
+    \caption{The drug discovery pipeline start with the identification of a
+    biological target. Once a target is identified, readily available molecules
+    are screened for their activity against the target in high-throughput
+    screening. Promising hits are then modified and optimized to lead compounds.
+    These lead compounds are then further optimized and tested in preclinical.
+    Finally, the most promising candidates are tested in clinical trials and
+    eventually approved by regulatory agencies. The stages in the blue box are
+    highly amenable to machine learning and computational methods and are the
+    focus of this thesis. \label{fig:drug-discovery-pipeline}}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Target identification:} The first stage is target identification, 
+    where a biological target is identified that is hypothesized to be associated
+    with a disease phenotype.
+    \item \textbf{Hit discovery:} In the hit discovery stage molecules are
+    screened for their activity against the target in high-throughput screening (HTS).
+    These lab experiments ,often referred to as assays, are used to measure the
+    activity of the molecules against the target in vitro. HTS is resource
+    intensive and time-consuming.
+    \item \textbf{Hit-to-lead:} Promising hits are then modified and optimized
+    to lead compounds. In this stage, the optimization is primarily focused on
+    improving the activity of the molecule against the target. This is usually 
+    done in a DMTA (Design-Make-Test-Analyze) cycle, where the molecule is
+    designed, synthesized, tested in vitro. The results are then analyzed and the cycle 
+    continues until a satisfactory lead compound is found.
+    \item \textbf{Lead optimization:} The lead compounds are then further
+    optimized to improve their properties, such as pharmacokinetics, toxicity or
+    specificity. This is usually done in a DMTA cycle as in the
+    hit-to-lead stage and also involves the synthesis and testing of the
+    molecules in vitro.
+    \item \textbf{Preclinical development:} The most promising candidates are then tested in
+    preclinical studies. These studies are usually done in animals and are used
+    to assess the safety and efficacy of the drug candidate in vivo. 
+    \item \textbf{Clinical trials:} Finally, the candidates that pass the
+    preclinical studies are tested in humans in clinical trials. 
+    These are usually divided into three phases, where the safety and efficacy
+    of the drug are tested in increasing numbers of patients. 
+    Phase I trials are mainly focused on the safety of the drug, Phase II trials
+    are focused on the efficacy of the drug and Phase III trials are focused on
+    the safety and efficacy of the drug in a larger population.
+    \item \textbf{Regulatory approval:} The final stage is the regulatory
+    approval, where the drug is approved by regulatory agencies such as the FDA
+    in the US or the EMA in Europe. 
+\end{itemize}
+
+The hit discovery, hit-to-lead and lead optimization (blue box in
+\Cref{fig:drug-discovery-pipeline}) are highly amenable to machine learning and
+computational methods and are the focus of this thesis. Specifically 
+we will focus on generative models for molecules, which can help to 
+find hits in the hit discovery stage and optimize lead compounds in the
+hit-to-lead and lead optimization stages. Furthermore we will look at 
+computer-aided synthesis planning (CASP) tools, which can help to find
+synthesis routes for promising molecules in the hit discovery and hit-to-lead and lead optimization
+stages.
+
+\section{De Novo Molecule Design\label{sec:denovo}}
+\subsection{Background}
 Goal-directed molecule generators aim to address the challenge of finding novel
 molecular structures satisfying a property profile of interest. These property
 profiles can include a range of properties, including the activity against a
@@ -216,49 +324,62 @@ KL-divergence between the distributions of chemico-physical properties of the
 generated molecules and the training data.
 
 It is however not clear how informative these metrics actually are and how well
-they correlate with the actual usefulness of the tested generative models. In
-\citep{renzFailureModesMolecule2019} (\cref{sec:failure-modes}) we show the
-limitations of the GuacaMol distribution-learning benchmark, by evaluating the
-performance of different sophisticated generative models on this benchmark, and
-comparing it to a simple baseline model that generates molecules by introducing
-minor variations of the molecules in the training data. We show that the 
-most of the tested generative models do not outperform the simple baseline
-model, or only do so marginally. This suggests that the tested benchmarks
-are not be able to distinguish state-of-the-art generative models 
-from simple baseline models, and call for a more comprehensive evaluation of
-distribution-learning models. \Cref{sec:failure-modes} reprints
-the corresponding publication.
+they correlate with the actual usefulness of the tested generative models.
 
-\subsection{Overfitting to Scoring Functions Biases in Goal-Directed Generation}
-In goal-directed generation tasks, the generative models are tasked to find
-molecules with high scores according to a scoring function that encodes the
-desired properties of the generated molecules. The scoring functions used in
-these tasks are often based on ML models trained on experimental
-data. This can lead to problems, as the optimization process can overfit to
-biases of these ML models. 
+% The early stages of the drug discovery pipeline, including hit discovery,
+% hit-to-lead, and lead optimization, heavily rely on experimental screening of
+% molecules in wet lab assays to identify promising candidates for further
+% development. However, these are resource intensive and the number 
+% of molecules that can be tested is limited. Computational methods can help to
+% prioritize which molecules to test next, to avoid wasting resources on
+% unpromising compounds.
 
-It is a well-known problem in generative modelling that the optimizing the
-output of classification/regression models with respect to their inputs can lead
-to unsatisfactory results \citep{todo}. In the context of goal-directed molecule
-generators we identified two possible failure modes: Firstly, the generative
-models can overfit to artifacts of the scoring function, which are not actually
-relevant for the properties of interest. Secondly, the generative models may
-overfit to the training samples used to train the scoring function, which can
-lead to a lack of novelty in the generated molecules.
+% Virtual screening is a widely used computational approach, in which 
+% virtual libraries of molecules are screened in silico to identify promising
+% candidates for experimental testing. 
 
-In \citep{renzFailureModesMolecule2019} we introduce \emph{control scores} that
-give information whether the optimization overfits to artifacts of the scoring
-functions, or the training data. We do this by training additional scoring
-functions, trained with either a different random initialization or trained on a
-hold-out subset of the the available training data. Using this approach, we can
-show that generative models overfit to the scoring function's random
-initialization and to high-scoring training samples. This shows that the reported
-performance of these models is an overestimation, and that our control 
-scores can be used to obtain a more meaningful evaluation of goal-directed 
-molecule generators. \Cref{sec:failure-modes} reprints
-the corresponding publication.
 
-\subsection{Diversity-based benchmarking of Goal-Directed Generators\label{sec:divopt}}
+
+% This traditional approach,
+% known as high-throughput screening (HTS), involves physically testing a vast
+% number of compounds in specialized assays to identify promising hits and lead
+% candidates. However, HTS is a resource-intensive and time-consuming process,
+% often involving the synthesis and testing of millions of molecules. To address
+% these challenges, computational approaches, collectively termed virtual
+% screening, have gained significant traction in drug discovery. Virtual screening
+% involves computationally evaluating large libraries of molecules, typically
+% using predictive models or simulations, to prioritize the most promising
+% candidates for experimental testing. This approach allows for the rapid
+% evaluation of vast chemical spaces, reducing the number of molecules that need
+% to be synthesized and tested in the laboratory. One widely used virtual
+% screening method is structure-based drug design, which leverages the known
+% three-dimensional structure of the target protein. In this approach,
+% computational docking algorithms are employed to predict the binding affinity
+% and pose of small molecules within the target's binding site. Molecules with
+% favorable predicted binding modes and energies are then prioritized for
+% experimental validation. Another approach, known as ligand-based drug design,
+% relies on the knowledge of known active and inactive compounds targeting the
+% protein of interest. Machine learning models, such as quantitative
+% structure-activity relationship (QSAR) models, are trained on these datasets to
+% learn the relationships between molecular structures and their corresponding
+% bioactivities. These models can then be used to predict the activity of new
+% molecules, guiding the prioritization process.
+
+
+
+
+% \citep{todo}.
+
+% \subsubsection{Prediction of molecular properties and virtual screening}
+% Machine learning has shown great promise in accelerating the drug discovery
+% process. In the context of small molecule drug discovery, machine learning
+% methods have been used to predict a range of properties of interest, including
+% the activity of a molecule against a target, its pharmacokinetic properties, its
+% toxicity or its synthetic accessibility. These predictions can be used to
+% prioritize which molecules to test next, to avoid wasting resources on
+% unpromising compounds.
+
+
 % Why is diversity important?
 The diversity of the generated molecules is an important aspect in the
 application of goal-directed generative models. Given that the scoring functions
@@ -277,18 +398,22 @@ a meaningful comparison of goal-directed generators necessitates a standardized
 compute budget. This is because the performance of generative models depends strongly 
 on the amount of ressources available for training and evaluation.
 
-In \citep{renzBenchmarkingEfficiencyGenerative2024} we introduce a benchmark for
-diverse optimization that addresses the above-mentioned issues. In this
-benchmark, we evaluate the diversity of the generated molecules using a recently
-proposed diversity metric \#Circles \citep{xieHowMuchSpace2023}. We compare the
-performance of diverse optimization approaches under two different compute
-budgets, namely a fixed number of scoring function evaluations and a fixed time
-budget. The first setting is relevant for applications where the cost of
-evaluating the scoring function dominates the optimization process, while the
-second setting is relevant for scoring functions that are cheap to evaluate.
-Using this setup we test 14 goal-directed optimization methods and show how
-SMILES-based auto-regressive models dominate the benchmark.
-\Cref{sec:diverse-efficiency} reprints the corresponding publication.
+\subsection{Evaluation of Goal-Directed Generators}
+In goal-directed generation tasks, the generative models are tasked to find
+molecules with high scores according to a scoring function that encodes the
+desired properties of the generated molecules. The scoring functions used in
+these tasks are often based on ML models trained on experimental
+data. This can lead to problems, as the optimization process can overfit to
+biases of these ML models. 
+
+It is a well-known problem in generative modelling that the optimizing the
+output of classification/regression models with respect to their inputs can lead
+to unsatisfactory results \citep{todo}. In the context of goal-directed molecule
+generators we identified two possible failure modes: Firstly, the generative
+models can overfit to artifacts of the scoring function, which are not actually
+relevant for the properties of interest. Secondly, the generative models may
+overfit to the training samples used to train the scoring function, which can
+lead to a lack of novelty in the generated molecules.
 
 \section{Retrosynthesis Prediction\label{sec:retrosynthesis}}
 % Retrosynthesis planning is important and ML can help
@@ -336,6 +461,49 @@ either extracted from a reaction database or hand-coded by a chemist.
 Given a target molecule, the goal is then reframed as a classification task,
 where the model predicts which templates can be used to synthesize the target.
 
+
+
+\section{Aims and Objectives}
+\subsection{Highlighting Failure Modes in Evaluating Generative Models}
+In \citep{renzFailureModesMolecule2019} (\cref{sec:failure-modes}) we show the
+limitations of the GuacaMol distribution-learning benchmark, by evaluating the
+performance of different sophisticated generative models on this benchmark, and
+comparing it to a simple baseline model that generates molecules by introducing
+minor variations of the molecules in the training data. We show that the 
+most of the tested generative models do not outperform the simple baseline
+model, or only do so marginally. This suggests that the tested benchmarks
+are not be able to distinguish state-of-the-art generative models 
+from simple baseline models, and call for a more comprehensive evaluation of
+distribution-learning models. \Cref{sec:failure-modes} reprints
+the corresponding publication.
+
+In \citep{renzFailureModesMolecule2019} we introduce \emph{control scores} that
+give information whether the optimization overfits to artifacts of the scoring
+functions, or the training data. We do this by training additional scoring
+functions, trained with either a different random initialization or trained on a
+hold-out subset of the the available training data. Using this approach, we can
+show that generative models overfit to the scoring function's random
+initialization and to high-scoring training samples. This shows that the reported
+performance of these models is an overestimation, and that our control 
+scores can be used to obtain a more meaningful evaluation of goal-directed 
+molecule generators. \Cref{sec:failure-modes} reprints
+the corresponding publication.
+
+\subsection{Diversity-based benchmark of Goal-Directed Generators\label{sec:divopt}}
+In \citep{renzBenchmarkingEfficiencyGenerative2024} we introduce a benchmark for
+diverse optimization that addresses the above-mentioned issues. In this
+benchmark, we evaluate the diversity of the generated molecules using a recently
+proposed diversity metric \#Circles \citep{xieHowMuchSpace2023}. We compare the
+performance of diverse optimization approaches under two different compute
+budgets, namely a fixed number of scoring function evaluations and a fixed time
+budget. The first setting is relevant for applications where the cost of
+evaluating the scoring function dominates the optimization process, while the
+second setting is relevant for scoring functions that are cheap to evaluate.
+Using this setup we test 14 goal-directed optimization methods and show how
+SMILES-based auto-regressive models dominate the benchmark.
+\Cref{sec:diverse-efficiency} reprints the corresponding publication.
+
+\subsection{Improving Few-Shot and Zero-Shot Retrosynthesis Prediction}
 In \citep{seidlImprovingFewZeroShot2022} we propose a novel approach to
 template-based retrosynthesis prediction. We use a multimodal learning approach
 that learns to associate relevant templates to product molecules using a Modern
@@ -354,6 +522,8 @@ This thesis comprises the work published in the following papers:
     \item \fullcite{renzBenchmarkingEfficiencyGenerative2024}
     \item \fullcite{seidlImprovingFewZeroShot2022}
 \end{itemize}
+
+
 
 % give overview over my other publications
 \paragraph{Other Publications} Besides the papers listed above, I have also
