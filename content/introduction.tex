@@ -21,8 +21,8 @@ Computer aided drug discovery (CADD) aims to accelerate the drug discovery
 process using computational methods. Applications range from basic chemical
 information processing, over physical simulation of molecular interactions, to
 sophisticated machine learning methods. Advances in deep learning
-\citep{chenRiseDeepLearning2018} have led to breakthroughs in many different
-areas of drug discovery, including highly accurate protein structure prediction 
+have led to breakthroughs in many different
+areas of drug discovery \citep{chenRiseDeepLearning2018}, including highly accurate protein structure prediction 
 achieved by AlphaFold \citep{todo}, chemical property prediction
 \citep{mayrDeepToxToxicityPrediction2016,todo}, synthesis planning
 \citep{seglerNeuralSymbolicMachineLearning2017} and molecule generation
@@ -30,37 +30,37 @@ achieved by AlphaFold \citep{todo}, chemical property prediction
 wet-lab experiments and can assist chemists in drug design tasks. 
 
 % Significance and objectives of the thesis
-In this thesis, we focus on two key areas where machine learning can help to
-accelerate the drug discovery process: generative models for molecules and
-computer-aided synthesis planning (CASP). Generative models have been shown to
-be able to efficiently find molecular structures satisfying property profiles of
-interest, and have been used to generate novel drug candidates. However, the
-evaluation of generative models is challenging, as the outputs of these models
-are usually complex, structured objects, and there are often no straightforward
-ways to evaluate the quality or relevance of the generated molecules. In this
-thesis, we address this issue by proposing new evaluation metrics and benchmarks
-for generative models.
+In this thesis we focus on generative models for molecules. Generative models
+are a class of machine learning models that generate molecular structures
+relevant to a given task. However, the evaluation of generative models is
+challenging, as the outputs of these models are usually complex, structured
+objects, and there are often no straightforward ways to evaluate the quality or
+relevance of the generated molecules. In this thesis, we address this issue by
+proposing new evaluation metrics and benchmarks for generative models.
 
-% CASP
-Computer-aided synthesis planning (CASP) assists chemists in the task of
-synthesizing target molecules. CASP tools are based on a combination of planning
-algorithms and computational chemical reaction models, and suggest synthesis
-plans for molecules of interest. Highly accurate chemical reaction models are
-necessary for satisfactory performance of CASP tools. Many such models are based
-on reaction templates, which encode the connectivity changes between atoms that
-occur during a chemical reaction. In this thesis we propose a novel
-template-based reaction model for the problem of single-step retrosynthesis
-prediction \citep{todo}. 
+% Synthesis planning
+We also study the application of generative models to computer-aided synthesis
+planning (CASP). CASP tools assist chemists in the task of synthesizing target
+molecules. These tools rely on retrosynthesis prediction models, which predict
+the reactants that can be used to synthesize a target molecule. We propose a
+novel retrosynthesis prediction model that improves the generalization capabilities 
+of template-based models. We also propose new evaluation metrics and highlight
+trade-offs between accuracy and throughput in retrosynthesis prediction.
 
 % PROMISE
-This thesis is structured as follows. In \cref{sec:generative-models} we give 
-an overview of generative models for molecules, discuss the challenges of evaluating
-these models and present our contributions to this field. In \cref{sec:retrosynthesis}
-we give a short overview of computer-aided synthesis planning and outline our contributions. 
-\Cref{sec:publications} lists the publications that are part of this thesis and 
-related publications. \Cref{chap:publications} reprints the publications
-and their corresponding supplementary material. Finally, \cref{chap:conclusion} concludes
-the thesis and gives an outlook on future work.
+This thesis is structured as follows. In \cref{sec:drug-design} we give an
+overview of small molecule drug design, the drug discovery pipeline 
+and how computer aided drug discovery can help to accelerate this process.
+In \cref{sec:generative-models} we give an overview of generative models for
+molecules and discuss the challenges of evaluating these models In \cref{sec:retrosynthesis} 
+we give a short overview of computer-aided synthesis planning.
+\Cref{sec:retrosynthesis} gives an overview of retrosynthesis prediction and
+the associated challenges. \Cref{sec:aims-objectives} gives an overview of the
+aims and objectives of this thesis. \Cref{sec:publications} lists the publications 
+that are part of this thesis and related publications. 
+\Cref{chap:publications} reprints the publications and
+their corresponding supplementary material. Finally, \Cref{chap:conclusion}
+concludes the thesis and gives an outlook on future work.
 
 
 
@@ -138,7 +138,7 @@ the thesis and gives an outlook on future work.
 % synthesis planning (CASP).
 % \end{minipage}
 
-\section{Small molecule drug design}
+\section{Small molecule drug design\label{sec:drug-design}}
 \subsection{Requirements for small molecule drugs}
 Small molecule drugs are the major kind of medicines in use, with as much as
 90\% of global sales \citep{makurvetBiologicsVsSmall2021}.
@@ -189,7 +189,7 @@ The drug discovery pipeline is usually divided into multiple stages, depicted in
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{figures/drug-discovery-pipeline.pdf}
-    \caption{The drug discovery pipeline start with the identification of a
+    \caption{The drug discovery pipeline starts with the identification of a
     biological target. Once a target is identified, readily available molecules
     are screened for their activity against the target in high-throughput
     screening. Promising hits are then modified and optimized to lead compounds.
@@ -241,25 +241,160 @@ we will focus on generative models for molecules, which can help to
 find hits in the hit discovery stage and optimize lead compounds in the
 hit-to-lead and lead optimization stages. Furthermore we will look at 
 computer-aided synthesis planning (CASP) tools, which can help to find
-synthesis routes for promising molecules in the hit discovery and hit-to-lead and lead optimization
+synthesis routes for promising molecules in the hit discovery, hit-to-lead and lead optimization
 stages.
 
-\section{De Novo Molecule Design\label{sec:denovo}}
-\subsection{Background}
-Goal-directed molecule generators aim to address the challenge of finding novel
-molecular structures satisfying a property profile of interest. These property
-profiles can include a range of properties, including the activity against a
-target, or other important traits such as solubility or toxicity. Given a
-computational scoring function that encodes the relevant properties, generative
-models operate in a feedback loop, where the scoring function guides the
-generation of molecular structures. This contrasts with the traditional approach
-of virtual screening \citep{todo}, where a fixed virtual library of molecules is
-searched in a brute-force manner. This simple way of searching the chemical
-space is inefficient and is not able to tap into the possibilities provided by
-the vastness of drug-like chemical space, which is estimated to contain between
-$10^{23}$-$10^{60}$ molecules. Generative models, on the other hand, hold the
-promise of being able to search chemical space more efficiently and come up with
-promising drug candidates.
+\subsection{Efficiently navigating chemical space}
+% Drug discovery equals searching chemical space 
+The drug discovery pipeline can be seen as a structured process of searching
+chemical space for molecules that can successfully be used as medicines.
+As a trial and error process, this search needs to be conducted in a 
+systematic manner. The design-make-test-analyze (DMTA) cycle is a
+common approach to proceed throughout the drug discovery pipeline.
+The steps in this cycle are as follows:
+\begin{itemize}
+    \item \textbf{Design:} The first step is the design of the molecule to be
+    tested. This can be done using a variety of methods, ranging from 
+    intuition and experience of medicinal chemists to computational methods.
+    \item \textbf{Make:} The designed molecules are synthesized and purified in
+    the laboratory. This step is usually done by chemists and can be a complex
+    and time-consuming process.
+    \item \textbf{Test:} The synthesized molecule is then tested in vitro or in
+    vivo to measure its activity against the target and its pharmacokinetic
+    properties.
+    \item \textbf{Analyze:} The results of the test are then analyzed to
+    determine whether the experiment was successful and to guide the next
+    iteration of the DMTA cycle.
+\end{itemize}
+
+\subsection{Computer-Aided Drug Discovery}
+Computer-aided drug discovery (CADD) aims to accelerate the drug discovery
+process using computational methods, offering support throughout all stages of 
+the drug discovery pipeline and all steps of the DMTA cycle.
+
+Virtual screening (VS) constitutes a key application of CADD. VS methods aim to
+predict molecular properties of interest, such as the activity of a molecule
+against a target, its pharmacokinetic properties or its toxicity. These
+predictions can be used to prioritize which molecules to test next, to avoid
+wasting resources on unpromising compounds. Therefore it helps in the design
+step of the DMTA cycle, by helping to design the next batch of experiments. 
+Structure-based methods constitute one of the most popular approaches to VS. These methods use the known
+structure of the target to predict the activity of a molecule against the target.
+This approach has been boosted by advances in protein structure prediction, such
+as AlphaFold \citep{todo}. Ligand-based methods are another popular approach to
+VS. These methods find links between molecular structures and measured
+experimental outcomes. In recent years, machine learning methods have shown
+great promise in modeling these relationships. 
+
+However, these discriminative methods have limitations and fail to help in the
+other steps of the DMTA cycle. Generative models offer complementary methods
+which can help in the analyze, design and make steps of the DMTA cycle. Key
+applications of generative models in drug discovery are the generation of
+molecules with desired properites, the optimization of lead compounds and the
+prediction of chemical reactions to help synthesize molecules. While VS methods
+can be seen as an in silico replacement for experiments, generative models for
+molecules function more like a virtual chemist, designing and optimizing
+molecules and through modelling chemical reactions.
+
+In recent years, there has been a resurgence of interest in generative models,
+triggered by advances in deep learning. These models represent a significant
+shift in how we approach drug discovery, providing new methods to innovate and
+optimize the process. In the following section, we will give a more detailled 
+overview of generative models for molecules and their applications in drug discovery.
+
+% \begin{itemize}
+%     \item \textbf{Proxy models:} One way is to use proxies, which 
+%     aim at approximating the outcome of an expensive experiment at a lower cost.
+%     Conducting a clinical trial is very costly and it would be impractical (and unethical) to
+%     test a drug candidate without prior testing in vitro and in animals. 
+%     In practice multiple layers of varying complexity are used ranging 
+%     from animal studies over in vitro assays to in silico methods.
+%     \item \textbf{Incorporting experimental feedback:} The second strategy
+%     involves selecting future molecules for testing based on previous
+%     experimental results. For example, ressources should not be wasted on
+%     molecules that are very similar to ones already found undesirable. While
+%     this may seem straightforward, it requires a certain level of sophistication
+%     and intelligence in the decision-making process.
+% \end{itemize}
+
+% This chemical space, which encompasses all possible drug-like
+% molecules that could be synthesized, is immense, with estimates ranging from
+% $10^{23}$-$10^{60}$ potential molecules \citep{todo}. Navigating this space
+% effectively and efficiently is a critical challenge in medicinal chemistry and
+% pharmacology. 
+
+% In the context of computer-aided drug discovery (CADD), the use of proxy
+% models translates to the use of quantitative structure-activity relationship
+% (QSAR) models, which predict molecular properties of interest, such as the
+% activity of a molecule against a target, its pharmacokinetic properties or its
+% toxicity. 
+% These two strategies can be combined at every stage of the drug discovery process.
+% Batched high-throughput screening (HTS) is an example of a routine
+% that uses both of these strategies. In this routine, a batch of molecules is
+% tested in a single experiment. The results of this experiment can 
+% then be used to plan the next batch of molecules to be tested using 
+% a machine learning model as a cheaper proxy. This model predicts the
+% outcome of the more expensive wet-lab experiment, and can 
+% discard unpromising molecules before they are tested.
+% However, virtual screening itself does not make use of the feedback 
+% of already tested molecules itself. Instead, it searches chemical 
+% space in a brute-force manner, by evaluating a fixed library of molecules
+% in order. 
+
+% Generative models aim at addressing this gap by incorporating the 
+% feedback of already tested molecules into the search process.
+% By using the results of already scored molecules as a guiding signal, 
+% generative models offer the hope of being able to search chemical space
+% more efficiently. While in later stages of the drug discovery pipeline 
+% medicinal chemists can use their intuition and experience to guide the
+% search, in the early stages of the pipeline, where the number of molecules
+% under consideration is large, generative models take over the role 
+% of designing the next molecule to be tested.
+
+
+\section{Generative Models in Drug discovery\label{sec:generative-models}}
+
+\subsection{Approaches to Generative Models for Molecules}
+\subsubsection{Molecular representations}
+Molecules are complex objects that can be represented in a variety of ways.
+While molecules are complex quantum mechanical objects, in practice they are
+often represented as graphs, where atoms are nodes and bonds are edges. 
+The nodes are labelled by the atom type and the edges by the bond type.
+This graph-based representation is the most general, but can be complex 
+to work with. 
+
+Line notations such as INCHI \citep{todo} or Simplified Molecular Input Line
+Entry System (SMILES) \citep{weiningerSMILESChemicalLanguage1988} 
+represent molecules as 1D representations of characters. These representations are
+more compact and can easily be processed by sequence-based machine learning models. 
+
+\subsubsection{Generative models}
+There is a wide variety of generative models for molecules, which are based 
+on starkly different approaches. Some of the most popular approaches are:
+\begin{itemize}
+    \item \textbf{Autoregressive models:} Autoregressive models are based on
+    recurrent neural networks (RNNs) or transformers \citep{vaswaniAttentionAllYou2017}
+    and generate molecules by sampling one atom at a time. 
+    \item \textbf{Generative adversarial networks (GANs):} GANs are based on a
+    game-theoretic approach, where a generator network is trained to generate
+    molecules that are indistinguishable from the training data, while a
+    discriminator network is trained to distinguish between real and generated
+    molecules.
+    \item \textbf{Variational autoencoders (VAEs):} VAEs are based on the idea
+    of learning a latent representation of the molecules, which can then be used
+    to generate new molecules. 
+    \item \textbf{Flow-based models:} Flow-based models are based on the idea of
+    learning a bijective mapping between the data space and a latent space. This
+    allows for efficient sampling of new molecules.
+    \item \textbf{Graph-based models:} Graph-based models are based on the idea
+    \item \textbf{3D models:} 3D models are based on the idea of generating 3D
+    structures of molecules.
+    \item{\textbf{Rule-based methods}} Rule-based methods are based on the idea
+    of using a set of rules to generate new molecules. These rules can for example
+    be based on chemical reactions or on combining fragments of molecules.
+\end{itemize}
+    
+
 
 Triggered by advances in deep learning, the field of generative models for
 molecules has seen a surge in interest in recent years. The first deep-learning
@@ -277,13 +412,14 @@ representation of the molecules, which can be based on SMILES strings,
 graph-based representations or 3D structures
 \citep{eltonDeepLearningMolecular2019,sanchez-lengelingInverseMolecularDesign2018,pangDeepGenerativeModels2024}.
 
+\subsection{Distribution-learning}
 Generative models are often divided into two categories: \emph{goal-directed}
 and \emph{distribution-learning} models. Distribution-learning models learn
 general structural patterns in molecules and aim to sample novel molecules that
-the training data in distribution. These models are then most often used as a
-base for goal-directed models, which aim to find molecules that satisfy a
-property profile of interest. These properties are usually encoded in a
-scoring function, which is then used to guide the generation process, in a
+resemble the training data in distribution. These models are then most often
+used as a base for goal-directed models, which aim to find molecules that
+satisfy a property profile of interest. These properties are usually encoded in
+a scoring function, which is then used to guide the generation process, in a
 reinforcement learning style feedback loop.
 
 % The evaluation of generative models is challenging. 
@@ -300,7 +436,7 @@ However, the evaluation of generative models is still an active area of research
 and challenges remain. In this thesis, we address some of these challenges which
 are outlined in the following sections.
 
-\subsection{Evaluation of Distribution-Learning Models}
+\subsubsection{Evaluation of distribution-learning models}
 The evaluation of distribution-learning methods has posed challenges in
 different applications, apart from the generation of molecules. While so called
 \emph{likelihood-based} models, such as autoregressive models or flow-based
@@ -326,61 +462,26 @@ generated molecules and the training data.
 It is however not clear how informative these metrics actually are and how well
 they correlate with the actual usefulness of the tested generative models.
 
-% The early stages of the drug discovery pipeline, including hit discovery,
-% hit-to-lead, and lead optimization, heavily rely on experimental screening of
-% molecules in wet lab assays to identify promising candidates for further
-% development. However, these are resource intensive and the number 
-% of molecules that can be tested is limited. Computational methods can help to
-% prioritize which molecules to test next, to avoid wasting resources on
-% unpromising compounds.
+\subsection{Goal-directed generative models\label{sec:eval-gen}}
 
-% Virtual screening is a widely used computational approach, in which 
-% virtual libraries of molecules are screened in silico to identify promising
-% candidates for experimental testing. 
+In goal-directed generation tasks, the generative models are tasked to find
+molecules with a desired property profile. This property profile is usually 
+encoded in a scoring function, which assigns a scalar score to each molecule. 
+The scoring functions used in these tasks are often based on ML models trained on experimental
+data. This can lead to problems, as the optimization process can overfit to
+biases of these ML models. 
 
+\subsubsection{Scoring functions}
+It is a well-known problem in generative modelling that the optimizing the
+output of classification/regression models with respect to their inputs can lead
+to unsatisfactory results \citep{todo}. In the context of goal-directed molecule
+generators we identified two possible failure modes: Firstly, the generative
+models can overfit to artifacts of the scoring function, which are not actually
+relevant for the properties of interest. Secondly, the generative models may
+overfit to the training samples used to train the scoring function, which can
+lead to a lack of novelty in the generated molecules.
 
-
-% This traditional approach,
-% known as high-throughput screening (HTS), involves physically testing a vast
-% number of compounds in specialized assays to identify promising hits and lead
-% candidates. However, HTS is a resource-intensive and time-consuming process,
-% often involving the synthesis and testing of millions of molecules. To address
-% these challenges, computational approaches, collectively termed virtual
-% screening, have gained significant traction in drug discovery. Virtual screening
-% involves computationally evaluating large libraries of molecules, typically
-% using predictive models or simulations, to prioritize the most promising
-% candidates for experimental testing. This approach allows for the rapid
-% evaluation of vast chemical spaces, reducing the number of molecules that need
-% to be synthesized and tested in the laboratory. One widely used virtual
-% screening method is structure-based drug design, which leverages the known
-% three-dimensional structure of the target protein. In this approach,
-% computational docking algorithms are employed to predict the binding affinity
-% and pose of small molecules within the target's binding site. Molecules with
-% favorable predicted binding modes and energies are then prioritized for
-% experimental validation. Another approach, known as ligand-based drug design,
-% relies on the knowledge of known active and inactive compounds targeting the
-% protein of interest. Machine learning models, such as quantitative
-% structure-activity relationship (QSAR) models, are trained on these datasets to
-% learn the relationships between molecular structures and their corresponding
-% bioactivities. These models can then be used to predict the activity of new
-% molecules, guiding the prioritization process.
-
-
-
-
-% \citep{todo}.
-
-% \subsubsection{Prediction of molecular properties and virtual screening}
-% Machine learning has shown great promise in accelerating the drug discovery
-% process. In the context of small molecule drug discovery, machine learning
-% methods have been used to predict a range of properties of interest, including
-% the activity of a molecule against a target, its pharmacokinetic properties, its
-% toxicity or its synthetic accessibility. These predictions can be used to
-% prioritize which molecules to test next, to avoid wasting resources on
-% unpromising compounds.
-
-
-% Why is diversity important?
+\subsubsection{Diversity}
 The diversity of the generated molecules is an important aspect in the
 application of goal-directed generative models. Given that the scoring functions
 are usually only an imperfect and incomplete approximation of the desired
@@ -398,24 +499,23 @@ a meaningful comparison of goal-directed generators necessitates a standardized
 compute budget. This is because the performance of generative models depends strongly 
 on the amount of ressources available for training and evaluation.
 
-\subsection{Evaluation of Goal-Directed Generators}
-In goal-directed generation tasks, the generative models are tasked to find
-molecules with high scores according to a scoring function that encodes the
-desired properties of the generated molecules. The scoring functions used in
-these tasks are often based on ML models trained on experimental
-data. This can lead to problems, as the optimization process can overfit to
-biases of these ML models. 
+\subsubsection{Standardized experimental conditions}
+% Introduce the importance of having a benchmark 
 
-It is a well-known problem in generative modelling that the optimizing the
-output of classification/regression models with respect to their inputs can lead
-to unsatisfactory results \citep{todo}. In the context of goal-directed molecule
-generators we identified two possible failure modes: Firstly, the generative
-models can overfit to artifacts of the scoring function, which are not actually
-relevant for the properties of interest. Secondly, the generative models may
-overfit to the training samples used to train the scoring function, which can
-lead to a lack of novelty in the generated molecules.
+\subsubsection{Comparison to relevant baselines}
 
-\section{Retrosynthesis Prediction\label{sec:retrosynthesis}}
+% \subsubsection{Prediction of molecular properties and virtual screening}
+% Machine learning has shown great promise in accelerating the drug discovery
+% process. In the context of small molecule drug discovery, machine learning
+% methods have been used to predict a range of properties of interest, including
+% the activity of a molecule against a target, its pharmacokinetic properties, its
+% toxicity or its synthetic accessibility. These predictions can be used to
+% prioritize which molecules to test next, to avoid wasting resources on
+% unpromising compounds.
+
+
+\subsection{Retrosynthesis Prediction\label{sec:retrosynthesis}}
+% TODO: Add figure explaining retrosynthesis
 % Retrosynthesis planning is important and ML can help
 Drug candidates, whether suggested by generative models or found by other means,
 at some point need to be synthesized in for further testing and 
@@ -463,7 +563,7 @@ where the model predicts which templates can be used to synthesize the target.
 
 
 
-\section{Aims and Objectives}
+\section{Aims and Objectives\label{sec:aims-objectives}}
 \subsection{Highlighting Failure Modes in Evaluating Generative Models}
 In \citep{renzFailureModesMolecule2019} (\cref{sec:failure-modes}) we show the
 limitations of the GuacaMol distribution-learning benchmark, by evaluating the
@@ -489,7 +589,7 @@ scores can be used to obtain a more meaningful evaluation of goal-directed
 molecule generators. \Cref{sec:failure-modes} reprints
 the corresponding publication.
 
-\subsection{Diversity-based benchmark of Goal-Directed Generators\label{sec:divopt}}
+\subsection{Diversity-based benchmark of goal-directed generators\label{sec:divopt}}
 In \citep{renzBenchmarkingEfficiencyGenerative2024} we introduce a benchmark for
 diverse optimization that addresses the above-mentioned issues. In this
 benchmark, we evaluate the diversity of the generated molecules using a recently
@@ -503,7 +603,7 @@ Using this setup we test 14 goal-directed optimization methods and show how
 SMILES-based auto-regressive models dominate the benchmark.
 \Cref{sec:diverse-efficiency} reprints the corresponding publication.
 
-\subsection{Improving Few-Shot and Zero-Shot Retrosynthesis Prediction}
+\subsection{Improving few-shot and zero-shot retrosynthesis prediction}
 In \citep{seidlImprovingFewZeroShot2022} we propose a novel approach to
 template-based retrosynthesis prediction. We use a multimodal learning approach
 that learns to associate relevant templates to product molecules using a Modern
@@ -514,7 +614,7 @@ with few training samples and even for unseen templates. This model is several
 times faster than comparable methods and shows good predictive performance.
 \Cref{sec:mhn-react} reprints the corresponding publication.
 
-\section{List of Publications\label{sec:publications}}
+\section{List of publications\label{sec:publications}}
 This thesis comprises the work published in the following papers:
 
 \begin{itemize}
