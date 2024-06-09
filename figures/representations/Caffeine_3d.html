@@ -1,0 +1,46 @@
+<div id="3dmolviewer_17179228766396923"  style="position: relative; width: 800px; height: 600px;">
+        <p id="3dmolwarning_17179228766396923" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    //this is to ignore the existence of requirejs amd
+    var savedexports, savedmodule;
+    if (typeof exports !== 'undefined') savedexports = exports;
+    else exports = {}
+    if (typeof module !== 'undefined') savedmodule = module;
+    else module = {}
+
+    var tag = document.createElement('script');
+    tag.src = uri;
+    tag.async = true;
+    tag.onload = () => {
+        exports = savedexports;
+        module = savedmodule;
+        resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+});
+};
+
+if(typeof $3Dmolpromise === 'undefined') {
+$3Dmolpromise = null;
+  $3Dmolpromise = loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.1.0/3Dmol-min.js');
+}
+
+var viewer_17179228766396923 = null;
+var warn = document.getElementById("3dmolwarning_17179228766396923");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+$3Dmolpromise.then(function() {
+viewer_17179228766396923 = $3Dmol.createViewer(document.getElementById("3dmolviewer_17179228766396923"),{backgroundColor:"white"});
+viewer_17179228766396923.zoomTo();
+	viewer_17179228766396923.addModel("HETATM    1  C1  UNL     1       3.249  -0.674  -0.357  1.00  0.00           C  \nHETATM    2  N1  UNL     1       2.144   0.223  -0.036  1.00  0.00           N  \nHETATM    3  C2  UNL     1       2.227   1.535   0.294  1.00  0.00           C  \nHETATM    4  N2  UNL     1       1.016   2.108   0.521  1.00  0.00           N  \nHETATM    5  C3  UNL     1       0.159   1.086   0.319  1.00  0.00           C  \nHETATM    6  C4  UNL     1       0.827  -0.041  -0.017  1.00  0.00           C  \nHETATM    7  C5  UNL     1       0.135  -1.212  -0.297  1.00  0.00           C  \nHETATM    8  O1  UNL     1       0.755  -2.259  -0.631  1.00  0.00           O  \nHETATM    9  N3  UNL     1      -1.239  -1.193  -0.210  1.00  0.00           N  \nHETATM   10  C6  UNL     1      -2.010  -2.405  -0.535  1.00  0.00           C  \nHETATM   11  C7  UNL     1      -1.901  -0.018   0.107  1.00  0.00           C  \nHETATM   12  O2  UNL     1      -3.165   0.006   0.119  1.00  0.00           O  \nHETATM   13  N4  UNL     1      -1.198   1.130   0.403  1.00  0.00           N  \nHETATM   14  C8  UNL     1      -1.891   2.387   0.717  1.00  0.00           C  \nHETATM   15  H1  UNL     1       3.241  -1.542   0.336  1.00  0.00           H  \nHETATM   16  H2  UNL     1       4.220  -0.146  -0.254  1.00  0.00           H  \nHETATM   17  H3  UNL     1       3.147  -1.034  -1.403  1.00  0.00           H  \nHETATM   18  H4  UNL     1       3.161   2.078   0.367  1.00  0.00           H  \nHETATM   19  H5  UNL     1      -2.945  -2.457   0.064  1.00  0.00           H  \nHETATM   20  H6  UNL     1      -1.436  -3.326  -0.299  1.00  0.00           H  \nHETATM   21  H7  UNL     1      -2.268  -2.403  -1.615  1.00  0.00           H  \nHETATM   22  H8  UNL     1      -1.238   3.075   1.294  1.00  0.00           H  \nHETATM   23  H9  UNL     1      -2.790   2.193   1.340  1.00  0.00           H  \nHETATM   24  H10 UNL     1      -2.199   2.887  -0.226  1.00  0.00           H  \nCONECT    1    2   15   16   17\nCONECT    2    3    6\nCONECT    3    4    4   18\nCONECT    4    5\nCONECT    5    6    6   13\nCONECT    6    7\nCONECT    7    8    8    9\nCONECT    9   10   11\nCONECT   10   19   20   21\nCONECT   11   12   12   13\nCONECT   13   14\nCONECT   14   22   23   24\nEND\n","pdb");
+	viewer_17179228766396923.setStyle({"stick": {}});
+	viewer_17179228766396923.zoomTo();
+viewer_17179228766396923.render();
+});
+</script>

@@ -353,24 +353,122 @@ overview of generative models for molecules and their applications in drug disco
 
 
 \section{Generative Models in Drug discovery\label{sec:generative-models}}
-
-\subsection{Approaches to Generative Models for Molecules}
+\subsection{Approaches to Generate Molecules}
 \subsubsection{Molecular representations}
-Molecules are complex objects that can be represented in a variety of ways.
-While molecules are complex quantum mechanical objects, in practice they are
-often represented as graphs, where atoms are nodes and bonds are edges. 
-The nodes are labelled by the atom type and the edges by the bond type.
-This graph-based representation is the most general, but can be complex 
-to work with. 
 
-Line notations such as INCHI \citep{todo} or Simplified Molecular Input Line
-Entry System (SMILES) \citep{weiningerSMILESChemicalLanguage1988} 
-represent molecules as 1D representations of characters. These representations are
-more compact and can easily be processed by sequence-based machine learning models. 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/representations/representations.pdf}
+    \caption{Different representations of caffeine. \textbf{A:} 
+    Different 1D representations of a molecule. SMILES is an established 
+    line notation for molecules. DeepSmiles enables easier generation of
+    molecules by getting rid of pair brackets and ring numbers. SELFIES
+    guaruantess that a sequence of tokens parses into a valid molecule.
+    \textbf{B:} 2D graph representation of a molecule. The nodes represent
+    atoms and the edges represent bonds. 
+    \textbf{C:} 3D structure of a molecule. The atoms are positioned in 3D
+    space. The positions of these atoms can change as some bonds are 
+    allow rotations. Source of the 3D structure: \citep{EnglishCaffeine3D2010}.
+    \label{fig:molecular-graph}}
+\end{figure}
+Molecules are complex objects that can be represented in a variety of ways.
+While molecules are complex quantum mechanical objects, there exist 
+a variety of more simple, practically useful representations of molecules.
+Molecules are formed by atoms, which are connected by chemical bonds.
+The connectivity between the atoms can be represented as a graph, where
+the nodes represent atoms and the edges represent bonds. Additionally,
+the atoms/bonds by their atom/bond type and other properties such as
+charge or chirality. This representation is called a molecular graph.
+
+Molecules can also be represented as a 3D structure, where the atoms are
+positioned in 3D space. This representation is useful for studying the
+interactions of molecules with other molecules or proteins. 
+
+Molecular graphs can also be linearized into a 1D sequence of characters. Line
+notations such as INCHI \citep{todo} or Simplified Molecular Input Line Entry
+System (SMILES) \citep{weiningerSMILESChemicalLanguage1988} represent molecules
+as 1D representations of characters. SMILES strings have turned out to be a
+highly useful representation of molecules in the context of generative models,
+as they are easily processed by sequence-based models such as recurrent neural
+networks (RNNs) or transformers \citep{vaswaniAttentionAllYou2017}. Several
+extensions for this molecular representation have been proposed, such as SELFIES
+\citep{krennSELFIESFutureMolecular2022}, DeepSmiles
+\citep{oboyleDeepSMILESAdaptationSMILES2018} or SAFE
+\citep{noutahiGottaBeSAFE2023}. 
 
 \subsubsection{Generative models}
 There is a wide variety of generative models for molecules, which are based 
-on starkly different approaches. Some of the most popular approaches are:
+on starkly different approaches. 
+
+\paragraph{Autoregressive models} constitute one of the most popular approaches
+to generative models for generating discrete 1D/2D molecular representations. 
+These models start with an "empty" molecule and iteratively add to it. 
+At each step, the model takes the current state of the molecule chooses 
+a modification to apply from a set of possible modifications. This modification
+is then applied to the molecule and the process is repeated until a special
+end-of-sequence action is taken. Mathematically this can be formulated as
+\begin{align}
+    p(x) = \prod_{i=0}^n p(x_i | x_{0:i-1}), 
+\end{align}
+where $x$ is the molecule and $x_i$ corresponds to the state of the molecule 
+at step $i$. This gives us a probability distribution over the space of molecules
+and to evaluate the likelihood of a given molecule. Models for which this fact 
+holds are called explicit density models.
+
+One of the most popular approaches is to use recurrent neural networks (RNNs)
+or Transformer models \citep{vaswaniAttentionAllYou2017} model 1D sequences.
+These models have been used to generate SMILES, SELFIES or DeepSmiles strings
+\citep{seglerGeneratingFocusedMolecule2018,todo}. 
+In most cases, the training data is a set of molecules and the model is trained
+to maximize the likelihood of the training data. The molecules are usually
+tokenized into the grammatical units of the used representation before training. 
+The model is then trained to predict the next token in the sequence given the
+previous tokens.
+
+Another approach to autoregressive modelling is to use graph-based models, which
+model the molecular graph directly. These models are based on graph neural
+networks (GNNs) and are used to generate molecular graphs directly. 
+These models start with an empty graph and iteratively add nodes and edges to
+it. At each step the model chooses a modification to apply to the graph and
+applies it. While the specification of possible actions is usually more 
+complex than in the 1D case, the model can be trained in a similar manner.
+
+\paragraph{Variational autoencoders (VAEs)} are another popular approach to
+generate molecules. VAEs are latent space models, which sample 
+data by first sampling from a simple latent distribution $p(z)$, which is often 
+a multi-variate normal distribution. The samples are then mapped to 
+molecular space via a probabilistic decoder network $p(x|z)$.
+To make training tractable a second network, the encoder network $q(z|x)$ is
+used to map the data to the latent space. The model is trained to maximize
+the evidence lower bound (ELBO) of the data
+\begin{align}
+    \log p(x) \geq \mathbb{E}_{q(z|x)}[\log p(x|z)] - \text{KL}(q(z|x) || p(z)), 
+\end{align}
+where KL is the Kullback-Leibler divergence. 
+This model has the advantage of providing a continuous latent space, which can
+be used to interpolate between molecules or run optimization algorithms in
+latent space. Calculating the likelihood of a given molecule is not possible
+in this model as it requires the integration over the latent space
+\begin{align}
+    p(x) = \int p(x|z) p(z) dz,
+\end{align}
+which is usually intractable. This type of model is called an approximate density model. 
+
+\paragraph{Generative adversarial networks (GANs)} are similar to VAEs in that
+they also sample from a simple distribution in latent space, $p(z)$ and map the samples to 
+molecular space via a generator network $p(x|z)$.
+However, the training of GANs is based on a game-theoretic approach, where a
+generator network is trained to generate samples that are indistinguishable from
+the training data. The training signal is provided by a discriminator network,
+which is trained to distinguish between real and generated samples. The generator
+is then trained to minimize the discriminator's ability to distinguish between
+real and generated samples. GANs have been used to generate molecules 
+in a variety of representations \citep{todo}. In general the generator network
+is not invertible, which means that the likelihood of a given molecule cannot
+be calculated. This makes GANs implicit density models, which define a 
+likelihood function $p(x)$ only implicitly via sampling, but not explicitly.
+
+
 \begin{itemize}
     \item \textbf{Autoregressive models:} Autoregressive models are based on
     recurrent neural networks (RNNs) or transformers \citep{vaswaniAttentionAllYou2017}
