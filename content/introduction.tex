@@ -173,19 +173,20 @@ of properties \citep{todo}:
 \end{itemize}
 
 \subsection{The drug discovery pipeline}
+% Drug discovery is complex and expensive. 
 The process of discovering a new drug is a complex and multi-faceted task. The
 cost of bringing a new drug to market is estimated to be between 2.6 and 3.0
 billion USD \citep{todo} and the process can take up to 10-15 years
-\citep{todo}. The chances of success are low, with only about 10\% of drugs that
-enter clinical trials eventually being approved by regulatory agencies
-More specifically, the success rates
-in Phase I/II/III and the final regulatory approval are 63\%, 31\%, 58\% and
-85\% respectively \citep{mullardParsingClinicalSuccess2016}. This translates to
-63\%, 19.5\%, 11.3\% and 9.6\% of projects that make it to the respective stages
-\citep{mullardParsingClinicalSuccess2016}.
+\citep{todo}. The process is usually structured into multiple stages,
+leading from the initial identification of a biological target to the final
+approval of the drug by regulatory agencies. The core idea is to start 
+with many potential drug candidates and to systematically reduce this number
+to a few promising candidates that can be tested in clinical trials.
+Throughout this process, the properties of the molecules are tested in a
+variety experiments, that get more and more complex and expensive (per compound) as the
+process progresses. \Cref{fig:drug-discovery-pipeline} gives an overview of the
+drug discovery pipeline and we will discuss the stages in more detail next:
 
-The drug discovery pipeline is usually divided into multiple stages, depicted in
-\Cref{fig:drug-discovery-pipeline}. The stages are as follows:
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{figures/drug-discovery-pipeline.pdf}
@@ -234,6 +235,40 @@ The drug discovery pipeline is usually divided into multiple stages, depicted in
     in the US or the EMA in Europe. 
 \end{itemize}
 
+% The chances of success are low
+The success rates of clinical trials are low, with only about 10\% of drugs that
+enter clinical trials eventually being approved by regulatory agencies
+More specifically, the success rates in Phase I/II/III and the final 
+regulatory approval are 63\%, 31\%, 58\% and 85\% respectively 
+\citep{mullardParsingClinicalSuccess2016}. This translates to
+63\%, 19.5\%, 11.3\% and 9.6\% of projects that make it to the respective stages
+\citep{mullardParsingClinicalSuccess2016}. 
+
+The final answer whether a molecule represents a useful drug only comes from
+testing it in clinical trials. As these are expensive and risky, the goal of the
+preceeding preclinical stage is to approximate the outcome of the clinical
+trials as closely as possible. This applies recursively to the stages before,
+where the goal is to approximate the outcome of the next stage as closely as
+possible at a lower cost. 
+
+Multiple molecules are usually passed from stage to stage, with the number of
+molecules decreasing with the progress of the pipeline. 
+In the hit discovery stage, it is possible to test large numbers of 
+compounds and pass the most promising ones to the hit-to-lead stage.
+It is important to pass on diverse sets of promising molecules, as 
+the chances are low that any single molecule will be successful.
+Testing similar molecules is usually not useful, as the results are 
+usually correlated and the information gain does not justify the
+cost of the experiment. A diverse set of molecules is more likely to
+contain a successful candidate.
+
+Overall the drug discovery pipeline starts out with a large number 
+of molecules where there is high uncertainty about their usefulness.
+As the pipeline progresses, the number of molecules decreases and
+the uncertainty decreases, until the final stage
+where the molecule is tested in clinical trials and the uncertainty
+is at its lowest.
+
 The hit discovery, hit-to-lead and lead optimization (blue box in
 \Cref{fig:drug-discovery-pipeline}) are highly amenable to machine learning and
 computational methods and are the focus of this thesis. Specifically 
@@ -246,61 +281,31 @@ stages.
 
 \subsection{Efficiently navigating chemical space}
 % Drug discovery equals searching chemical space 
-The drug discovery pipeline can be seen as a structured process of searching
-chemical space for molecules that can successfully be used as medicines.
-As a trial and error process, this search needs to be conducted in a 
-systematic manner. The design-make-test-analyze (DMTA) cycle is a
-common approach to proceed throughout the drug discovery pipeline.
-The steps in this cycle are as follows:
+Essentially drug discovery can be viewed as the process of searching 
+chemical space for medicines. The drug discovery pipeline introduces 
+a structured process to navigate this space in a systematic manner, 
+that makes the search feasible in the end. Each conducted experiment
+has the goal of gathering information and reducing the uncertainty
+relating to the molecules under consideration.
+
+% The DMTA cycle
+While the stages of the drug discovery pipeline are usually linear, the
+precosses within each stage are usually highly iterative. Experiments are
+conducted in an iterative manner, where the results of previous experiments are
+used to guide the design of the next experiment. This process is usually
+referred to as the \ac{DMTA}-cycle:
 \begin{itemize}
-    \item \textbf{Design:} The first step is the design of the molecule to be
-    tested. This can be done using a variety of methods, ranging from 
-    intuition and experience of medicinal chemists to computational methods.
-    \item \textbf{Make:} The designed molecules are synthesized and purified in
-    the laboratory. This step is usually done by chemists and can be a complex
-    and time-consuming process.
-    \item \textbf{Test:} The synthesized molecule is then tested in vitro or in
-    vivo to measure its activity against the target and its pharmacokinetic
-    properties.
-    \item \textbf{Analyze:} The results of the test are then analyzed to
-    determine whether the experiment was successful and to guide the next
-    iteration of the DMTA cycle.
+    \item \textbf{Design:} Design of the molecule to be
+    tested. The design is based on previous experimental results and
+    aims to maximize the information gain of the next experiment.
+    This happens under consideration of the synthesizeability.
+    \item \textbf{Make:} The molecules are then synthesized in the laboratory
+    and prepared for testing.
+    \item \textbf{Test:} The synthesized molecules are then tested in
+    laboratory experiments to measure the properties of interest.
+    \item \textbf{Analyze:} The results of the experiments are then analyzed
+    and used to guide the design of the next molecule to be tested.
 \end{itemize}
-
-\subsection{Computer-Aided Drug Discovery}
-Computer-aided drug discovery (CADD) aims to accelerate the drug discovery
-process using computational methods, offering support throughout all stages of 
-the drug discovery pipeline and all steps of the DMTA cycle.
-
-Virtual screening (VS) constitutes a key application of CADD. VS methods aim to
-predict molecular properties of interest, such as the activity of a molecule
-against a target, its pharmacokinetic properties or its toxicity. These
-predictions can be used to prioritize which molecules to test next, to avoid
-wasting resources on unpromising compounds. Therefore it helps in the design
-step of the DMTA cycle, by helping to design the next batch of experiments. 
-Structure-based methods constitute one of the most popular approaches to VS. These methods use the known
-structure of the target to predict the activity of a molecule against the target.
-This approach has been boosted by advances in protein structure prediction, such
-as AlphaFold \citep{todo}. Ligand-based methods are another popular approach to
-VS. These methods find links between molecular structures and measured
-experimental outcomes. In recent years, machine learning methods have shown
-great promise in modeling these relationships. 
-
-However, these discriminative methods have limitations and fail to help in the
-other steps of the DMTA cycle. Generative models offer complementary methods
-which can help in the analyze, design and make steps of the DMTA cycle. Key
-applications of generative models in drug discovery are the generation of
-molecules with desired properites, the optimization of lead compounds and the
-prediction of chemical reactions to help synthesize molecules. While VS methods
-can be seen as an in silico replacement for experiments, generative models for
-molecules function more like a virtual chemist, designing and optimizing
-molecules and through modelling chemical reactions.
-
-In recent years, there has been a resurgence of interest in generative models,
-triggered by advances in deep learning. These models represent a significant
-shift in how we approach drug discovery, providing new methods to innovate and
-optimize the process. In the following section, we will give a more detailled 
-overview of generative models for molecules and their applications in drug discovery.
 
 % \begin{itemize}
 %     \item \textbf{Proxy models:} One way is to use proxies, which 
@@ -317,11 +322,78 @@ overview of generative models for molecules and their applications in drug disco
 %     and intelligence in the decision-making process.
 % \end{itemize}
 
+
+\subsection{Computer-Aided Drug Discovery}
+\ac{CADD} aims to accelerate the drug discovery
+process using computational methods, offering support throughout all stages of 
+the drug discovery pipeline and all steps of the DMTA cycle.
+Main applications of CADD are the prediction of molecular properties, 
+the design of new molecules and the prediction of synthesis routes. 
+
+\subsubsection{Virtual screening}
+% What is it for?
+\ac{VS} constitutes a key application of CADD. \ac{VS} rely on computational
+methods that predict molecular properties of interest, which are usually
+referred to as \ac{QSPR} models. These predictions can be used to prioritize
+which molecules to test next, to avoid wasting resources on unpromising
+compounds. Therefore it helps in the design step of the DMTA cycle, by helping
+to design the next batch of experiments.
+
+% It screens virtual libraries
+Given a prediction model, \ac{VS} searches chemical space by evaluating a 
+given virtual library of molecules. These libraries can be based 
+on existing screening collections of available molecules. 
+As these libraries are usually limited in size, they are often extended 
+using combinatorial libraries. These libraries can for example be 
+based on virtual combinatorial chemistry, where molecules are generated
+by combining fragments of molecules using chemical reaction rules.
+
+% What are the scoring functions?
+There are two main approaches to \ac{VS}: structure-based and ligand-based
+methods. Structure-based methods use the known structure of the target to
+predict the activity of a molecule against the target. These methods have been
+boosted by advances in protein structure prediction, such as AlphaFold
+\citep{todo}. Ligand-based methods are another popular approach to \ac{VS}. These
+methods find links between molecular structures and measured experimental
+outcomes. In recent years, machine learning methods have shown great promise in
+modeling these relationships.
+
+% Limitations
+While \ac{VS} methods have been successful in improving 
+the fraction of molecules that are successfully tested, they have limitations. 
+Naturally they the outputs of a \ac{VS} run can only be as good as the
+underlying prediction model. A second limitation is that \ac{VS} methods
+usually do not make use of the feedback of already tested molecules.
+Instead, they scan the library of molecules in random order, which 
+can make the search inefficient, as ressources are wasted on molecules
+that are very similar to ones already found undesirable.
+This is especially problematic for prediction models that are 
+computationally expensive to evaluate. 
+
 % This chemical space, which encompasses all possible drug-like
 % molecules that could be synthesized, is immense, with estimates ranging from
 % $10^{23}$-$10^{60}$ potential molecules \citep{todo}. Navigating this space
 % effectively and efficiently is a critical challenge in medicinal chemistry and
 % pharmacology. 
+
+
+\subsubsection{De-novo drug design}
+\ac{DNDD} aims to design new molecules with desired properties from scratch.
+\ac{DNDD} is also based on \ac{QSPR} models, which are used to guide the
+design of new molecules. These models can be used to generate new molecules
+from scratch or to modify existing molecules to improve their properties.
+It forms an alternative to \ac{VS}, with the hope of being able to search
+chemical space more efficiently. \ac{DNDD} relies on generative models, 
+which are able to generate molecular structures relevant to a given task.
+
+In recent years, there has been a resurgence of interest in generative models,
+triggered by advances in \ac{DL}. \ac{DL} models have shown great promise in
+processing complex, structured data, such as images and text \citep{todo}.
+Inspired by these successes, researchers started adopting \ac{DL} models for 
+drug discovery. These were particularly helpful in the domain of generative
+modeling.
+
+
 
 % In the context of computer-aided drug discovery (CADD), the use of proxy
 % models translates to the use of quantitative structure-activity relationship
@@ -352,15 +424,13 @@ overview of generative models for molecules and their applications in drug disco
 % of designing the next molecule to be tested.
 
 
-\section{Generative Models in Drug discovery\label{sec:generative-models}}
-\subsection{Approaches to Generate Molecules}
-\subsubsection{Molecular representations}
-
+\section{Generative Models in Drug Discovery\label{sec:generative-models}}
+\subsection{Molecular Representations}
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{figures/representations/representations.pdf}
-    \caption{Different representations of caffeine. \textbf{A:} 
-    Different 1D representations of a molecule. SMILES is an established 
+    \caption{Different ways to represent molecules. The molecule shown 
+    is caffeine \textbf{A:} Different 1D representations of a molecule. SMILES is an established 
     line notation for molecules. DeepSmiles enables easier generation of
     molecules by getting rid of pair brackets and ring numbers. SELFIES
     guaruantess that a sequence of tokens parses into a valid molecule.
@@ -370,6 +440,7 @@ overview of generative models for molecules and their applications in drug disco
     space. The positions of these atoms can change as some bonds are 
     allow rotations. Source of the 3D structure: \citep{EnglishCaffeine3D2010}.
     \label{fig:molecular-graph}}
+    % TODO: add adjacency matrix representation
 \end{figure}
 Molecules are complex objects that can be represented in a variety of ways.
 While molecules are complex quantum mechanical objects, there exist 
@@ -396,9 +467,11 @@ extensions for this molecular representation have been proposed, such as SELFIES
 \citep{oboyleDeepSMILESAdaptationSMILES2018} or SAFE
 \citep{noutahiGottaBeSAFE2023}. 
 
-\subsubsection{Generative models}
-There is a wide variety of generative models for molecules, which are based 
-on starkly different approaches. 
+\subsection{Generative models architectures}
+There is a wide variety of approaches to generate molecules. These approaches
+differ in the way they represent molecules, the way they generate molecules
+and the way they are trained. In the following we will give an overview of
+some of the most popular approaches to generate molecules. 
 
 \paragraph{Autoregressive models} constitute one of the most popular approaches
 to generative models for generating discrete 1D/2D molecular representations. 
@@ -454,6 +527,7 @@ in this model as it requires the integration over the latent space
 \end{align}
 which is usually intractable. This type of model is called an approximate density model. 
 
+% molgan
 \paragraph{Generative adversarial networks (GANs)} are similar to VAEs in that
 they also sample from a simple distribution in latent space, $p(z)$ and map the samples to 
 molecular space via a generator network $p(x|z)$.
@@ -468,32 +542,35 @@ is not invertible, which means that the likelihood of a given molecule cannot
 be calculated. This makes GANs implicit density models, which define a 
 likelihood function $p(x)$ only implicitly via sampling, but not explicitly.
 
+% moflow, graphnvp (has nice discussion on one-shot generation)
+\paragraph{Generative flows} are based on the idea of learning a bijective
+mapping between the data space and a latent space. These 
+models sample molecules by first sampling from a simple distribution in latent
+space, $p(z)$ and then mapping the samples to molecular space via a
+bijective mapping $G: z \rightarrow x$. The model is trained to maximize the
+likelihood of the training data, which can be calculated exactly via 
+the change of variables formula:
+\begin{align}
+    p(x) = p(z) \left| \det \frac{\partial G}{\partial z} \right|.
+\end{align}
+The mapping $G$ is usually implemented as a neural network, which consists
+of a series of invertible transformations, which combined can approximate 
+complex transformations. These models were first introduced for continuous data
+\citet{rezendeVariationalInferenceNormalizing2016}. The extension to molecules,
+which are discrete data, necessitates using a continuous relaxation of the
+molecule. This is often done by modelling the adjacency/node feature matrix of
+the molecule as a continuous variable. These models also belong to the class of
+explicit density models, as the likelihood of a given molecule can be calculated
+exactly.
 
-\begin{itemize}
-    \item \textbf{Autoregressive models:} Autoregressive models are based on
-    recurrent neural networks (RNNs) or transformers \citep{vaswaniAttentionAllYou2017}
-    and generate molecules by sampling one atom at a time. 
-    \item \textbf{Generative adversarial networks (GANs):} GANs are based on a
-    game-theoretic approach, where a generator network is trained to generate
-    molecules that are indistinguishable from the training data, while a
-    discriminator network is trained to distinguish between real and generated
-    molecules.
-    \item \textbf{Variational autoencoders (VAEs):} VAEs are based on the idea
-    of learning a latent representation of the molecules, which can then be used
-    to generate new molecules. 
-    \item \textbf{Flow-based models:} Flow-based models are based on the idea of
-    learning a bijective mapping between the data space and a latent space. This
-    allows for efficient sampling of new molecules.
-    \item \textbf{Graph-based models:} Graph-based models are based on the idea
-    \item \textbf{3D models:} 3D models are based on the idea of generating 3D
-    structures of molecules.
-    \item{\textbf{Rule-based methods}} Rule-based methods are based on the idea
-    of using a set of rules to generate new molecules. These rules can for example
-    be based on chemical reactions or on combining fragments of molecules.
-\end{itemize}
+\paragraph{GFlowNets} ...
+
+\paragraph{Rule based models} are another approach to generate molecules. These
+models are based on a set of rules, which are used to generate molecules.
+
+\paragraph{Alternative approaches} There are a variety of alternative approaches
+such as 3d modelling which we will not discuss in detail here.
     
-
-
 Triggered by advances in deep learning, the field of generative models for
 molecules has seen a surge in interest in recent years. The first deep-learning
 based generative models for molecules were based on recurrent neural networks
