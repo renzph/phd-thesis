@@ -9,10 +9,9 @@
 % **************************************************
 \documentclass[%
     paper=A4,               % paper size --> A4 is default in Germany
-    oneside,           % onesite or twoside printing
-    openright,              % doublepage cleaning ends up right side
     parskip=half,           % spacing value / method for paragraphs
     chapterprefix=true,     % prefix for chapter marks
+    oneside,
     11pt,                   % font size
     headings=normal,        % size of headings
     bibliography=totoc,     % include bib in toc
@@ -22,7 +21,13 @@
     chapterprefix=false,    % do not display a prefix for chapters
     appendixprefix=false,    % but display a prefix for appendix chapter
     draft=false,            % value for draft version
+    % left=2cm,
+    % right=18cm,
+    % total={6in, 9in}
 ]{scrreprt}%
+
+\usepackage[a4paper, top=3cm, bottom=3cm, left=4cm, right=2cm]{geometry} % Adjust margins as needed
+
 
 % config for titlepage
 \input{config}
@@ -46,50 +51,14 @@
 \usepackage{enumitem}
 \usepackage{subfiles}
 \usepackage{scrhack}
-\usepackage{hyperref}
+% \usepackage{hyperref}
 \usepackage{cleveref}
 
 
 \usepackage{pdfpages}
 \usepackage{blindtext}
 
-% \usepackage[printonlyused,withpage]{acronym}
-\usepackage[make-links=true]{acro}
-\acsetup{make-links}
-\acsetup{list/display=all}
-
-\DeclareAcronym{CADD}{
-  short = CADD,
-  long = Computer-aided drug design,
-}
-\DeclareAcronym{VS}{
-  short = VS,
-  long = Virtual screening,
-}
-\DeclareAcronym{HTS}{
-  short = HTS,
-  long = High-throughput screening,
-}
-\DeclareAcronym{DMTA}{
-  short = DMTA,
-  long = Design-Make-Test-Analyze,
-}
-\DeclareAcronym{ML}{
-  short = ML,
-  long = Machine Learning,
-}
-\DeclareAcronym{DL}{
-  short = DL,
-  long = Deep Learning,
-}
-\DeclareAcronym{QSPR}{
-  short = QSAR,
-  long = Quantitative structure-property relationship,
-}
-\DeclareAcronym{DNDD}{
-  short = DNDD,
-  long = De novo drug design,
-}
+\input{acronyms}
 
 \addbibresource{references.bib}
 \addbibresource{references_zotero.bib}
@@ -114,9 +83,14 @@
 \tableofcontents				% display table of contents
 % 
 \clearpage
-\printacronyms[sort=true]
-\printacronyms[name=List of Acronyms,heading=chapter*, template=toc,display=all,sort=true]
-
+% \printacronyms[sort=true]
+\printacronyms[name=List of Acronyms,heading=chapter*,display=used,sort=true]
+\acsetup{
+make-links = true , % boolean
+format = \emph , % standard
+list / local , % boolean option of the list module
+list / display = all % choice option of the list module
+}
 
 % --------------------------
 % Body matter
