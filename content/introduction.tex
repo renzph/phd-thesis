@@ -674,8 +674,50 @@ a meaningful comparison of goal-directed generators necessitates a standardized
 compute budget. This is because the performance of generative models depends strongly 
 on the amount of ressources available for training and evaluation.
 
-\subsubsection{Standardized experimental conditions}
-% Introduce the importance of having a benchmark 
+\subsubsection{Standardized compute budgets}
+Another challenge in the evaluation of goal directed models is the lack of 
+standardized compute budgets. Fundamentally optimizing molecular properties is 
+a search problem that - given infinite ressources - can be solved by brute force enumeration 
+of chemical space. Thus the main challenge of de novo design is 
+to arrive at high scoring molecules with a limited amount of ressources, 
+which is in fact often given as the main reason to use goal-directed models
+in the first place \citep{todo}. Therefore, a meaningful comparison of
+goal-directed models necessitates a standardized compute budget.
+
+However, in many studies different models are compared without taking this 
+into account. Therefore, it might well be the case that some algorithms 
+are run for days or weeks, while others are only run for minutes or hours. 
+The latter might, however, be able to outperform the former if given the same
+amount of ressources.
+
+The computational cost of running an experiment depends on these main factors:
+\begin{itemize}
+    \item The cost of generating a molecule
+    \item The cost of evaluating a molecule
+    \item The sample efficiency of the optimization algorithms
+\end{itemize}
+
+The cost of generating a molecule depends on the generative model used.
+While more complex models, e.g. deep learning models, are usually more 
+computationally expensive, simpler models can be run with less ressources. 
+The cost of calculating the score of a molecule depends on the scoring function used.
+The used scoring functions can be anything from simple physico-chemical
+properties, to more complex machine learning models. Docking simulations 
+are usually even more expensive and in the extreme case one could directly optimize
+the results of in vitro experiments. The sample efficiency measures how many molecules need to be generated and
+evaluated in order to find good solutions.
+
+There is an interesting interplay between the importances of these three factors.
+The sample efficiency gets more important the more expensive molecule generation 
+and evaluation are. For expensive scoring functions like docking simulations, the 
+generation cost with current models can often be neglected and the sample efficiency 
+is becomes the sole factor determining the performance of an algorithm. For cheap scoring functions
+like physico-chemical properties, or less complex machine learning models, 
+and the performance of the algorithm depends on a combination of the generation cost
+and the sample efficiency.
+
+
+
 
 \subsubsection{Comparison to relevant baselines}
 
