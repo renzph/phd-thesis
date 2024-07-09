@@ -383,9 +383,6 @@ molecules that can be synthesized with high probability.
 % based on virtual combinatorial chemistry, where molecules are generated
 % by combining fragments of molecules using chemical reaction rules. 
 
-
-
-
 % Limitations
 While \ac{VS} methods have been successful in improving 
 the fraction of molecules that are successfully tested, they have limitations. 
@@ -421,8 +418,6 @@ Inspired by these successes, researchers started adopting \ac{DL} models for
 drug discovery. These were particularly helpful in the domain of generative
 modeling.
 
-
-
 % In the context of computer-aided drug discovery (CADD), the use of proxy
 % models translates to the use of quantitative structure-activity relationship
 % (QSAR) models, which predict molecular properties of interest, such as the
@@ -441,15 +436,13 @@ modeling.
 % space in a brute-force manner, by evaluating a fixed library of molecules
 % in order. 
 
-% Generative models aim at addressing this gap by incorporating the 
-% feedback of already tested molecules into the search process.
-% By using the results of already scored molecules as a guiding signal, 
-% generative models offer the hope of being able to search chemical space
-% more efficiently. While in later stages of the drug discovery pipeline 
-% medicinal chemists can use their intuition and experience to guide the
-% search, in the early stages of the pipeline, where the number of molecules
-% under consideration is large, generative models take over the role 
-% of designing the next molecule to be tested.
+% Generative models aim at addressing this gap by incorporating the feedback of already tested
+% molecules into the search process By using the results of already scored molecules as a guiding
+% signal, generative models offer the hope of being able to search chemical space more efficiently.
+% While in later stages of the drug discovery pipeline medicinal chemists can use their intuition
+% and experience to guide the search, in the early stages of the pipeline, where the number of
+% molecules under consideration is large, generative models take over the role of designing the next
+% molecule to be tested.
 
 
 \section{Generative Models in Drug Discovery\label{sec:generative-models}}
@@ -515,8 +508,53 @@ differ in the way they represent molecules, the way they generate molecules
 and the way they are trained. In the following we will give an overview of
 some of the most popular approaches to generate molecules. 
 
-\subsubsection{Assembly strategies}
-\paragraph{Autoregressive models} constitute one of the most popular approaches
+Triggered by advances in deep learning, the field of generative models for
+molecules has seen a surge in interest in recent years. The first deep-learning
+based generative models for molecules were based on recurrent neural networks
+(RNNs) originally proposed for text generation. After this early work by
+\citep{seglerGeneratingFocusedMolecule2018} and
+\citep{gomez-bombarelliAutomaticChemicalDesign2018} a great number of different
+models have been published
+\citep{eltonDeepLearningMolecular2019,sanchez-lengelingInverseMolecularDesign2018}.
+These models are based on a large variety of architectures and training
+strategies, including autoregressive models, generative adversarial networks
+(GANs), variational autoencoders (VAEs), flow-based models
+\citep{madhawaGraphNVPInvertibleFlow2019}. One key design choice is the
+representation of the molecules, which can be based on SMILES strings,
+graph-based representations or 3D structures
+\citep{eltonDeepLearningMolecular2019,sanchez-lengelingInverseMolecularDesign2018,pangDeepGenerativeModels2024}.
+
+\subsubsection{Rule-based models}
+% https://www.frontiersin.org/journals/hematology/articles/10.3389/frhem.2024.1305741/full#h4
+Rule-based models generate molecules by applyng a set of pre-defined
+graph transformation rules to combine molecular fragments.
+These rules are often manually defined. A popular approach is to 
+transformations that represent chemical reactions, as this encourages 
+the generation of synthesizable molecules.
+Those rules can either 
+transformations that represent chemical reactions. 
+Notable examples of this approach are: 
+
+\begin{itemize}
+    \item Fragment spaces: The BRICS \citep{degenArtCompilingUsing2008} method
+    provides a set of molecular fragments and rules how to meaningfully combine
+    them. This enables the generation of new molecules by combining these
+    fragments.
+    \item DOGS \citep{hartenfellerDOGSReactionDrivenNovo2012} provides a 
+    set of readily available building blocks and synthetic principles how to 
+    combine them. 
+    % TODO: MOVE \item \citep{bradshawBarkingRightTree2020,gottipatiLearningNavigateSynthetically2020} formulates a general framework 
+    % of creating synthesis graphs relying on a chemical reaction model.
+    \item \citep{jensenGraphbasedGeneticAlgorithm2019} defines graph mutation 
+    and crossover operations to generate new molecules. 
+\end{itemize}
+These models allow the generation of molecules that are chemically valid, 
+or resemble known "reasonable" molecules. While basic properties of 
+the generated molecules can be made to resemble a training set, 
+these models do not allow more complex training objectives. 
+
+\subsubsection{Autoregressive string-based models}
+Autoregressive string-based models constitute one of the most popular approaches
 to generative models for generating discrete 1D/2D molecular representations. 
 These models start with an "empty" molecule and iteratively add to it. 
 At each step, the model takes the current state of the molecule chooses 
@@ -549,32 +587,9 @@ it. At each step the model chooses a modification to apply to the graph and
 applies it. While the specification of possible actions is usually more 
 complex than in the 1D case, the model can be trained in a similar manner.
 
-% https://www.frontiersin.org/journals/hematology/articles/10.3389/frhem.2024.1305741/full#h4
-\paragraph{Rule-based models} are another approach to generate molecules. These
-models are based on graph transformation rules, which are used to generate
-molecules. These rules are often manually defined and/or represent 
-transformations that represent chemical reactions. 
-Notable examples of this approach are: 
-
-\begin{itemize}
-    \item Fragment spaces: The BRICS \citep{degenArtCompilingUsing2008} method
-    provides a set of molecular fragments and rules how to meaningfully combine
-    them. This enables the generation of new molecules by combining these
-    fragments.
-    \item DOGS \citep{hartenfellerDOGSReactionDrivenNovo2012} provides a 
-    set of readily available building blocks and synthetic principles how to 
-    combine them. 
-    \item \citep{bradshawBarkingRightTree2020,gottipatiLearningNavigateSynthetically2020} formulates a general framework 
-    of creating synthesis graphs relying on a chemical reaction model.
-    \item \citep{jensenGraphbasedGeneticAlgorithm2019} defines graph mutation 
-    and crossover operations to generate new molecules. 
-\end{itemize}
-These models allow the generation of molecules that are chemically valid, 
-or resemble known "reasonable" molecules. While basic properties of 
-the generated molecules can be made to resemble a training set, 
-these models do not allow more complex training objectives. 
-
-\paragraph{\Acp{VAE}} are another popular approach to
+\subsubsection{Graph-based autoregressive models}
+\subsubsection{Variational autoencoders}
+\Acp{VAE} are another popular approach to
 generate molecules. \Acp{VAE} are latent space models, which sample 
 data by first sampling from a simple latent distribution $p(z)$, which is often 
 a multi-variate normal distribution. The samples are then mapped to 
@@ -587,16 +602,20 @@ the evidence lower bound (ELBO) of the data
 \end{align}
 where KL is the Kullback-Leibler divergence. 
 This model has the advantage of providing a continuous latent space, which can
-be used to interpolate between molecules or run optimization algorithms in
-latent space. Calculating the likelihood of a given molecule is not possible
-in this model as it requires the integration over the latent space
+be used to interpolate between molecules and allows to run continuous optimization algorithms in
+latent space. 
+The exact likelihood of a given molecule cannot be calculated exactly
+as integration over the latent space
 \begin{align}
     p(x) = \int p(x|z) p(z) dz,
 \end{align}
-which is usually intractable. This type of model is called an approximate density model. 
+is not tractable. However, the likelihood can be approximated 
+by sampling latent states $z_i ~ q(z|x)$ and averaging over 
+the likelihood of the data given the latent state $p(x|z_i)$.
 
 % molgan
-\paragraph{Generative adversarial networks (GANs)} are similar to VAEs in that
+\subsubsection{Generative adversarial networks}
+\Acp{GAN} are similar to VAEs in that
 they also sample from a simple distribution in latent space, $p(z)$ and map the samples to 
 molecular space via a generator network $p(x|z)$.
 However, the training of GANs is based on a game-theoretic approach, where a
@@ -610,8 +629,9 @@ is not invertible, which means that the likelihood of a given molecule cannot
 be calculated. This makes GANs implicit density models, which define a 
 likelihood function $p(x)$ only implicitly via sampling, but not explicitly.
 
+\subsubsection{Generative flows}
 % moflow, graphnvp (has nice discussion on one-shot generation)
-\paragraph{Generative flows} are based on the idea of learning a bijective
+Generative flows are based on the idea of learning a bijective`'
 mapping between the data space and a latent space. These 
 models sample molecules by first sampling from a simple distribution in latent
 space, $p(z)$ and then mapping the samples to molecular space via a
@@ -633,30 +653,13 @@ exactly.
 
 \paragraph{GFlowNets} ...
 
-\paragraph{Rule based models} are another approach to generate molecules. These
-models are based on a set of rules, which are used to generate molecules.
-
 \paragraph{Diffusion models} also rely an a variational bound and are approximate
 density models.
 
 \paragraph{Alternative approaches} There are a variety of alternative approaches
 such as 3d modelling which we will not discuss in detail here.
     
-Triggered by advances in deep learning, the field of generative models for
-molecules has seen a surge in interest in recent years. The first deep-learning
-based generative models for molecules were based on recurrent neural networks
-(RNNs) originally proposed for text generation. After this early work by
-\citep{seglerGeneratingFocusedMolecule2018} and
-\citep{gomez-bombarelliAutomaticChemicalDesign2018} a great number of different
-models have been published
-\citep{eltonDeepLearningMolecular2019,sanchez-lengelingInverseMolecularDesign2018}.
-These models are based on a large variety of architectures and training
-strategies, including autoregressive models, generative adversarial networks
-(GANs), variational autoencoders (VAEs), flow-based models
-\citep{madhawaGraphNVPInvertibleFlow2019}. One key design choice is the
-representation of the molecules, which can be based on SMILES strings,
-graph-based representations or 3D structures
-\citep{eltonDeepLearningMolecular2019,sanchez-lengelingInverseMolecularDesign2018,pangDeepGenerativeModels2024}.
+
 
 \subsection{Distribution-learning}
 One core application of generative models is to learn to sample molecules that
@@ -856,23 +859,6 @@ is becomes the sole factor determining the performance of an algorithm. For chea
 like physico-chemical properties, or less complex machine learning models, 
 and the performance of the algorithm depends on a combination of the generation cost
 and the sample efficiency.
-
-
-
-
-\subsubsection{Comparison to relevant baselines}
-% Importance of comparing to relevant baselines
-Many 
-
-% \subsubsection{Prediction of molecular properties and virtual screening}
-% Machine learning has shown great promise in accelerating the drug discovery
-% process. In the context of small molecule drug discovery, machine learning
-% methods have been used to predict a range of properties of interest, including
-% the activity of a molecule against a target, its pharmacokinetic properties, its
-% toxicity or its synthetic accessibility. These predictions can be used to
-% prioritize which molecules to test next, to avoid wasting resources on
-% unpromising compounds.
-
 
 \subsection{Retrosynthesis Prediction\label{sec:retrosynthesis}}
 % TODO: Add figure explaining retrosynthesis
