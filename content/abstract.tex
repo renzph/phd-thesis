@@ -4,28 +4,38 @@
 {%
 \selectlanguage{english}
 \chapter*{Abstract}
-The discovery of novel pharmaceutical treatments is a major driver of quality of
-life improvements. However, the traditional drug discovery process involving
-synthesis and experimental testing is extremely expensive, time-consuming, and
-risky for patients. Computer-aided drug discovery (CADD) leveraging machine
-learning (ML) techniques has the potential to accelerate this process
-significantly. This thesis focuses on two key areas where ML can help accelerate
-drug discovery: generative models for molecules and computer-aided synthesis
-planning (CASP).
+In recent years the use of generative models in drug discovery has seen a surge, as novel deep
+learning architectures have shown great flexibility in generating molecular structures. However, the
+evaluation of generative models is challenging as generative tasks are have non-unique solutions and
+rating the relevance of the generated molecules can be subjective. This led to biased evaluations
+and use of metrics not representative of a practical value. In this thesis, we propose new
+evaluation metrics and benchmarks for generative models in drug discovery. Another focus of this
+work is the application of generative models to retrosynthesis prediction, a crucial task in
+computer-aided synthesis planning (CASP). 
 
-Generative models aim to efficiently explore the vast chemical space of
-drug-like molecules to discover novel compounds satisfying desired property
-profiles. However, evaluating these models is challenging due to their
-generation of complex, structured molecular outputs. We address this issue by
-proposing new evaluation metrics, benchmarks, and uncovering potential failure
-modes that can lead to overfitting and biased generation.
+The first part of this thesis focuses on observed failure modes in the evaluation of generative
+models for de novo molecular design. In particular we show that commonly used metrics used to
+evaluate distribution-learning are not sufficient to differentiate complex models from trivial
+baseline generators. Secondly, we show how generative models applied to molecular optimization can
+overfit to machine learning-based scoring functions, leading to biased evaluations. We propose new
+evaluation metrics that are more robust to these failure modes and provide a more accurate
+representation of the model's performance. 
 
-For CASP, accurate retrosynthesis prediction models are crucial for suggesting
-viable synthesis routes. We propose a novel Hopfield network-based approach for
-template-based retrosynthesis prediction. Our model leverages structural
-information to improve generalization, especially for rare templates and even
-unseen reaction types, while being significantly more efficient than existing
-methods.
+In the second part of this thesis we introduce a diversity-based benchmark of goal-directed molecule
+generators. Finding a diverse range of high-scoring compounds is important for the success of drug
+discovery projects as some of the found candidates are expected to fail in downstream experiments.
+However, previous comparative studies in diverse molecule optimization suffer from inadequate
+diversity measures, lack of standardized compute budgets and missing adaption of the generative models
+to the diverse optimization setting. Our benchmark addresses these issues and provides a standardized
+evaluation framework for diverse, goal-directed molecule generators, enabling a fair comparison of
+different models.
+
+The third part of this thesis focuses on retrosynthesis prediction a crucial task in computer-aided
+synthesis planning (CASP). We propose a novel template-based retrosynthesis prediction model based
+on Modern Hopfield Networks. Our model takes both the target molecule and the reaction templates 
+as input, which allows it to generalize over reaction templates, which improves 
+performance, particularly on rare templates. Our model achieves state-of-the-art performance on the USPTO-50k dataset.
+while maintaining a significantly lower computational cost compared to existing methods. 
 
 Through our work, we provide insights into the capabilities and limitations of
 current generative models for molecules while proposing novel evaluation
@@ -33,5 +43,4 @@ strategies. Additionally, our contributions in retrosynthesis prediction enable
 more accurate computer-aided synthesis planning. Collectively, these advances
 have the potential to accelerate the drug discovery pipeline and facilitate the
 development of novel pharmaceutical treatments.
-
 }
