@@ -252,13 +252,15 @@
 \RequirePackage{setspace}			% for line spacing, e.g. \onehalfspacing
 \RequirePackage[]{graphicx}			% graphics import features
 \RequirePackage{tabularx}			% table features
-%\RequirePackage{fancyhdr}			% for header and footer modifications
+% \RequirePackage{fancyhdr}			% for header and footer modifications
 \RequirePackage{enumitem}			% for simple list modifications
 \RequirePackage{blindtext}		% package for blind text
 \RequirePackage{textcomp}			% different symbols
 \RequirePackage{hyperref} 			% interactive link inside the document
 \RequirePackage{calc}
 \RequirePackage[automark]{scrlayer-scrpage}
+\clearpairofpagestyles
+
 
 %
 \RequirePackage[					% modify figure and table captions
@@ -269,10 +271,10 @@
 ]{caption}[2008/08/24]
 %\ifthenelse{\boolean{@figurecaptionoutside}}%
 \ifct@cthesis@hangfigurecaption
-%	{%
-		\DeclareCaptionFormat{llap}{\llap{#1#2}#3\par}%
-		\captionsetup{format=llap,labelsep=quad,singlelinecheck=false}%
-%	}{}
+	%	{%
+	\DeclareCaptionFormat{llap}{\llap{#1#2}#3\par}%
+	\captionsetup{format=llap,labelsep=quad,singlelinecheck=false}%
+	%	}{}
 \fi
 %
 %
@@ -307,11 +309,11 @@
 		url=false,						% 	- don't show url tags
 		doi=false,						% 	- don't show doi tags
 		urldate=long,					% 	- display type for dates
-		maxnames=3,%
+		maxnames=1,%
 		minnames=1,%
 		maxbibnames=5,%
 		minbibnames=3,%
-		maxcitenames=2,%
+		maxcitenames=1,%
 		mincitenames=1,%,
 		sorting=\cthesis@bibsorting%
 	]{biblatex}
@@ -361,27 +363,27 @@
 % List Definitions
 % **************************************************
 \newenvironment{my_list}%
-	{\begin{enumerate}%
+{\begin{enumerate}%
 		\setlength{\itemsep}{1pt}%
 		\setlength{\parskip}{0pt}%
 		\setlength{\parsep}{0pt}%
-	}%
-	{\end{enumerate}}
+		}%
+		{\end{enumerate}}
 %
 \newenvironment{my_list_num}
-	{\begin{enumerate}[topsep=-5pt,partopsep=0pt,parsep=2pt,itemsep=3pt]}
-	{\end{enumerate}}%
+{\begin{enumerate}[topsep=-5pt,partopsep=0pt,parsep=2pt,itemsep=3pt]}
+		{\end{enumerate}}%
 
 \newenvironment{my_list_item}
-	{\begin{itemize}[topsep=-5pt,partopsep=0pt,parsep=2pt,itemsep=3pt]}
-	{\end{itemize}}%
+{\begin{itemize}[topsep=-5pt,partopsep=0pt,parsep=2pt,itemsep=3pt]}
+		{\end{itemize}}%
 
 \newenvironment{ct_version_list}
-	{\begin{itemize}[topsep=-5pt,partopsep=0pt,parsep=2pt,itemsep=3pt]}
-	{\end{itemize}}%
+{\begin{itemize}[topsep=-5pt,partopsep=0pt,parsep=2pt,itemsep=3pt]}
+		{\end{itemize}}%
 
-	\newenvironment{ct_version_list_sub}
-		{\begin{itemize}[topsep=-0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]}
+\newenvironment{ct_version_list_sub}
+{\begin{itemize}[topsep=-0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]}
 		{\end{itemize}}%
 
 \renewcommand{\descriptionlabel}[1]{%
@@ -390,78 +392,78 @@
 	\tgherosfont\textbf{#1}%
 }
 \newenvironment{my_list_desc}
-	{\begin{description}[%
-		style=multiline,%
-		topsep=-5pt,%
-		leftmargin=3cm,%
-		partopsep=0pt,%
-		parsep=2pt,%
-		itemsep=3pt%
-	]}
-	{\end{description}}%
+{\begin{description}[%
+			style=multiline,%
+			topsep=-5pt,%
+			leftmargin=3cm,%
+			partopsep=0pt,%
+			parsep=2pt,%
+			itemsep=3pt%
+		]}
+		{\end{description}}%
 
 % **************************************************
 % Header and Footer
 % **************************************************
 
 \automark[section]{chapter}         % automatically marks sections as rightmark
-                                    % and chapters as leftmark
+% and chapters as leftmark
 \setlength{\footheight}{120pt}      % avoids scrlayer-scrpage warning:
-                                    % footheight to low warning
+% footheight to low warning
 \setlength{\footskip}{185pt}        % BAD HACK that moves the foot downwards
 \KOMAoption{footwidth}{foot:53pt}   % BAD HACK that moves the foot towards
-                                    % the outer border
+% the outer border
 \setkomafont{pagefoot}{\ctfontfootertext}           % font for footer
 \setkomafont{pagenumber}{\ctfontfooterpagenumber}   % font for page numbers
 
 %% Redefinition of the chaptermark (used for footer mark on even (left) pages)
 \renewcommand{\chaptermark}[1]{%
-    \markboth{%
-        \ctfontfootertext
-        % use \@chapapp instead of \chaptername to avoid
-        % 'Chapter A Appendix ...', thanks to @farbverlust (issue #47)
+	\markboth{%
+		\ctfontfootertext
+		% use \@chapapp instead of \chaptername to avoid
+		% 'Chapter A Appendix ...', thanks to @farbverlust (issue #47)
 		{\color{ctcolorfootermark}\textbf{\@chapapp\ \thechapter}}%
-        \hspace{.25cm}%
-        \protect\begin{minipage}[t]{.65\textwidth}%
-            #1%
-        \protect\end{minipage}%
-    }{}%
+		\hspace{.25cm}%
+		\protect\begin{minipage}[t]{.65\textwidth}%
+			#1%
+			\protect\end{minipage}%
+	}{}%
 }
 
 %% Redefinition of the sectionmark (used for footer mark on odd (right) pages)
 \renewcommand{\sectionmark}[1]{%
-    \markright{%
-        \ctfontfootertext
-        \protect\raggedleft%
-        {\color{ctcolorfootermark}\textbf{\thesection}}%
-        \hspace{.25cm}%
-        \protect\begin{minipage}[t]{\minof{\widthof{#1}}{.7\textwidth}}%
-            #1%
-        \protect\end{minipage}%
-    }%
+	\markright{%
+		\ctfontfootertext
+		\protect\raggedleft%
+		{\color{ctcolorfootermark}\textbf{\thesection}}%
+		\hspace{.25cm}%
+		\protect\begin{minipage}[t]{\minof{\widthof{#1}}{.7\textwidth}}%
+			#1%
+			\protect\end{minipage}%
+	}%
 }
 
 %% Vertical line in the footer (between page number and mark)
 \newcommand{\ctfooterline}{%
-    \color{ctcolorfooterline}\rule[-90pt]{1.25pt}{100pt}%
+	\color{ctcolorfooterline}\rule[-90pt]{1.25pt}{100pt}%
 }
 
 %% Page number for odd (right) pages
 \newcommand{\ctfooterrightpagenumber}{%
-    \ctfooterline%
-    \hspace*{10pt}%
-    \begin{minipage}[b]{1.5cm}%
-        \pagemark\ %
-    \end{minipage}%
+	\ctfooterline%
+	\hspace*{10pt}%
+	\begin{minipage}[b]{1.5cm}%
+		\pagemark\ %
+	\end{minipage}%
 }
 
 %% Page number for even (left) pages
 \newcommand{\ctfooterleftpagenumber}{%
-    \begin{minipage}[b]{1.5cm}%
-        \raggedleft\pagemark%
-    \end{minipage}%
-    \hspace*{10pt}%
-    \ctfooterline%
+	\begin{minipage}[b]{1.5cm}%
+		\raggedleft\pagemark%
+	\end{minipage}%
+	\hspace*{10pt}%
+	\ctfooterline%
 }
 
 %% Defines the content for header and footer
@@ -472,22 +474,22 @@
 \cohead{}
 \rohead{}
 \lefoot[%   > plain
-    \ctfooterleftpagenumber%
+	\ctfooterleftpagenumber%
 ]{%         > srcheadings
-    \ctfooterleftpagenumber%
-    \hspace*{0.75cm}%
-    \headmark%
+	\ctfooterleftpagenumber%
+	\hspace*{0.75cm}%
+	\headmark%
 }
 \cefoot{}
 \refoot{}
 \lofoot{}
 \cofoot{}
 \rofoot[%   > plain
-    \ctfooterrightpagenumber%
+	\ctfooterrightpagenumber%
 ]{%         > srcheadings
-    \headmark%
-    \hspace*{0.75cm}%
-    \ctfooterrightpagenumber%
+	\headmark%
+	\hspace*{0.75cm}%
+	\ctfooterrightpagenumber%
 }
 
 
@@ -567,12 +569,12 @@
 \newcommand{\thesisparagraphfont}{\color{ctcolorparagraph}\nobreak\tgherosfont\small\bfseries}
 
 \newcommand{\ctfontfooterpagenumber}{%
-    \color{ctcolorfooterpage}%
-    \normalfont\normalsize\bfseries \tgherosfont%
+	\color{ctcolorfooterpage}%
+	\normalfont\normalsize\bfseries \tgherosfont%
 }
 \newcommand{\ctfontfootertext}{%
-    \color{ctcolorfootertitle}%
-    \normalfont\footnotesize \tgherosfont%
+	\color{ctcolorfootertitle}%
+	\normalfont\footnotesize \tgherosfont%
 }
 %
 % headings
@@ -604,10 +606,10 @@
 \renewcommand*{\raggedpart}{\raggedleft}
 \renewcommand*\partheadmidvskip{\par\vspace*{3em}}
 \renewcommand*{\partformat}{%
-    \usekomafont{part}%
-    \thesispartlabelfont%
-    \partname\ \thepart\quad%
-    {\color{ctcolorpartline}\hspace*{-200pt}\rule[0pt]{600pt}{2pt}}%
+	\usekomafont{part}%
+	\thesispartlabelfont%
+	\partname\ \thepart\quad%
+	{\color{ctcolorpartline}\hspace*{-200pt}\rule[0pt]{600pt}{2pt}}%
 }
 %
 % ---------------------------
@@ -616,63 +618,63 @@
 \renewcommand*\chapterheadstartvskip{\vspace*{-8.75em}}
 \renewcommand*\chapterheadendvskip{\vspace*{2.5\baselineskip}}
 \renewcommand*{\chapterformat}{%
-    \ctchapternumber{\thechapter}%
+	\ctchapternumber{\thechapter}%
 }
 \renewcommand{\chapterlinesformat}[3]{%
-    \ctchaptertitle{#3}%
-    #2%
+	\ctchaptertitle{#3}%
+	#2%
 }
 %\renewcommand{\chapterlineswithprefixformat}[3]{%
 %    \ctchaptertitle{\@chapapp\ \thechapter: #3}%
 %    #2%
 %}
 \newcommand{\ctchapternumber}[1]{%
-    \usekomafont{chapter}%
-    \begin{minipage}[t]{0.3\textwidth}%
-        \raggedleft{%
-            {\color{ctcolorchapterline}\rule[-5pt]{2pt}{5cm}}%
-            \quad%
-            {\color{ctcolorchapternum}\fontsize{60}{60}\selectfont#1}%
-        }%
-    \end{minipage}%
+	\usekomafont{chapter}%
+	\begin{minipage}[t]{0.3\textwidth}%
+		\raggedleft{%
+			{\color{ctcolorchapterline}\rule[-5pt]{2pt}{5cm}}%
+			\quad%
+			{\color{ctcolorchapternum}\fontsize{60}{60}\selectfont#1}%
+		}%
+	\end{minipage}%
 }
 \newcommand{\ctchaptertitle}[1]{%
-    \usekomafont{chapter}%
-    \begin{minipage}[t]{0.7\textwidth}%
-        \vspace*{5.85em}%
-        \raggedright%
-        #1%
-    \end{minipage}%
+	\usekomafont{chapter}%
+	\begin{minipage}[t]{0.7\textwidth}%
+		\vspace*{5.85em}%
+		\raggedright%
+		#1%
+	\end{minipage}%
 }
 %
 % ---------------------------
 % > formats: \section
 % ---------------------------
 \ifct@cthesis@hangsection
-    \renewcommand*{\sectionformat}{%
-        \usekomafont{section}%
-        \makebox[0pt][r]{\color{ctcolorblack}\thesection\hspace*{10pt}}%
-    }
+	\renewcommand*{\sectionformat}{%
+		\usekomafont{section}%
+		\makebox[0pt][r]{\color{ctcolorblack}\thesection\hspace*{10pt}}%
+	}
 \else
-    \renewcommand*{\sectionformat}{%
-        \usekomafont{section}%
-        {\color{ctcolorblack}\thesection\hspace*{10pt}}%
-    }
+	\renewcommand*{\sectionformat}{%
+		\usekomafont{section}%
+		{\color{ctcolorblack}\thesection\hspace*{10pt}}%
+	}
 \fi
 %
 % ---------------------------
 % > formats: \subsection
 % ---------------------------
 \ifct@cthesis@hangsubsection
-    \renewcommand*{\subsectionformat}{%
-        \usekomafont{subsection}%
-        \makebox[0pt][r]{\color{ctcolorblack}\thesubsection\hspace*{10pt}}%
-    }
+	\renewcommand*{\subsectionformat}{%
+		\usekomafont{subsection}%
+		\makebox[0pt][r]{\color{ctcolorblack}\thesubsection\hspace*{10pt}}%
+	}
 \else
-    \renewcommand*{\subsectionformat}{%
-        \usekomafont{subsection}%
-        {\color{ctcolorblack}\thesubsection\hspace*{10pt}}%
-    }
+	\renewcommand*{\subsectionformat}{%
+		\usekomafont{subsection}%
+		{\color{ctcolorblack}\thesubsection\hspace*{10pt}}%
+	}
 \fi
 
 \renewcommand*{\subsubsectionformat}{%
@@ -704,9 +706,9 @@
 % Clean chapter quotations
 \newcommand{\hugequote}{%
 	{\book\fontsize{75}{80}\selectfont%
-	\hspace*{-.475em}\color{ctcolorgraylight}%
-	\textit{\glqq}%
-	\vskip -.26em}%
+			\hspace*{-.475em}\color{ctcolorgraylight}%
+			\textit{\glqq}%
+			\vskip -.26em}%
 }
 \newcommand{\cleanchapterquote}[3]{%
 	\begin{minipage}{.865\textwidth}%
@@ -715,11 +717,11 @@
 				\begin{flushleft}
 					{\hugequote}\textit{#1}
 				\end{flushleft}
-	    		\begin{flushright}
-    				--- \textbf{#2} \\
-    				#3
-		    	\end{flushright}
-		    \end{minipage}%
+				\begin{flushright}
+					--- \textbf{#2} \\
+					#3
+				\end{flushright}
+			\end{minipage}%
 		\end{flushright}
 	\end{minipage}%
 	\bigskip
@@ -727,16 +729,16 @@
 %
 % Clean Quotation environment
 \newenvironment{thesis_quotation}%
-	{%
+{%
 	\begin{minipage}{.865\textwidth}%
 		\begin{flushright}
 			\begin{minipage}{.95\textwidth}%
-	}%
-	{%
+				}%
+				{%
 			\end{minipage}%
 		\end{flushright}
 	\end{minipage}%
-	}%
+}%
 %
 % Clean signs around word origins in definitions
 %\newcommand{\cthesisorigin}[1]{\textsf{\textlangle}#1\textsf{\textrangle}}

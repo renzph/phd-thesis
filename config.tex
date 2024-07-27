@@ -109,7 +109,8 @@
 % Load and Configure Packages
 % **************************************************
 \usepackage[english]{babel} % babel system, adjust the language of the content
-\PassOptionsToPackage{% setup clean thesis style
+
+\usepackage[
     figuresep=colon,%
     hangfigurecaption=false,%
     hangsection=false,%
@@ -118,13 +119,9 @@
     configurelistings=true,%
     colorize=full,%
     colortheme=bluemagenta,%
-    configurebiblatex=true,%
-    bibsys=biber,%
-    bibfile=references,%
-    bibstyle=authoryear,%
-    bibsorting=nty,%
-}{cleanthesis}
-\usepackage{cleanthesis}
+    configurebiblatex=false,%
+    bibfile=references_zotero,%
+    bibsorting=nty]{cleanthesis}
 
 
 \hypersetup{% setup the hyperref-package options
@@ -138,5 +135,7 @@
     bookmarksnumbered=true,     %
     bookmarksopen=true          %
 }
+
+
 
 

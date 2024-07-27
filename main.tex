@@ -10,15 +10,14 @@
 \documentclass[%
     paper=A4,               % paper size --> A4 is default in Germany
     parskip=half,           % spacing value / method for paragraphs
-    chapterprefix=true,     % prefix for chapter marks
+    chapterprefix=false,     % prefix for chapter marks
     oneside,
     11pt,                   % font size
     headings=normal,        % size of headings
     bibliography=totoc,     % include bib in toc
     listof=totoc,           % include listof entries in toc
-    titlepage=on,           % own page for each title page
+    titlepage=off,           % own page for each title page
     captions=tableabove,    % display table captions above the float env
-    chapterprefix=false,    % do not display a prefix for chapters
     appendixprefix=false,    % but display a prefix for appendix chapter
     draft=false,            % value for draft version
     % left=2cm,
@@ -59,6 +58,21 @@
 \usepackage{blindtext}
 
 \input{acronyms}
+\usepackage[					% use biblatex for bibliography
+		natbib=true,					% 	- allow natbib commands
+		hyperref=true,					% 	- activate hyperref support
+		backref=true,					% 	- activate backrefs
+		isbn=false,						% 	- don't show isbn tags
+		url=false,						% 	- don't show url tags
+		doi=true,						% 	- don't show doi tags
+		urldate=long,					% 	- display type for dates
+		maxnames=1,%
+		minnames=1,%
+		maxbibnames=5,%
+		minbibnames=3,%
+		maxcitenames=1,%
+		mincitenames=1,%
+	]{biblatex}
 
 \addbibresource{references.bib}
 \addbibresource{references_zotero.bib}
@@ -99,7 +113,6 @@
 \setcounter{page}{1}			% set page counter
 \pagestyle{scrheadings}			% header and footer style
 
-% \mainmatter
 \include{content/introduction}
 \include{content/publications}
 \include{content/conclusion}
