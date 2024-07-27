@@ -53,29 +53,18 @@
 % \usepackage{hyperref}
 \usepackage{cleveref}
 
+\usepackage[
+    natbib=true,
+    style=authoryear,
+    backend=biber,
+    ]{biblatex}
 
+\addbibresource{references.bib}
+\addbibresource{references_zotero.bib}
 \usepackage{pdfpages}
 \usepackage{blindtext}
 
 \input{acronyms}
-\usepackage[					% use biblatex for bibliography
-		natbib=true,					% 	- allow natbib commands
-		hyperref=true,					% 	- activate hyperref support
-		backref=true,					% 	- activate backrefs
-		isbn=false,						% 	- don't show isbn tags
-		url=false,						% 	- don't show url tags
-		doi=true,						% 	- don't show doi tags
-		urldate=long,					% 	- display type for dates
-		maxnames=1,%
-		minnames=1,%
-		maxbibnames=5,%
-		minbibnames=3,%
-		maxcitenames=1,%
-		mincitenames=1,%
-	]{biblatex}
-
-\addbibresource{references.bib}
-\addbibresource{references_zotero.bib}
 
 \begin{document}
 \pagenumbering{roman}			% roman page numbing (invisible for empty page style)
