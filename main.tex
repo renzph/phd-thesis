@@ -32,7 +32,7 @@
 \setcounter{secnumdepth}{3}
 
 \usepackage[utf8]{inputenc}
-\usepackage{scrlayer-scrpage}
+% \usepackage{scrlayer-scrpage}
 \usepackage{scrhack}
 
 % \usepackage[a-1b]{pdfx}[2019-02-27]
@@ -48,14 +48,22 @@
 \usepackage{float} %[H]
 \usepackage{enumitem}
 \usepackage{subfiles}
-\usepackage{scrhack}
 \usepackage{cleveref}
 
 \usepackage[
     natbib=true,
     style=authoryear,
     backend=biber,
+    maxcitenames=1,
+    doi=true,
+    url=false,
+    isbn=false,
+    giveninits=true,
+    uniquename=false,
+    uniquelist=false,
+    backref=true,
     ]{biblatex}
+\DeclareNameAlias{sortname}{family-given}
 
 \addbibresource{references.bib}
 \addbibresource{references_zotero.bib}
