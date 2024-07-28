@@ -38,7 +38,7 @@ For a small molecule to be a viable drug candidate it needs to fulfill a whole r
 
 The main challenge in drug discovery is to find a molecule that fulfills all these mentioned
 properties. The development of a new drug is a complex and expensive process, which can take up to
-10-15 years and costs up to 3 billion USD \citep{todo}.
+10--15 years and costs up to 3 billion USD \citep{todo}.
 
 
 \subsection{The drug discovery pipeline}
@@ -52,7 +52,7 @@ The drug discovery process is usually divided into several stages depicted in \C
             compounds. These lead compounds are then further optimized and tested in preclinical. Finally,
             the most promising candidates are tested in clinical trials and eventually approved by
             regulatory agencies. The stages in the blue box are highly amenable to machine learning and
-            computational methods and are the focus of this thesis. \label{fig:drug-discovery-pipeline}}
+            computational methods and are the focus of this thesis.\label{fig:drug-discovery-pipeline}}
 \end{figure}
 \begin{itemize}
       \item \textbf{Target identification:} The drug discovery process starts with the identification
@@ -108,7 +108,7 @@ choosing molecules to be tested, synthesizing them, testing them in laboratory e
 results to guide the selection of the next molecule to be tested. This cycle is usually referred to as the
 \ac{DMTA}-cycle:
 \begin{itemize}
-      \item \textbf{Design:} Under consideration of previous experimental results, the molecule(s) to be tested
+      \item \textbf{Design:} Under consideration of previous experimental results, the molecules to be tested
             are designed. The design generally aims to optimize the desired properties of the molecule, but
             also aims to maximize the information gained from the experiment. This stage often relies on
             computational methods to predict the properties of the molecules.
@@ -189,12 +189,12 @@ representations. In this case the model generates the molecular graph by iterati
 and edges to the graph. The model can be trained in a similar manner to the string-based models, by
 predicting the next node or edge given the current state of the graph. However, the specification of
 possible actions is usually more complex than in the 1D case as there is no natural ordering of the
-nodes and edges in the graph \citep{}.
+nodes and edges in the graph \citep{todo}.
 
 \paragraph{One-shot methods} are a class of models that generate molecules in one step, without the
 need for an iterative generation process. These models generate an adjacency matrix and node feature
 vector of a molecule in a single step. This is usually done by first generating a continous
-version of the molecule and then discretizing it to a valid molecule. \citep{}
+version of the molecule and then discretizing it to a valid molecule \citep{todo}.
 
 \paragraph{Rule-based models}
 % https://www.frontiersin.org/journals/hematology/articles/10.3389/frhem.2024.1305741/full#h4
@@ -204,9 +204,9 @@ molecular fragments and rules how to meaningfully combine them. This enables the
 new molecules by combining these fragments.
 DOGS \citep{hartenfellerDOGSReactionDrivenNovo2012} generates molecules by applying a set of
 chemical reaction rules to a set of starting molecules, which has the advantage of biasing
-generation towards synthesizable molecules. \citet{jensenGraphbasedGeneticAlgorithm2019} defines graph mutation
+generation towards synthesizable molecules.\@ \citet{jensenGraphbasedGeneticAlgorithm2019} defines graph mutation
 and crossover operations to generate new molecules. These models allow the generation of molecules that are chemically valid, or resemble known
-"reasonable" molecules. While those models can generate molecules that obey
+``reasonable'' molecules. While those models can generate molecules that obey
 chemico-physical constraints.
 
 
@@ -277,7 +277,7 @@ exactly.
 but rely on a game-theoretic approach to training. A generator network is trained to
 generate data, which is then fed to a discriminator network. The two networks then engage in a
 minimax game, where the discriminator tries is trained to distinguish between real and generated
-data, while the generator is trained to fool the discriminator. \acp{GAN} are implicit density
+data, while the generator is trained to fool the discriminator.\@ \acp{GAN} are implicit density
 methods as calculating the likelihood of a given molecule is not tractable.
 
 \paragraph{Diffusion models} also rely an a variational bound and are approximate density models.
@@ -312,8 +312,8 @@ Goal-directed generators address this limitation of \ac{VS} by focusing the sear
 parts of chemical space. In contrast to the random search approach taken by \ac{VS}, goal-directed
 generators act more like optimizers that are able to efficiently locate maxima. This is achieved by
 an iterative process in which the model generates a set of molecules, which are then scored by a
-\ac{QSPR} model. These scores are then used to update the model, shifting the sampling 
-distribution to regions of chemical space with higher scores. 
+\ac{QSPR} model. These scores are then used to update the model, shifting the sampling
+distribution to regions of chemical space with higher scores.
 
 Recently, there has been a surge of deep learning-based generative models for de novo drug
 design \citep{eltonDeepLearningMolecular2019,sanchez-lengelingInverseMolecularDesign2018,duMachineLearningaidedGenerative2024}. A multitude of different models have been proposed,
@@ -330,27 +330,27 @@ Some of the most commonly used approaches to goal-directed molecular generation 
             \citep{seglerGeneratingFocusedMolecule2018,xieMARSMarkovMolecular2021} is a simple
             optimization algorithm that relies on an underlying distribution-learning model.
             Molecules are iteratively sampled from the model distribution, their scores are
-            evaluated and then the model is fine tuned on the top scoring molecules. 
+            evaluated and then the model is fine tuned on the top scoring molecules.
       \item \textbf{Reinforcement learning} uses the molecule scores as a reward signal to update the
-            model distribution. This is most often done via the REINFORCE algorithm\citep{williamsSimpleStatisticalGradientfollowing1992} which allows 
-            to update the model distribution in a way that increases expected scores of the generated 
-            molecules. 
+            model distribution. This is most often done via the REINFORCE algorithm\citep{williamsSimpleStatisticalGradientfollowing1992} which allows
+            to update the model distribution in a way that increases expected scores of the generated
+            molecules.
       \item \textbf{Genetic algorithms} transform an initial population of molecules by applying
             mutations and crossovers. The molecules are then evaluated and the best ones are selected for
             the next generation. Applying this process iteratively leads to a population of high-scoring
             molecules.
       \item \textbf{Tree search} builds a tree of possible molecules by recursively applying a set of rules to
-            to the current molecules. Molecules with higher scores are more likely to be expanded further. 
-      \item \textbf{Continuous optimization} methods make use of the latent space provided by some models. 
-      In this continous space, classical optimization algorithms can be used to find high scoring regions
-      \citep{winterEfficientMultiobjectiveMolecular2019,gomez-bombarelliAutomaticChemicalDesign2018}.
+            to the current molecules. Molecules with higher scores are more likely to be expanded further.
+      \item \textbf{Continuous optimization} methods make use of the latent space provided by some models.
+            In this continous space, classical optimization algorithms can be used to find high scoring regions
+            \citep{winterEfficientMultiobjectiveMolecular2019,gomez-bombarelliAutomaticChemicalDesign2018}.
 \end{itemize}
 
 \subsection{Evaluation challenges}
 \subsubsection{Evaluation of distribution-learning models}
 The evaluation of distribution-learning models can be challenging. While the performance of
 explicit/approximate density models can be evaluated and compared using the \ac{NLL} and related
-metrics like the perplexity, all other models do not offer a straightforward evaluation, which 
+metrics like the perplexity, all other models do not offer a straightforward evaluation, which
 caused a multitude of different evaluation metrics to be proposed \citep{todo}.
 Many evaluations focus on whether the generated models are valid, unique and novel \citep{todo},
 however these metrics are very permissive and do not capture all aspects of model performance.
@@ -361,7 +361,7 @@ molecules and how well they match the training data in distribution. Among these
 \citep{benhendaChemGANChallengeDrug2017} of the generated molecules, or the KL-divergence between
 the distributions of chemico-physical properties of the generated molecules and the training data.
 The Moses \citep{polykovskiyMolecularSetsMOSES2020} and GuacaMol
-\citep{brownGuacaMolBenchmarkingModels2019} bundle these metrics into standardized benchmarks 
+\citep{brownGuacaMolBenchmarkingModels2019} bundle these metrics into standardized benchmarks
 for distribution-learning models. While these metrics are useful, they are still ad-hoc and provide
 only a partial view of the model performance.
 
@@ -379,7 +379,7 @@ currently unclear whether these observations are problematic in the context of g
 The diversity of the generated molecules is an important aspect in the application of goal-directed
 generative models. Given that the scoring functions are usually only an imperfect and incomplete
 approximation of the desired properties finding a single high-scoring molecule is usually not sufficient.
-Given the expected failure of some of the candidates in later experiments, having a 
+Given the expected failure of some of the candidates in later experiments, having a
 diverse range of promising candidates can increase the success chances of downstream experiments in the drug discovery project \citep{martinDiverseViewpointsComputational2001,gorseDiversityMedicinalChemistry2006}.
 
 However, the concept of diversity is multifaceted and the importance of different aspects depends on
@@ -393,29 +393,29 @@ line with chemical intuition in some descriptive cases and propose the sphere ex
 sphere exclusion algorithm. While this metric is more in line with chemical intuition, it is a
 relative metric and can lead to misleading results for sets of different sizes. For example, a
 single molecule has perfect diversity according to this metric, which is not in line with the
-intuitive understanding of diversity. 
+intuitive understanding of diversity.
 
 Recently, \citet{xieHowMuchSpace2023} introduced the \#Circles metric, which is identical to the
 SEDiv metric but skips the normalization by the number of molecules. This metric is more in line
 with the needs in goal-directed generation where one is interested in coverage of the chemical space
 rather than having sets with low redundancy. While the authors evaluate and compare a limited number
 of different goal-directed models using \#Circles, a comprehensive comparison of models using this
-metric is still missing, leaving open the question of how well different models perform in the task 
+metric is still missing, leaving open the question of how well different models perform in the task
 of finding diverse high-scoring molecules.
 
 \subsubsection{Standardized compute budgets}
-An often overlooked aspect in the evaluation of goal-directed models is the lack of standardized 
+An often overlooked aspect in the evaluation of goal-directed models is the lack of standardized
 compute budgets. Fundamentally optimizing molecular properties is a search problem that --- given infinite
 ressources --- can be solved by brute force enumeration of chemical space. Thus the main challenge of
-de novo design is to arrive at high scoring molecules using as little ressources as possible. 
+de novo design is to arrive at high scoring molecules using as little ressources as possible.
 However, in many studies different models are compared without taking this into account, which might
 lead to unfair comparisons. For example, it might be the case that some algorithms are run for days
-or weeks, while others are only run for minutes or hours. 
+or weeks, while others are only run for minutes or hours.
 
 The computational cost of running a goal-directed model is the sum of the cost of generating molecules
-and scoring them. If the former is cheap, the latter becomes the main cost factor and good models 
-need to be sample efficient. Sample efficiency has recently gained more attention with 
-\citet{gaoSampleEfficiencyMatters2022} proposing a benchmark focussed on this aspect and 
+and scoring them. If the former is cheap, the latter becomes the main cost factor and good models
+need to be sample efficient. Sample efficiency has recently gained more attention with
+\citet{gaoSampleEfficiencyMatters2022} proposing a benchmark focussed on this aspect and
 others adapting to the setup \citep{thomasReevaluatingSampleEfficiency2022,thomasAugmentedHillClimbIncreases2022,guoAugmentedMemoryCapitalizing2023}
 However, we have not found any work studying the opposite end of the spectrum where the generation cost is
 high compared to the scoring cost.
@@ -459,7 +459,7 @@ models often struggle to perform well on these rare templates \citep{seglerNeura
 In \citep{renzFailureModesMolecule2019} (\cref{sec:failure-modes}) we show the limitations of the
 GuacaMol distribution-learning benchmark, by evaluating the performance of different sophisticated
 generative models on this benchmark, and comparing it to a simple baseline model that generates
-molecules by introducing minor variations of the molecules in the training data. We show that 
+molecules by introducing minor variations of the molecules in the training data. We show that
 most of the tested generative models do not outperform the simple baseline model, or only do so
 marginally. This suggests that the tested benchmarks are not be able to distinguish state-of-the-art
 generative models from simple baseline models, and call for a more comprehensive evaluation of

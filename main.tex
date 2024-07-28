@@ -1,4 +1,3 @@
-
 % !TeX encoding = UTF-8
 % !TeX program = pdflatex
 % !BIB program = biber
@@ -36,7 +35,7 @@
 \usepackage{scrlayer-scrpage}
 \usepackage{scrhack}
 
-\usepackage[a-1b]{pdfx}[2019-02-27]
+% \usepackage[a-1b]{pdfx}[2019-02-27]
 \usepackage[T1]{fontenc}
 \usepackage{helvet,mathpazo}
 \usepackage{microtype}
@@ -50,7 +49,6 @@
 \usepackage{enumitem}
 \usepackage{subfiles}
 \usepackage{scrhack}
-% \usepackage{hyperref}
 \usepackage{cleveref}
 
 \usepackage[
@@ -90,8 +88,8 @@
 \printacronyms[name=List of Acronyms,heading=chapter*,display=used,sort=true]
 \acsetup{
     make-links = true , % boolean
-    format = \emph , % standard
-    list / local , % boolean option of the list module
+    format = \emph, % standard
+    list / local, % boolean option of the list module
     list / display = all % choice option of the list module
 }
 
@@ -107,7 +105,7 @@
 \include{content/conclusion}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\printbibliography
+\printbibliography%
 
 %%%%%%%%%
 \appendix
