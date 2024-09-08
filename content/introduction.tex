@@ -8,7 +8,7 @@ improve the efficacy of existing treatments, and respond to the emergence of new
 
 Small molecule drugs constitute the majority of medicines in use, accounting for approximately 90\%
 of global sales \citep{makurvetBiologicsVsSmall2021}. These molecules, typically defined as having a
-molecular weight of less than 900 Da, offer several advantages. They are generally stable, do not
+molecular weight of less than 900 Da \citep{todo}, offer several advantages. They are generally stable, do not
 require specialized storage conditions, and can be conveniently administered orally. Moreover, they
 are relatively inexpensive to produce and can be easily synthesized in large quantities
 \citep{southeyIntroductionSmallMolecule2023}.
@@ -17,27 +17,27 @@ For a small molecule to be considered a viable drug candidate, it must fulfill a
 \citep{southeyIntroductionSmallMolecule2023}:
 
 \begin{itemize}
-      \item \textbf{On-target activity:} The molecule must be active against the desired target to exhibit
-            the intended therapeutic effect. At the molecular level, this means binding to the target and
-            modulating its activity in the desired manner.
+    \item \textbf{On-target activity:} The molecule must be active against the desired target to exhibit
+          the intended therapeutic effect. At the molecular level, this means binding to the target and
+          modulating its activity in the desired manner.
 
-      \item \textbf{Specificity:} The molecule should demonstrate high specificity, selectively
-            interacting with the intended target while minimizing undesirable off-target interactions. Such
-            selectivity is crucial to prevent adverse side effects and maintain the drug's safety and efficacy
-            profile.
+    \item \textbf{Specificity:} The molecule should demonstrate high specificity, selectively
+          interacting with the intended target while minimizing undesirable off-target interactions. Such
+          selectivity is crucial to prevent adverse side effects and maintain the drug's safety and efficacy
+          profile.
 
-      \item \textbf{Toxicity:} The absence of toxic effects is essential, as the molecule must be
-            well-tolerated and free from potential harmful side effects. Toxicity can arise from various
-            factors, including off-target interactions, metabolic byproducts, or allergic reactions.
+    \item \textbf{Toxicity:} The absence of toxic effects is essential, as the molecule must be
+          well-tolerated and free from potential harmful side effects. Toxicity can arise from various
+          factors, including off-target interactions, metabolic byproducts, or allergic reactions.
 
-      \item \textbf{Pharmacokinetics:} The molecule must possess favorable pharmacokinetic properties,
-            encompassing adsorption, distribution, metabolism, and excretion (ADME). These properties determine
-            how the molecule is absorbed into the body, distributed throughout, metabolized, and ultimately
-            excreted. They are crucial for ensuring the molecule reaches its target effectively and is processed
-            safely by the body.
+    \item \textbf{Pharmacokinetics:} The molecule must possess favorable pharmacokinetic properties,
+          encompassing adsorption, distribution, metabolism, and excretion (ADME). These properties determine
+          how the molecule is absorbed into the body, distributed throughout, metabolized, and ultimately
+          excreted. They are crucial for ensuring the molecule reaches its target effectively and is processed
+          safely by the body.
 
-      \item \textbf{Synthesizability:} The molecule must be synthesizable in a cost-effective manner to be
-            practically viable for large-scale production.
+    \item \textbf{Synthesizability:} The molecule must be synthesizable in a cost-effective manner to be
+          practically viable for large-scale production.
 \end{itemize}
 
 In addition to these properties, the molecule must be novel and not infringe on existing patents.
@@ -51,71 +51,78 @@ take 12--15 years and cost estimates range between \$1.8-2.5 billion
 
 \subsection{The drug discovery pipeline}
 \begin{figure}
-      \centering
-      \includegraphics[width=\textwidth]{figures/drug-discovery-pipeline.pdf}
-      \caption{The drug discovery pipeline starts with the identification of a biological target.
-            Once a target is identified, readily available molecules are screened for their activity
-            against the target in high-throughput screening. Promising hits are then modified and
-            optimized to lead compounds. These lead compounds are then further optimized and tested
-            in preclinical. Finally, the most promising candidates are tested in clinical trials and
-            eventually approved by regulatory agencies. The stages in the blue box are highly
-            amenable to machine learning and computational methods and are the focus of this
-            thesis.\label{fig:drug-discovery-pipeline}}
+    \centering
+    \includegraphics[width=\textwidth]{figures/drug-discovery-pipeline.pdf}
+    \caption{The drug discovery pipeline starts with the identification of a biological target.
+        Once a target is identified, readily available molecules are screened for their activity
+        against the target in high-throughput screening. Promising hits are then modified and
+        optimized to lead compounds. These lead compounds are then further optimized and tested
+        in preclinical. Finally, the most promising candidates are tested in clinical trials and
+        eventually approved by regulatory agencies. The stages in the blue box are highly
+        amenable to machine learning and computational methods and are the focus of this
+        thesis.\label{fig:drug-discovery-pipeline}}
 \end{figure}
-The drug discovery process is usually divided into several stages depicted in
+The drug discovery process is usually divided into several stages \citep{todo} depicted in
 \Cref{fig:drug-discovery-pipeline} and described below.
 
 \begin{itemize}
-      \item \textbf{Target Identification and Validation:} The drug discovery process begins with the
-            identification of a biological target, which is usually a molecule, protein, or gene involved
-            in a disease pathway. Understanding the target's role in the disease is crucial for developing
-            therapeutic interventions.
+    \item \textbf{Target Identification and Validation:} The drug discovery process begins with the
+          identification of a biological target, which is usually a molecule, protein, or gene involved
+          in a disease pathway. Understanding the target's role in the disease is crucial for developing
+          therapeutic interventions.
 
-      \item \textbf{Hit Discovery:} This stage aims at identifying "hits", which are molecules that
-            exhibit activity against the target. High-throughput screening (HTS) is a common approach
-            used to test large libraries of molecules against the target in a rapid and automated manner.
-            Computational methods such as virtual screening can also be employed to increase the
-            efficiency of wet-lab experiments.
+    \item \textbf{Hit Discovery:} This stage aims at identifying "hits", which are molecules that
+          exhibit activity against the target. High-throughput screening (HTS) is a common approach
+          used to test large libraries of molecules against the target in a rapid and automated manner.
+          Computational methods such as virtual screening can also be employed to increase the hit-rate
+          of wet-lab experiments.
 
-      \item \textbf{Hit-to-lead and lead optimization:} Promising hits are then refined and optimized to produce lead
-            compounds. This stage focuses on improving the activity, selectivity, and pharmacological
-            properties of the molecules. The process often follows a DMTA
-            (Design-Make-Test-Analyze) cycle, where compounds are designed, synthesized, and tested
-            iteratively in vitro. The goal is to find a lead compounds with a desirable balance of potency,
-            selectivity, and drug-like properties.
+    \item \textbf{Hit-to-lead and lead optimization:} Promising hits are then refined and optimized to produce lead
+          compounds. This stage focuses on improving the activity, selectivity, and pharmacological
+          properties of the molecules. The process often follows a DMTA
+          (Design-Make-Test-Analyze) cycle, where compounds are designed, synthesized, and tested
+          iteratively in vitro. The goal is to find a lead compounds with a desirable balance of potency,
+          selectivity, and drug-like properties.
 
-      \item \textbf{Preclinical Development:} The most promising lead compounds are then tested in
-            preclinical studies, which are typically conducted in animal models. These studies assess the
-            safety, efficacy, pharmacokinetics, and toxicology of the drug candidate in vivo. The data
-            generated during this stage are critical for determining whether the candidate is suitable for
-            clinical trials in humans.
+    \item \textbf{Preclinical Development:} The most promising lead compounds are then tested in
+          preclinical studies, which are typically conducted in animal models. These studies assess the
+          safety, efficacy, pharmacokinetics, and toxicology of the drug candidate in vivo. The data
+          generated during this stage are critical for determining whether the candidate is suitable for
+          clinical trials in humans.
 
-      \item \textbf{Clinical Trials:} Drug candidates that pass preclinical development proceed to
-            clinical trials, which are conducted in humans and are typically divided into three phases:
-            \begin{itemize}
-                  \item \textbf{Phase I:} This phase focuses on assessing the safety, tolerability, and
-                        pharmacokinetics of the drug in a small group of healthy volunteers or patients.
-                  \item \textbf{Phase II:} In this phase, the efficacy of the drug is tested in a larger
-                        group of patients with the target disease. Safety and dosage optimization are also
-                        evaluated.
-                  \item \textbf{Phase III:} This phase involves large-scale testing of the drug’s safety
-                        and efficacy in a diverse patient population. It provides the critical data needed for
-                        regulatory approval.
-            \end{itemize}
+    \item \textbf{Clinical Trials:} Drug candidates that pass preclinical development proceed to
+          clinical trials, which are conducted in humans and are typically divided into three phases:
+          \begin{itemize}
+              \item \textbf{Phase I:} This phase focuses on assessing the safety, tolerability, and
+                    pharmacokinetics of the drug in a small group of healthy volunteers or patients.
+              \item \textbf{Phase II:} In this phase, the efficacy of the drug is tested in a larger
+                    group of patients with the target disease. Safety and dosage optimization are also
+                    evaluated.
+              \item \textbf{Phase III:} This phase involves large-scale testing of the drug’s safety
+                    and efficacy in a diverse patient population. It provides the critical data needed for
+                    regulatory approval.
+          \end{itemize}
 
-      \item \textbf{Regulatory Approval:} Upon successful completion of clinical trials, the drug is
-            submitted for regulatory approval. Agencies such as the U.S. Food and Drug Administration
-            (FDA) or the European Medicines Agency (EMA) review the comprehensive data package, including
-            preclinical and clinical trial results. If the drug is deemed safe and effective, it receives
-            approval for marketing and distribution.
+          The success rates of clinical trials are low, with only about 10\% of drugs that enter clinical
+          trials eventually being approved by regulatory agencies More specifically, the success rates in
+          Phase I/II/III and the final regulatory approval are 63\%, 31\%, 58\% and 85\% respectively
+          \citep{mullardParsingClinicalSuccess2016}. This translates to 63\%, 19.5\%, 11.3\% and 9.6\% of
+          projects that make it to the respective stages.
 
-      \item \textbf{Post-Market Surveillance:} After regulatory approval, the drug enters the
-            market, but the process doesn't end here. Post-market surveillance, or Phase IV studies, are
-            conducted to monitor the long-term safety and efficacy of the drug in the general population.
-            This stage can reveal rare side effects or long-term risks that were not apparent during
-            clinical trials, and it may lead to further modifications, warnings, or even withdrawal of the
-            drug from the market.
+    \item \textbf{Regulatory Approval:} Upon successful completion of clinical trials, the drug is
+          submitted for regulatory approval. Agencies such as the U.S. Food and Drug Administration
+          (FDA) or the European Medicines Agency (EMA) review the comprehensive data package, including
+          preclinical and clinical trial results. If the drug is deemed safe and effective, it receives
+          approval for marketing and distribution.
+
+    \item \textbf{Post-Market Surveillance:} After regulatory approval, the drug enters the
+          market, but the process doesn't end here. Post-market surveillance, or Phase IV studies, are
+          conducted to monitor the long-term safety and efficacy of the drug in the general population.
+          This stage can reveal rare side effects or long-term risks that were not apparent during
+          clinical trials, and it may lead to further modifications, warnings, or even withdrawal of the
+          drug from the market.
 \end{itemize}
+
 
 
 % General strategy
@@ -125,20 +132,12 @@ The early stages have lower per molecule costs but provide less information abou
 chances of a molecule. The later stages are more expensive, but in the end provide accurate information
 whether a molecule is safe and effective in humans.
 
-The success rates of clinical trials are low, with only about 10\% of drugs that enter clinical
-trials eventually being approved by regulatory agencies More specifically, the success rates in
-Phase I/II/III and the final regulatory approval are 63\%, 31\%, 58\% and 85\% respectively
-\citep{mullardParsingClinicalSuccess2016}. This translates to 63\%, 19.5\%, 11.3\% and 9.6\% of
-projects that make it to the respective stages.
-
-
-
 \subsection{The Design-Make-Test-Analyze cycle}
 \begin{figure}
-      \centering
-      % todo improve this figure
-      \includegraphics[width=\textwidth]{figures/dmta_cycle.pdf}
-      \caption{The DMTA cycle}
+    \centering
+    % todo improve this figure
+    \includegraphics[width=\textwidth]{figures/dmta_cycle.pdf}
+    \caption{The DMTA cycle}
 \end{figure}
 The hit discovery, hit-to-lead and lead optimization stages (blue box in
 \Cref{fig:drug-discovery-pipeline}) usually operate in an iterative manner, resulting in a cycle of
@@ -146,20 +145,20 @@ choosing molecules to be tested, synthesizing them, testing them in laboratory e
 analyzing the results to guide the selection of the next molecule to be tested. This cycle is
 usually referred to as the \ac{DMTA}-cycle:
 \begin{itemize}
-      \item \textbf{Design:} Under consideration of previous experimental results, the molecules to
-            be tested are designed. The design generally aims to optimize the desired properties of
-            the molecule, but also aims to maximize the information gained from the experiment.
-      \item \textbf{Make:} The designed molecules are then synthesized and prepared for testing in
-            the laboratory. This step requires a synthesis plan that outlines the steps needed to
-            synthesize the molecule.
-      \item \textbf{Test:} The synthesized molecules are then tested in laboratory experiments to
-            measure the properties of interest. This can range from the activity of the molecule
-            against a target, to its pharmacokinetic properties, to its toxicity and others.
-      \item \textbf{Analyze:} The results of the experiments are analyzed. The obtained insights
-            can then be used to guide the design of the next molecules to be tested.
-            evaluation of the performance of the prediction models used in the design phase. The
-            results of the analysis are then used to guide the design of the next molecule to be
-            tested.
+    \item \textbf{Design:} Under consideration of previous experimental results, the molecules to
+          be tested are designed. The design generally aims to optimize the desired properties of
+          the molecule, but also aims to maximize the information gained from the experiment.
+    \item \textbf{Make:} The designed molecules are then synthesized and prepared for testing in
+          the laboratory. This step requires a synthesis plan that outlines the steps needed to
+          synthesize the molecule.
+    \item \textbf{Test:} The synthesized molecules are then tested in laboratory experiments to
+          measure the properties of interest. This can range from the activity of the molecule
+          against a target, to its pharmacokinetic properties, to its toxicity and others.
+    \item \textbf{Analyze:} The results of the experiments are analyzed. The obtained insights
+          can then be used to guide the design of the next molecules to be tested.
+          evaluation of the performance of the prediction models used in the design phase. The
+          results of the analysis are then used to guide the design of the next molecule to be
+          tested.
 \end{itemize}
 
 Computational methods are widely used throughout the DMTA cycle. One of the most important
@@ -178,18 +177,17 @@ generate synthetic routes for the production of a target molecule.
 \section{Generative models in drug discovery}
 \subsection{Molecular Representations}
 \begin{figure}
-      \centering
-      \includegraphics[width=\textwidth]{figures/representations/representations.pdf}
-      \caption{Different ways to represent molecules. The molecule shown is caffeine \textbf{A:}
-            Different 1D representations of a molecule. SMILES is an established line notation for
-            molecules. DeepSmiles enables easier generation of molecules by getting rid of pair
-            brackets and ring numbers. SELFIES guarantees that a sequence of tokens parses into a
-            valid molecule. \textbf{B:} 2D graph representation of a molecule. The nodes represent
-            atoms and the edges represent bonds. \textbf{C:} 3D structure of a molecule. The atoms
-            are positioned in 3D space. The positions of these atoms can change as some bonds are
-            allow rotations. Source of the 3D structure:
-            \citep{EnglishCaffeine3D2010}.\label{fig:molecular-graph}}
-      % TODO: add adjacency matrix representation
+    \centering
+    \includegraphics[width=\textwidth]{figures/representations/representations.pdf}
+    \caption{Different ways to represent a caffeine molecule \textbf{A:}  The 3D structure of a molecule is given by the positions of its atoms in
+        space. This structure is not necessarily fixed as some bonds can rotate and bonds can
+        vibrate (Image source: \citep{EnglishCaffeine3D2010}). \textbf{B:} The graph
+        representation of a molecule is given by the connectivity of its atoms. The nodes
+        represent atoms and the edges represent bonds between atoms. As the bonds of a stable
+        molecule are fixed this representation usually determines the identity/type of a
+        molecule. \textbf{C:} The graph representation of a molecule can be linearized into a 1D
+        sequence of characters. DeepSmiles and SELFIES are alternatives to the SMILES notation that
+        simplify the syntax and make it easier to generate syntactically valid molecules.\label{fig:molecular-graph}}
 \end{figure}
 Molecules, though fundamentally complex quantum mechanical entities, can be represented through
 various simplified models for practical purposes. The most common representation depicts molecules
@@ -223,6 +221,7 @@ properties and interactions, but are not covered in the rest of this thesis.
 
 \subsection{Generation strategies}
 % TODO: Add figure
+
 \paragraph{Sequence-based autoregressive models} constitute one of the most popular approaches for
 generating molecules. Early work by \citep{seglerGeneratingFocusedMolecule2018} and
 \citep{gomez-bombarelliAutomaticChemicalDesign2018} used recurrent neural networks (RNNs) to
@@ -237,7 +236,7 @@ molecules into specialized data structures
 architectures such as transformers \citep{vaswaniAttentionAllYou2017,noutahiGottaBeSAFE2023,schwallerMolecularTransformerModel2019,bagalMolGPTMolecularGeneration2022,mazuzMoleculeGenerationUsing2023}.
 
 \paragraph{Graph-based autoregressive models} generate molecules in graph-based
-representations. In this case the model generates the molecular graph by iteratively adding nodes
+representations. In this case the model generates the molecular graph by iteratively adding nodes6
 and edges to the graph. The model can be trained in a similar manner to the string-based models, by
 predicting the next node or edge given the current state of the graph. However, the specification of
 possible actions is more complex than in the 1D case as there is no natural ordering of the
@@ -281,7 +280,7 @@ representation.
 \paragraph{Autoregressive models} can be directly trained using a maximum likelihood approach by
 minimizing the cross entropy or \ac{NLL} of the training data
 \begin{align}
-      \mathcal{L} = - \mathbb{E}_{x \sim p(x)} \log q(x) \approx - \frac{1}{N} \sum_{i=1}^N \log q(x_i),
+    \mathcal{L} = - \mathbb{E}_{x \sim p(x)} \log q(x) \approx - \frac{1}{N} \sum_{i=1}^N \log q(x_i),
 \end{align}
 where $q(x)$ is the model distribution and $p(x)$ is the true distribution of the data. These models
 are explicit density models, as the likelihood for a given molecule can be calculated exactly.
@@ -294,7 +293,7 @@ via a probabilistic decoder network $p(x|z)$. To make training tractable a secon
 encoder network $q(z|x)$ is used to map the data to the latent space. The model is then trained to
 maximize the evidence lower bound (ELBO) of the data
 \begin{align}
-      \log p(x) \geq \mathbb{E}_{q(z|x)}[\log p(x|z)] - \text{KL}(q(z|x) || p(z)),
+    \log p(x) \geq \mathbb{E}_{q(z|x)}[\log p(x|z)] - \text{KL}(q(z|x) || p(z)),
 \end{align}
 where KL is the Kullback-Leibler divergence. This model has the advantage of providing a continuous
 latent space, which can be used to interpolate between molecules and allows to run continuous
@@ -308,7 +307,7 @@ to a distribution in chemical space, p(x), via a bijective mapping $G: z \righta
 The likelihood of the training data can then be directly calculated and optimized
 via the change of variables formula:
 \begin{align}
-      p(x) = p(z) \left| \det \frac{\partial G}{\partial z} \right|.
+    p(x) = p(z) \left| \det \frac{\partial G}{\partial z} \right|.
 \end{align}
 Originally generative flows have been proposed for continuous data, but have been adapted to
 discrete data such as molecules by using a continuous relaxation of the molecule
@@ -326,12 +325,12 @@ likelihood of a given molecule is not tractable.
 
 
 \begin{figure}
-      \centering
-      \includegraphics[width=\textwidth]{./figures/goal_directed_cycle_and_virtual_screening.pdf}
-      \caption{Comparison of goal-directed generative models and virtual screening. Goal-directed
-            generation proceeds in a loop where already scored molecules inform what molecules to
-            test next. Virtual screening proceeds in a linear fashion, where the molecules to be
-            tested are determined beforehand. }
+    \centering
+    \includegraphics[width=\textwidth]{./figures/goal_directed_cycle_and_virtual_screening.pdf}
+    \caption{Comparison of goal-directed generative models and virtual screening. Goal-directed
+        generation proceeds in a loop where already scored molecules inform what molecules to
+        test next. Virtual screening proceeds in a linear fashion, where the molecules to be
+        tested are determined beforehand. }
 \end{figure}
 
 
@@ -368,35 +367,37 @@ materials or catalysts \citep{todo}.
 
 Some of the most commonly used approaches to goal-directed molecular generation are:
 \begin{itemize}
-      \item \textbf{Hill-climbing}
-            \citep{seglerGeneratingFocusedMolecule2018,xieMARSMarkovMolecular2021,thomasAugmentedHillClimbIncreases2022}
-            is a simple optimization algorithm that relies on an underlying distribution-learning model.
-            Molecules are sampled from the model's learned distribution and their scores are evaluated.
-            The model is then retrained on the top-scoring molecules and the process is repeated.
-      \item \textbf{Reinforcement learning} uses the molecule scores as a reward signal to update
-            the model distribution. This is commonly via methods based on the REINFORCE algorithm
-            \citep{williamsSimpleStatisticalGradientfollowing1992} which allows to update the model
-            distribution in a way that increases expected scores of the generated molecules
-            \citep{olivecronaMolecularDenovoDesign2017,thomasAugmentedHillClimbIncreases2022,youGraphConvolutionalPolicy2019,guoAugmentedMemoryCapitalizing2023}.
-      \item \textbf{Genetic algorithms} transform an initial population of molecules by applying
-            mutations and crossovers. The molecules are then evaluated and the best ones are
-            selected for the next generation. Applying this process iteratively leads to a
-            population of high-scoring molecules \citep{jensenGraphbasedGeneticAlgorithm2019,nigamGenerativeModelsSuperfast2021,yoshikawaPopulationbasedNovoMolecule2018}
-      \item \textbf{Tree search} builds a tree of possible molecules by recursively applying a set
-            of rules to to the current molecules. Molecules with higher scores are more likely to be
-            expanded further \citep{yangChemTSEfficientPython2017,jensenGraphbasedGeneticAlgorithm2019}
-      \item \textbf{Continuous optimization} employ classical optimization algorithms in the continuous
-            latent space of (variational) autoencoders
-            \citep{winterEfficientMultiobjectiveMolecular2019,gomez-bombarelliAutomaticChemicalDesign2018,kusnerGrammarVariationalAutoencoder2017}
-            or generative flows \citep{madhawaGraphNVPInvertibleFlow2019}.
-      \item \textbf{Generative Flow Networks} \citep{bengioFlowNetworkBased2021} aim to generate
-            molecules with probability proportional to their score. This method relies on an
-            iterative generation process and models chemical space as a directed acyclic graph, with
-            nodes being intermediate molecules and edges graph edits. The transition probabilities
-            between nodes are given by a "flow" of probability mass from the root node to finished
-            molecules, such that the probability of each finished molecule is proportional to its
-            score. This has the advantage of being able to explore multiple modes of the scoring
-            function.
+    \item \textbf{Hill-climbing}
+          \citep{seglerGeneratingFocusedMolecule2018,xieMARSMarkovMolecular2021,thomasAugmentedHillClimbIncreases2022}
+          is a simple optimization algorithm that relies on an underlying distribution-learning model.
+          Molecules are sampled from the model's learned distribution and their scores are evaluated.
+          The model is then retrained on the top-scoring molecules and the process is repeated.
+    \item \textbf{Reinforcement learning} uses the molecule scores as a reward signal to update
+          the model distribution. This is commonly via methods based on the REINFORCE algorithm
+          \citep{williamsSimpleStatisticalGradientfollowing1992} which allows to update the model
+          distribution in a way that increases expected scores of the generated molecules
+          \citep{olivecronaMolecularDenovoDesign2017,thomasAugmentedHillClimbIncreases2022,youGraphConvolutionalPolicy2019,guoAugmentedMemoryCapitalizing2023}.
+    \item \textbf{Genetic algorithms} in molecular generation operate by evolving an initial
+          population of molecules through iterative cycles of mutation, crossover, and selection \citep{jensenGraphbasedGeneticAlgorithm2019,nigamGenerativeModelsSuperfast2021,yoshikawaPopulationbasedNovoMolecule2018}.
+          Starting from an initial set of molecules, new molecules are generated by applying
+          mutation and crossover operations. The molecules are then scored, and the best ones are
+          selected for the next generation. This process is repeated for multiple generations,
+          gradually optimizing the population towards desired molecular characteristics.
+    \item \textbf{Tree search} builds a tree of possible molecules by recursively applying a set of transformation rules
+          to some initial molecules. Using techniques such as Monte Carlo Tree Search, the tree is
+          explored to find the most promising molecules \citep{yangChemTSEfficientPython2017,jensenGraphbasedGeneticAlgorithm2019}.
+    \item \textbf{Continuous optimization} employ classical optimization algorithms in the continuous
+          latent space of (variational) autoencoders
+          \citep{gomez-bombarelliAutomaticChemicalDesign2018,kusnerGrammarVariationalAutoencoder2017,winterEfficientMultiobjectiveMolecular2019}
+          or generative flows \citep{madhawaGraphNVPInvertibleFlow2019}.
+    \item \textbf{Generative Flow Networks} \citep{bengioFlowNetworkBased2021} aim to generate
+          molecules with probability proportional to their score. This method relies on an
+          iterative generation process and models chemical space as a directed acyclic graph, with
+          nodes being intermediate molecules and edges graph edits. The transition probabilities
+          between nodes are given by a "flow" of probability mass from the root node to finished
+          molecules, such that the probability of each finished molecule is proportional to its
+          score. This has the advantage of being able to explore multiple modes of the scoring
+          function.
 \end{itemize}
 
 \subsection{Evaluation challenges}
@@ -412,12 +413,15 @@ to a certain extent, detect whether a model overfits to the training set.
 A variety approaches exist to assess how well a model can learn the distribution of the training
 set. Explicit/approximate density models allow principled evaluation using the negative
 log-likelihood on a hold-out test set. However, this is not applicable for implicit density models
-such as GANs. The KL-divergence between the distributions of scalar molecular properties
-of the generated molecules and the training set is a commonly used metric, to evaluate the
-distribution fit. The Frechet ChemNet Distance \citep{preuerFrechetChemNetDistance2018} provides a more
-comprehensive evaluation of the distribution fit by comparing the distribution of the activations a
-neural network trained to predict the bioactivities. This bioactivity informed metric has been shown
-to be sensitive to distributional differences many different molecular properties.
+such as GANs. The KL-divergence between the distributions of scalar molecular properties (e.g.
+molecular weight, logP, ...) of the generated molecules and the training set is a commonly used
+metric, to evaluate the distribution fit \citep{brownGuacaMolBenchmarkingModels2019}. The Frechet
+ChemNet Distance (FCD) \citep{preuerFrechetChemNetDistance2018} offers a more comprehensive evaluation
+of the distribution fit. Instead of comparing the distributions of few select property values,
+the FCD compares the distributions of the activations of a neural network trained to predict
+bioactivities. The Frechet distance between the distributions of the activations of the generated
+molecules and a reference set is then calculated. This metric has been shown to be sensitive to
+distributional differences in many different molecular properties.
 
 The Moses \citep{polykovskiyMolecularSetsMOSES2020} and GuacaMol
 \citep{brownGuacaMolBenchmarkingModels2019} benchmarks bundle these metrics into standardized
@@ -438,10 +442,10 @@ training set.
 Another issue is that optimizing an ML model's output with respect to its input can lead to
 problems. It has been shown that samples generated in this way can wrongly be awarded high scores as
 shown in
-\citep{szegedyIntriguingPropertiesNeural2014,goodfellowExplainingHarnessingAdversarial2015}.
-It is unclear whether this problem transfers to the context of goal-directed molecule generation.
-While the mentioned studies worked in the image domain where ground truth evaluation can easily be
-achieved using human vision in molecular optimization this problem is harder to quantify and detect.
+\citep{szegedyIntriguingPropertiesNeural2014,goodfellowExplainingHarnessingAdversarial2015}. While
+this effect was easy to detect in the image domain where ground truth evaluation can easily be
+achieved using human vision, it is harder to detect in molecular optimization. It is unclear whether
+this problem transfers to the context of goal-directed molecule generation and how to quantify it.
 
 % The generated molecules may be outside the applicability domain of the scoring function, in which
 % case the scores might become uninformative. In this case wet-lab validation is necessary to assess
@@ -480,6 +484,7 @@ rather than having sets with low redundancy. While the authors evaluate and comp
 of different goal-directed models using \#Circles, a comprehensive comparison of models using this
 metric is still missing, leaving open the question of how well different models perform in the task
 of finding diverse high-scoring molecules.
+% TODO: Add more missing stuff: No models optimized for diversity
 
 \subsubsection{Standardized Computational Resources}
 A frequently neglected aspect in evaluating goal-directed models is the absence of standardized
@@ -560,6 +565,7 @@ While this does not necessarily mean that the generative models are not useful, 
 comprehensive evaluation of distribution-learning models, such as evaluations using the negative
 log-likelihood of the test set when applicable.
 
+% Todo rewrite this with phrasing above
 For goal-directed models we study to which extent introduce \emph{control scores} that give information whether the
 optimization overfits to artifacts of the scoring functions, or the training data. We train
 additional scoring functions, using either a different random initialization or training it
@@ -599,9 +605,9 @@ several times faster than comparable methods and shows good predictive performan
 the following papers:
 
 \begin{itemize}
-      \item \fullcite{renzFailureModesMolecule2019}
-      \item \fullcite{renzDiverseHitsNovo2024}
-      \item \fullcite{seidlImprovingFewZeroShot2022}
+    \item \fullcite{renzFailureModesMolecule2019}
+    \item \fullcite{renzDiverseHitsNovo2024}
+    \item \fullcite{seidlImprovingFewZeroShot2022}
 \end{itemize}
 
 % give overview over my other publications
@@ -609,8 +615,8 @@ the following papers:
 following publications:
 
 \begin{itemize}
-      \item \fullcite{preuerFrechetChemNetDistance2018}
-      \item \fullcite{renzUncertaintyEstimationMethods2019}
-      \item \fullcite{hofmarcherLargescaleLigandbasedVirtual2020}
-      \item \fullcite{renzLowCountTimeSeries2023}
+    \item \fullcite{preuerFrechetChemNetDistance2018}
+    \item \fullcite{renzUncertaintyEstimationMethods2019}
+    \item \fullcite{hofmarcherLargescaleLigandbasedVirtual2020}
+    \item \fullcite{renzLowCountTimeSeries2023}
 \end{itemize}

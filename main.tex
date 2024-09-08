@@ -9,7 +9,7 @@
 \documentclass[%
     paper=A4,               % paper size --> A4 is default in Germany
     parskip=half,           % spacing value / method for paragraphs
-    chapterprefix=false,     % prefix for chapter marks
+    chapterprefix=false,     % prefix for chapter marksy
     oneside,
     11pt,                   % font size
     headings=normal,        % size of headings
@@ -78,8 +78,8 @@
 \pagenumbering{roman}			% roman page numbing (invisible for empty page style)
 \pagestyle{empty}				% no header or footers
 \begin{titlepage}
-    \setcounter{page}{0}
-    \include{cover/coversheet}
+      \setcounter{page}{0}
+      \include{cover/coversheet}
 \end{titlepage}
 \clearpage
 
@@ -97,10 +97,10 @@
 % \printacronyms[sort=true]
 \printacronyms[name=List of Acronyms,heading=chapter*,display=used,sort=true]
 \acsetup{
-    make-links = true , % boolean
-    format = \emph, % standard
-    list / local, % boolean option of the list module
-    list / display = all % choice option of the list module
+      make-links = true , % boolean
+      format = \emph, % standard
+      list / local, % boolean option of the list module
+      list / display = all % choice option of the list module
 }
 
 % --------------------------
