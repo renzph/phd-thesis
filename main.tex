@@ -39,7 +39,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{helvet,mathpazo}
 \usepackage{microtype}
-% \usepackage[naustrian,english]{babel}
+% \usepackage[english]{babel}
 \usepackage[absolute]{textpos}
 \usepackage{amsmath,siunitx}
 
@@ -67,7 +67,7 @@
     ]{biblatex}
 \DeclareNameAlias{sortname}{family-given}
 
-\addbibresource{references.bib}
+% \addbibresource{references.bib}
 \addbibresource{references_zotero.bib}
 \usepackage{pdfpages}
 \usepackage{blindtext}
@@ -78,8 +78,8 @@
 \pagenumbering{roman}			% roman page numbing (invisible for empty page style)
 \pagestyle{empty}				% no header or footers
 \begin{titlepage}
-      \setcounter{page}{0}
-      \include{cover/coversheet}
+    \setcounter{page}{0}
+    \include{cover/coversheet}
 \end{titlepage}
 \clearpage
 
@@ -97,10 +97,10 @@
 % \printacronyms[sort=true]
 \printacronyms[name=List of Acronyms,heading=chapter*,display=used,sort=true]
 \acsetup{
-      make-links = true , % boolean
-      format = \emph, % standard
-      list / local, % boolean option of the list module
-      list / display = all % choice option of the list module
+    make-links = true , % boolean
+    format = \emph, % standard
+    list / local, % boolean option of the list module
+    list / display = all % choice option of the list module
 }
 
 % --------------------------

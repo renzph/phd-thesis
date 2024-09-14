@@ -28,8 +28,8 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="1.2572081"
-     inkscape:cx="393.33185"
-     inkscape:cy="87.495457"
+     inkscape:cx="393.33186"
+     inkscape:cy="87.495459"
      inkscape:window-width="1920"
      inkscape:window-height="1147"
      inkscape:window-x="0"
@@ -357,12 +357,12 @@
        x="14.284879"
        y="91.250664"
        id="text45"
-       transform="matrix(0.95180626,0,0,0.92917945,8.0849153,5.7964239)"><tspan
+       transform="matrix(0.95180626,0,0,0.92917945,8.0849153,3.2709868)"><tspan
          x="137.10555"
          y="6.3920234"
-         id="tspan3"><tspan
+         id="tspan2"><tspan
            style="font-family:Helvetica;-inkscape-font-specification:Helvetica"
-           id="tspan2">SMILES: Cn1c(=O)c2c(ncn2C)n(C)c1=O
+           id="tspan1">SMILES: Cn1c(=O)c2c(ncn2C)n(C)c1=O
 </tspan></tspan><tspan
          x="167.59375"
          y="10.239232"
@@ -382,21 +382,39 @@
            style="font-family:Helvetica;-inkscape-font-specification:Helvetica"
            id="tspan8">
 </tspan></tspan><tspan
-         x="127.11151"
+         x="126.2955"
          y="21.780859"
          id="tspan11"><tspan
            style="font-family:Helvetica;-inkscape-font-specification:Helvetica"
-           id="tspan10">SELFIES: [C][N][C][=Branch1][C][=O][C][=C][Branch1]</tspan></tspan><tspan
-         x="121.38791"
+           id="tspan10">InChI: InChI=1S/C8H9NO2/c1-6(10)9-7-2-4-8(11)5-3-7/</tspan></tspan><tspan
+         x="150.64139"
          y="25.628069"
          id="tspan13"><tspan
            style="font-family:Helvetica;-inkscape-font-specification:Helvetica"
-           id="tspan12">[#Branch1][N][=C][N][Ring1][Branch1][C][N][Branch1][C][C][C]</tspan></tspan><tspan
-         x="156.85129"
+           id="tspan12">h2-5,11H,1H3,(H,9,10)
+</tspan></tspan><tspan
+         x="167.59375"
          y="29.475279"
          id="tspan15"><tspan
            style="font-family:Helvetica;-inkscape-font-specification:Helvetica"
-           id="tspan14">[Ring1][N][=O]
+           id="tspan14">
+</tspan></tspan><tspan
+         x="127.11153"
+         y="33.322489"
+         id="tspan17"><tspan
+           style="font-family:Helvetica;-inkscape-font-specification:Helvetica"
+           id="tspan16">SELFIES: [C][N][C][=Branch1][C][=O][C][=C][Branch1]</tspan></tspan><tspan
+         x="123.54498"
+         y="37.169699"
+         id="tspan19"><tspan
+           style="font-family:Helvetica;-inkscape-font-specification:Helvetica"
+           id="tspan18">[#Branch1][N][=C][N][Ring1][Branch1][C][N][Branch1][C][C]</tspan></tspan><tspan
+         x="119.79883"
+         y="43.632258"
+         id="tspan21"><tspan
+           dx="0 0.9379971 2.438133 0.93799686 0.93799734 2.4381328 0.75006771 1.8776436 1.8776417 1.8776436 0.93799686 0.93799686 2.4381332 0.93799782 0.93799591 1.9716072 2.6260624 0.93799782"
+           style="font-family:Helvetica;-inkscape-font-specification:Helvetica"
+           id="tspan20">[C][Ring1][N][=O]
 </tspan></tspan></text><image
        width="35.72401"
        height="29.758104"
