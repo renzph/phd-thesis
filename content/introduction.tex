@@ -124,7 +124,7 @@ whether a molecule is safe and effective in humans.
 \begin{figure}
       \centering
       % todo improve this figure
-      \includegraphics[width=\textwidth]{figures/dmta_cycle.pdf}
+      \includegraphics[width=\textwidth]{figures/dmta_cycle_v2.pdf}
       \caption{The DMTA cycle}
 \end{figure}
 The hit discovery, hit-to-lead and lead optimization stages (blue box in
@@ -254,6 +254,18 @@ resemble known ``reasonable'' molecules.
 
 
 \subsection{Distribution-learning}
+\begin{figure}
+      \includegraphics[width=0.9\textwidth]{figures/distribution-learning-models.pdf}
+      \caption{Illustration of how different distribution-learning methods try to generate samples
+            that resemble the data in distribution. String-based autoregressive models sample the
+            next token according to a probability distribution which is based on the previously
+            sampled tokens. The likelihood of the samples can be optimized using the probability
+            chain rule. The generator in generative adversarial networks is trained to generate
+            samples, that a discriminator cannot distinguish from real samples. Variational
+            autoencoders first transform an input sample into a latent space and then reconstruct
+            the input from the latent representation. Flow-based models make use of an invertible
+            mapping which allows to calculate and maximize the exact likelihood of the data. }
+\end{figure}
 % Whats distribution learning
 Distribution-learning is a fundamental application of generative models in drug design. Its
 objective is to create a model that accurately captures the distribution of molecules within a
