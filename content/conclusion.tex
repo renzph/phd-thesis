@@ -1,4 +1,34 @@
 \chapter{Conclusion and Outlook\label{chap:conclusion}}
-In this thesis, we have made contributions to applications of machine learning in
-drug discovery. Our focus lay on advancing the evaluation of generative models for
-molecules and on improving single-step retrosynthesis prediction.
+The work in this thesis has focused on
+advancing the application of generative models in drug discovery, concentrating on two main aspects:
+Firstly, we identified limitations in the evaluation of generative models for de novo molecular
+design, and proposed ways to make evaluation more informative and relevant to practical
+applications. Secondly we introduced a novel template-based model for retrosynthesis prediction
+that matches or exceeds the performance of existing methods, performing particularly well on rare
+reaction templates.
+
+In the first part of this thesis, we showed how established ways of evaluating distribution-learning
+models cannot differentiate complex models from trivial baseline generators. We also showed how
+goal-directed generative models used to optimize machine learning-based scoring functions, can
+overfit to the scoring function and exhibit biases towards already known high scoring molecules
+contained in the training data.
+
+The second part of this thesis introduced a diversity-based benchmark for goal-directed molecule
+generators. This benchmark addresses the shortcomings of previous benchmarks by adressing the issues
+of inadequate diversity measures, non-standardized compute budgets, and lack of model adaptation to
+the diverse optimization setting. We used this benchmark to evaluate a range of generative models
+comparing them in a meaningful way.
+
+The last part of this thesis introduced a novel template-based model for retrosynthesis prediction
+based on Modern Hopfield Networks. This model leverages a
+multi-modal approach that combines reaction templates and target molecules. Our model is able to
+generalize over reaction templates and performs particularly well on rare templates. We showed that
+our model matches or exceeds the performance.
+
+
+
+In conclusion, our work provides insights into the capabilities and limitations of current generative
+models for molecules and proposes novel evaluation strategies. Additionally, our contributions in
+retrosynthesis prediction enable more accurate computer-aided synthesis planning.
+We hope that our work will help to accelerate the drug discovery pipeline and facilitate the development
+of novel pharmaceutical treatments.

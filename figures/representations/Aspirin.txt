@@ -1,4 +1,3 @@
 SMILES: CC(=O)Oc1ccccc1C(=O)O
 DeepSMILES: CC=O)Occcccc6C=O)O
 SELFIES: [C][C][=Branch1][C][=O][O][C][=C][C][=C][C][=C][Ring1][=Branch1][C][=Branch1][C][=O][O]
-SAFE: c13ccccc14.CC2=O.C4(=O)O.O23
