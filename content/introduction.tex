@@ -296,7 +296,7 @@ latent space, which can be used to interpolate between molecules and allows the 
 optimization algorithms in latent space. VAEs belong in the class of approximate density models, as
 the likelihood of a given molecule can be calculated approximately via monte carlo sampling. VAEs
 have been a popular choice for generating molecules
-\citep{gomez-bombarelliAutomaticChemicalDesign2018,kusnerGrammarVariationalAutoencoder2017,simonovskyGraphVAEGenerationSmall2018,samantaNeVAEDeepGenerative2018,jinJunctionTreeVariational2018,daiSyntaxDirectedVariationalAutoencoder2018}.
+\citep{gomez-bombarelliAutomaticChemicalDesign2018,kusnerGrammarVariationalAutoencoder2017,simonovskyGraphVAEGenerationSmall2018,samantaNeVAEDeepGenerative2018,jinJunctionTreeVariational2018,daiSyntaxDirectedVariationalAutoencoder2018,liuConstrainedGraphVariational2018}.
 
 
 % moflow, graphnvp (has nice discussion on one-shot generation)
@@ -321,7 +321,7 @@ then fed to a discriminator network. The two networks then engage in a minimax g
 discriminator tries is trained to distinguish between real and generated data, while the generator
 is trained to fool the discriminator.\@ \acp{GAN} are implicit density methods they sample from the
 model distribution, but do not provide a likelihood for a given sample. This approach has been
-combined with different generation strategies in the context of drug discovery \citep{decaoMolGANImplicitGenerative2018,kadurinDruGANAdvancedGenerative2017,guimaraesObjectiveReinforcedGenerativeAdversarial2017,mendez-lucioNovoGenerationHitlike2018}
+combined with different generation strategies in the context of drug discovery \citep{decaoMolGANImplicitGenerative2018,kadurinDruGANAdvancedGenerative2017,guimaraesObjectiveReinforcedGenerativeAdversarial2017,mendez-lucioNovoGenerationHitlike2018,tangMolecularGenerativeAdversarial2024}
 
 
 % \begin{figure}
