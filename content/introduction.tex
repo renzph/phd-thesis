@@ -230,6 +230,10 @@ While these more sophisticated representations are valuable for modeling a wide 
 properties and interactions, but are not covered in the rest of this thesis.
 
 \subsection{Generation strategies}
+\begin{figure}
+      \centering
+      \includegraphics[width=\textwidth]{figures/generation_strategies_tryout.pdf}
+\end{figure}
 There are several approaches to constructing up molecular graphs. These mainly depend
 on the type of model used and the representation of the molecule.
 Some of the most common approaches are shown in Figure~\ref{fig:generation-strategies} and
@@ -294,13 +298,11 @@ dataset. Formally, the model learns a distribution $q(x)$ that approximates the 
 $p(x)$ of molecules in a dataset. This approach enables the model to grasp both the syntax and semantics of the
 molecules in the data. These models can be trained on large chemical libraries of stable
 molecules, PubChem \citep{kimPubChemSubstanceCompound2016}, ChEMBL \citep{bentoChEMBLBioactivityDatabase2014} or
-%TODO: Add zinc on mac https://pubs.acs.org/doi/full/10.1021/ci3001277
-\citep{zinc}. Using this process the resulting models can learn what reasonable molecules look like
+ZINC \citep{irwinZINCFreeTool2012}. Using this process the resulting models can learn what reasonable molecules look like
 in the context of drug discovery. This makes them useful for their two main purposes: they can
 expand virtual libraries and, more crucially, act as a foundation for other applications such as
 goal-directed generation, which we will explore in the subsequent section.
 
-% \begin{align} \mathcal{L} = - \mathbb{E}_{x \sim p(x)} \log q(x). \end{align}
 In recent years there has been a surge in interest distribution-learning models based on deep neural
 networks. Many architectures and training strategies originally proposed for text and image
 generation have been adapted and specialized to generate molecules. While all of them aim to
@@ -360,16 +362,6 @@ discriminator is trained to distinguish between real and generated data, while t
 is trained to generate samples that fool the discriminator.\@ \acp{GAN} are implicit density methods they sample from the
 model distribution, but do not provide a likelihood for a given sample. This approach has been
 combined with different generation strategies in the context of drug discovery \citep{decaoMolGANImplicitGenerative2018,kadurinDruGANAdvancedGenerative2017,guimaraesObjectiveReinforcedGenerativeAdversarial2017,mendez-lucioNovoGenerationHitlike2018,tangMolecularGenerativeAdversarial2024}
-
-% \begin{figure}
-%       \centering
-%       \includegraphics[width=\textwidth]{./figures/goal_directed_cycle_and_virtual_screening.pdf}
-%       \caption{Comparison of goal-directed generative models and virtual screening. Goal-directed
-%             generation proceeds in a loop where already scored molecules inform what molecules to
-%             test next. Virtual screening proceeds in a linear fashion, where the molecules to be
-%             tested are determined beforehand. }
-% \end{figure}
-
 
 \subsection{Goal-directed molecule generation}
 \begin{figure}

@@ -33,3 +33,6 @@
 *.log
 *.fdb_latexmk
 *.xmpi
+
+# macos
+.DS_Store
