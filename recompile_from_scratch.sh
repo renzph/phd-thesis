@@ -15,9 +15,9 @@ for ext in "${AUX_EXTENSIONS[@]}"; do
 done
 
 # Recompile the LaTeX document
-# pdflatex "$MAIN_TEX_FILE.tex"
-# biber "$MAIN_TEX_FILE" # Only if you are using BibTeX for bibliography
-# pdflatex "$MAIN_TEX_FILE.tex"
-# pdflatex "$MAIN_TEX_FILE.tex"
+pdflatex "$MAIN_TEX_FILE.tex"
+biber "$MAIN_TEX_FILE" # Only if you are using BibTeX for bibliography
+pdflatex "$MAIN_TEX_FILE.tex"
+pdflatex "$MAIN_TEX_FILE.tex"
 
-# echo "Recompilation completed."
+echo "Recompilation completed."
