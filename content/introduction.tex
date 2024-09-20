@@ -8,14 +8,13 @@ improve the efficacy of existing treatments, and respond to the emergence of new
 
 Small molecule drugs constitute the majority of medicines in use, accounting for approximately 90\%
 of global sales \citep{makurvetBiologicsVsSmall2021}. These molecules, typically defined as having a
-molecular weight of less than 900 Da \citep{todo}, offer several advantages. They are generally stable, do not
+molecular weight of less than 1,000 Da, offer several advantages. They are generally stable, do not
 require specialized storage conditions, and can be conveniently administered orally. Moreover, they
 are relatively inexpensive to produce and can be easily synthesized in large quantities
 \citep{southeyIntroductionSmallMolecule2023}.
 
-For a small molecule to be considered a viable drug candidate, it must fulfill a range of properties
-\citep{southeyIntroductionSmallMolecule2023}:
-
+% TODO find a source for this
+For a small molecule to be considered a viable drug candidate, it must fulfill a range of properties:
 \begin{itemize}
       \item \textbf{On-target activity:} The molecule must be active against the desired target to exhibit
             the intended therapeutic effect. At the molecular level, this means binding to the target and
@@ -53,7 +52,7 @@ take 12--15 years and cost estimates range between \$1.8-2.5 billion \citep{paul
             against the target in high-throughput screening. Promising hits are then modified and
             optimized to lead compounds. These lead compounds are then further optimized and tested
             in preclinical. Finally, the most promising candidates are tested in clinical trials and
-            eventually approved by regulatory agencies. Molecular design (orange box) is highly amenable to 
+            eventually approved by regulatory agencies. Molecular design (orange box) is highly amenable to
             machine learning approaches and is the primary focus of this thesis.\label{fig:drug-discovery-pipeline}}
 \end{figure}
 
@@ -101,8 +100,7 @@ The drug discovery process is usually divided into several stages \citep{todo} d
             (FDA) or the European Medicines Agency (EMA) review the comprehensive data package, including
             preclinical and clinical trial results. If the drug is deemed safe and effective, it receives
             approval for marketing and distribution.
-      \item \textbf{Post-Market Surveillance:} After regulatory approval, the drug enters the
-            market, but the process doesn't end here. Post-market surveillance, or Phase IV studies, are
+      \item \textbf{Post-Market Surveillance:} Post-market surveillance, or Phase IV studies, are
             conducted to monitor the long-term safety and efficacy of the drug in the general population.
             This stage can reveal rare side effects or long-term risks that were not apparent during
             clinical trials, and it may lead to further modifications, warnings, or even withdrawal of the
@@ -112,10 +110,13 @@ The drug discovery process is usually divided into several stages \citep{todo} d
 % TODO: Add a bit of a summary of the above here
 % General strategy
 The general strategy of this process is to start with a large number of molecules and then
-systematically reduce the number to a few candidates that are then tested in clinical trials.
-The early stages have lower per molecule costs but provide less information about the success
-chances of a molecule. The later stages are more expensive, but in the end provide accurate information
-whether a molecule is safe and effective in humans.
+systematically reduce the number to a few candidates that finally are submitted to clinical trials.
+The early stages have lower per molecule costs but higher uncertainty about the success
+chances of a molecule. The later stages are more expensive, provide more accurate information
+whether a molecule is safe and effective in humans. The early stages of the
+drug discovery process, ranging from hit discovery to lead optimization, are particularly amenable
+to computational methods, and this thesis focuses on the molecular design part of the drug discovery
+pipeline.
 
 \subsection{The Design-Make-Test-Analyze cycle}
 \begin{figure}
@@ -129,11 +130,10 @@ whether a molecule is safe and effective in humans.
             models underlying the Design stage.
             \label{fig:dmta-cycle}}
 \end{figure}
-The hit discovery, hit-to-lead and lead optimization stages (blue box in
-\Cref{fig:drug-discovery-pipeline}) usually operate in an iterative manner, resulting in a cycle of
-choosing molecules to be tested, synthesizing them, testing them in laboratory experiments and
-analyzing the results to guide the selection of the next molecule to be tested. This cycle is
-usually referred to as the \ac{DMTA}-cycle:
+The hit discovery, hit-to-lead and lead optimization stages usually operate in an iterative manner,
+resulting in a cycle of choosing molecules to be tested, synthesizing them, testing them in
+laboratory experiments and analyzing the results to guide the selection of the next molecule to be
+tested. This cycle is usually referred to as the \ac{DMTA}-cycle \citep{wesolowskiStrategiesPoliticsSuccessful2016}:
 \begin{itemize}
       \item \textbf{Design:} Under consideration of previous experimental results, the molecules to
             be tested are designed. The design generally aims to optimize the desired properties of
@@ -153,6 +153,8 @@ usually referred to as the \ac{DMTA}-cycle:
 
 % TODO: Make this about ML
 \subsection{Machine learning in drug discovery}
+Recent years have seen a surge in the application of machine learning (ML) to various stages of the
+
 Computer-aided drug design (CADD) has long been an integral part of the pharmaceutical research and
 development process. It encompasses a range of computational methods aimed at supporting and
 enhancing drug discovery. While traditional CADD approaches have proven valuable, the integration of
@@ -163,24 +165,25 @@ molecular properties and activities. ML models, trained on datasets molecular st
 associated properties, can screen chemical libraries to identify potential drug candidates, reducing
 the time and resources required for experimental testing
 
-Recent advances in deep learning have led to a surge in interested in generative models, introducing
+Recent advances in deep learning have led to a surge in interest in generative models, introducing
 new possibilities in drug discovery. These models expand the application of ML beyond property
-prediction to the creation of novel molecular structures. Two key applications of generative models
-in drug discovery are:
-
+prediction to the creation of novel molecular structures. In this thesis we focus on two key
+applications of generative models in drug discovery:
 \begin{itemize}
-      \item \textbf{De Novo Drug Design:} Generative models can create new molecular structures with specified property
-            profiles, potentially expanding the chemical space explored in drug discovery. This approach allows
-            for the generation of diverse compounds that may complement traditional design methods.
-      \item \textbf{Computer-Aided Synthesis Planning:} Generative models are being applied to propose synthetic routes
-            for target molecules, addressing a challenge in drug development. By suggesting potential synthesis
+      \item \textbf{De Novo Drug Design:} Generative models can create new molecular structures with desired property
+            profiles. This approach enables the efficient exploration of chemical space, without the need of
+            explicit enumeration large parts of chemical space.
+      \item \textbf{Computer-Aided Synthesis Planning:} Generative models are also applied to accurately model
+            chemical reactions. These models can be used to propose synthetic routes
+            for target molecules, addressing a core challenge in drug development. By suggesting potential synthesis
             pathways, these models aim to support the transition from in silico design to experimental
             realization.
 \end{itemize}
 
-The integration of generative models into the drug discovery pipeline represents a new approach,
-offering additional tools for molecular design and synthesis planning. As these technologies
-continue to develop, they may contribute to enhancing various aspects of the drug discovery process.
+These applications of generative models show promise for improving the efficiency
+of pharmaceutical research. By facilitating the design of new molecules and plan their
+synthesis, these tools may accelerate the drug development process and increase the likelihood of
+identifying successful drug candidates.
 
 \section{Generative models in drug discovery}
 \subsection{Molecular representations}
@@ -197,9 +200,9 @@ continue to develop, they may contribute to enhancing various aspects of the dru
 Molecules, though fundamentally complex quantum mechanical entities, can be represented through
 various simplified models for practical purposes. The most common representation depicts molecules
 as graphs, where atoms are nodes and chemical bonds are edges. Figure \ref{fig:molecular-graph}b
-shows a graph representation of caffeine. This graph structure captures the molecule's connectivity,
-which defines its "identity". Additional properties such as atom type or charge are
-incorporated as features of the nodes and edges. While this representation doesn't capture the full
+shows a graph representation of caffeine. This graph structure captures the molecule's atoms
+and the chemical bonds between them. Additional properties such as atom type or charge are
+incorporated as features of the nodes and edges. While this representation does not capture the full
 quantum complexity, it provides a stable and practical framework for understanding and working with
 molecular structures in many scientific and computational contexts.
 
@@ -208,11 +211,12 @@ notations. Figure \ref{fig:molecular-graph}c shows examples of various line nota
 (Simplified Molecular Input Line Entry System) \citep{weiningerSMILESChemicalLanguage1988} is a
 widely used line notation that represents molecules as strings of characters. SMILES strings encode
 the molecular graph in a human-readable format, making them convenient for storage and processing.
-SMILES strings have proven particularly valuable for generative models, as they are easily processed
+Line notations have proven particularly valuable for generative models, as they are easily processed
 by sequence-based models like recurrent neural networks (RNNs) and Transformers
-\citep{vaswaniAttentionAllYou2017}. Several extensions to SMILES have been proposed to make them
+\citep{vaswaniAttentionAllYou2017}. While SMILES strings have seen widespread adoption,
+other line notations have been proposed to make them
 more amenable for use in machine learning models. DeepSmiles
-\citep{oboyleDeepSMILESAdaptationSMILES2018} attempted to make it easier to generate syntactically
+\citep{oboyleDeepSMILESAdaptationSMILES2018} aim to make it easier to generate syntactically
 valid molecules, by changing the notation of branches and ring closures. SELFIES
 \citep{krennSELFIESFutureMolecular2022} provide a representation of molecules in which any sequence
 of tokens parses into a valid molecule. SAFE \citep{noutahiGottaBeSAFE2023} provides a
@@ -223,28 +227,36 @@ strict uniqueness and canonicalization rules.
 
 Molecules can be represented in various complex forms beyond simple graphs and strings.
 Three-dimensional structures provide a spatial description of a molecule, detailing atomic positions
-in 3D space along with information about atom types and bonds. The most comprehensive representation
-is the quantum mechanical wavefunction, which captures the full complexity of molecular behavior.
-While these more sophisticated representations are valuable for modeling a wide range of molecular
-properties and interactions, but are not covered in the rest of this thesis.
+in 3D space along with information about atom types and bonds, as shown in
+\Cref{fig:molecular-graph}. The most comprehensive representation is the quantum mechanical
+wavefunction, which captures the full complexity of molecular behavior. While these more
+detailled representations are valuable for modeling a wide range of molecular properties and
+interactions, but are not covered in the rest of this thesis.
 
 \subsection{Generation strategies}
 \begin{figure}
       \centering
       \includegraphics[width=\textwidth]{figures/generation_strategies_tryout.pdf}
+      \caption{Different approaches to generate molecules in drug discovery. \textbf{A:}
+            Sequence-based autoregressive models generate molecules by sampling one token at a time
+            conditioned on the previously sampled tokens. \textbf{B:} Graph-based autoregressive models
+            generate molecules by iteratively adding nodes and edges to the graph making use of Graph
+            Neural Networks to decide which node or edge to add next. \textbf{C:} One-shot methods
+            generate molecules in a single step by generating an adjacency matrix and node feature matrix
+            of a molecule. \textbf{D:} Rule-based models generate molecules by applying a set of
+            pre-defined graph transformation rules to iteratively combine a set of starting molecules.
+            \label{fig:generation-strategies}}
 \end{figure}
-There are several approaches to constructing up molecular graphs. These mainly depend
-on the type of model used and the representation of the molecule.
-Some of the most common approaches are shown in Figure~\ref{fig:generation-strategies} and
-described below.
+There are several approaches to constructing up molecular graphs making use of different molecular
+representations and strategies to generate molecules in that representation. These generation
+strategies can be adapted to solve different tasks by modifying the the model architecture and
+training procedure, which we describe in the following sections. Some of the most common approaches
+to molecular generation  are shown in Figure~\ref{fig:generation-strategies} and described below.
 
 \textbf{Sequence-based autoregressive models} constitute one of the most popular approaches for
 generating molecules. This approach makes use of a linearized representation of the molecule, such
-as a SMILES string. Then the model generates the molecule by sampling one token at a time,
+as a SMILES string. The model generates molecules by sampling one token at a time,
 conditioned on the previously sampled tokens, similarly to how a language model generates text.
-% The likelihood of sampling a sequence $x$ is thus modelled by $p(x; \theta) = \prod_{i=0}^n p(x_i |
-%       x_{1:i-1}; \theta)$. The  $\theta$ can then be tuned to optimize the objectives
-% described in the following sections.
 Early work by \citep{seglerGeneratingFocusedMolecule2018} and
 \citep{gomez-bombarelliAutomaticChemicalDesign2018} relied on recurrent neural networks (RNNs) to
 generate SMILES strings. This approach has since been popular and there has been work on
@@ -256,28 +268,35 @@ learning architectures such as transformers
 \citep{vaswaniAttentionAllYou2017,noutahiGottaBeSAFE2023,schwallerMolecularTransformerModel2019,bagalMolGPTMolecularGeneration2022,mazuzMoleculeGenerationUsing2023}.
 
 \textbf{Graph-based autoregressive models} work similarly to its sequence-based counterpart, but
-instead of relying on a linearization of the molecule, they work directly on the graph representation
-of the molecule. The model generates the molecular graph by iteratively adding nodes and edges to the
-graph. The model can be trained in a similar manner to the string-based models, by
-predicting the next node or edge given the current state of the graph. However, the specification of
-possible actions is more complex than in the 1D case as there is no natural ordering of the
-nodes and edges in the graph \citep{liuConstrainedGraphVariational2018,liLearningDeepGenerative2018,youGraphConvolutionalPolicy2019,cohen-karlikOvercomingOrderAutoregressive2024}.
+instead of relying on a linearization of the molecule, they work directly on the graph
+representation of the molecule. The model generates the molecular graph by iteratively adding nodes
+and edges to the graph, often relying on graph neural networks to decide which node or edge to add
+next. These models are similar to the sequence-based models described above, as they also generate
+the molecule in an autoregressive manner, but are more complex as there is no prescribed order in
+which nodes and edges are added to the graph. This approach has been used in several works in drug
+discovery
+\citep{liuConstrainedGraphVariational2018,liLearningDeepGenerative2018,youGraphConvolutionalPolicy2019,cohen-karlikOvercomingOrderAutoregressive2024}.
 
 \textbf{One-shot methods} are a class of models that generate molecules in one step, without the
-need for an iterative generation process. These models generate an adjacency matrix and node feature
-vector of a molecule in a single step. This is usually done by first generating a continous version
-of the molecule and then discretizing it to a valid molecule \citep{decaoMolGANImplicitGenerative2018,madhawaGraphNVPInvertibleFlow2019}.
+need for an iterative generation process. These models generate a node feature
+matrix encoding the atom types and an adjacency tensor encoding the connectivity and bond types
+between the atoms. This is done in a single step, without the need for an iterative generation
+process. However, usually continuous versions of the molecule are generated and then discretized to
+a valid molecule \citep{decaoMolGANImplicitGenerative2018,madhawaGraphNVPInvertibleFlow2019}.
 
 % https://www.frontiersin.org/journals/hematology/articles/10.3389/frhem.2024.1305741/full#h4
-\textbf{Rule-based models} generate molecules by applying a set of pre-defined graph transformation rules to
-combine molecular fragments. The BRICS \citep{degenArtCompilingUsing2008} method provides a set of
-molecular fragments and rules how to meaningfully combine them. This enables the generation of new
-molecules by combining these fragments. DOGS \citep{hartenfellerDOGSReactionDrivenNovo2012}
-generates molecules by applying a set of chemical reaction rules to a set of starting molecules,
-which has the advantage of biasing generation towards synthesizable molecules.\@
-\citet{jensenGraphbasedGeneticAlgorithm2019} defines graph mutation and crossover operations to
-generate new molecules. These models allow the generation of molecules that are chemically valid, or
-resemble known ``reasonable'' molecules.
+\textbf{Rule-based models} generate molecules by applying a set of pre-defined graph transformation
+rules to combine a set of starting compounds. By iteratively applying these rules, the model is able
+to generate new molecular structures. The BRICS \citep{degenArtCompilingUsing2008} method provides a
+set of molecular fragments and rules how to meaningfully combine
+them. \citet{jensenGraphbasedGeneticAlgorithm2019} defines graph mutation and crossover operations to
+generate new molecules, which are useful in the context of molecule optimization. Transformation
+rules are well suited to describe chemical reactions. The DOGS method
+\citep{hartenfellerDOGSReactionDrivenNovo2012} generates new molecules by applying chemical reaction
+rules to a set of starting molecules, which allows the generation of new molecules with known
+synthetic routes. Rule-based approaches are also widely used in predicting the outcome of chemical
+reactions
+\citep{seglerNeuralSymbolicMachineLearning2017,seglerPlanningChemicalSyntheses2018,fortunatoDataAugmentationPretraining2020}.
 
 
 \subsection{Distribution-learning}
@@ -293,8 +312,8 @@ resemble known ``reasonable'' molecules.
 % Whats distribution learning
 Distribution-learning is a fundamental application of generative models in drug design. Its
 objective is to create a model that accurately captures the distribution of molecules within a
-dataset. Formally, the model learns a distribution $q(x)$ that approximates the true distribution
-$p(x)$ of molecules in a dataset. This approach enables the model to grasp both the syntax and semantics of the
+dataset. The model can then be used to generate new molecules that are similar to those in the
+dataset. This approach enables the model to grasp both the syntax and semantics of the
 molecules in the data. These models can be trained on large chemical libraries of stable
 molecules, PubChem \citep{kimPubChemSubstanceCompound2016}, ChEMBL \citep{bentoChEMBLBioactivityDatabase2014} or
 ZINC \citep{irwinZINCFreeTool2012}. Using this process the resulting models can learn what reasonable molecules look like
@@ -305,62 +324,64 @@ goal-directed generation, which we will explore in the subsequent section.
 In recent years there has been a surge in interest distribution-learning models based on deep neural
 networks. Many architectures and training strategies originally proposed for text and image
 generation have been adapted and specialized to generate molecules. While all of them aim to
-approximate $p(x)$, they differ in the way they model the distribution and the choice of molecular
-representation.
+approximate the data distribution, they differ in the way they model the distribution and the choice
+of molecular representation.
 
-\paragraph{Autoregressive models} can be directly trained using a maximum likelihood approach by
-minimizing the cross entropy or \ac{NLL} of the training data
-\begin{align}
-      \mathcal{L} = - \mathbb{E}_{x \sim p(x)} \log q(x) \approx - \frac{1}{N} \sum_{i=1}^N \log q(x_i),
-\end{align}
-where $q(x)$ is the model distribution and $p(x)$ is the true distribution of the data. These models
-are explicit density models, as the likelihood for a given molecule can be calculated exactly.
-Autoregressive models form the backbone of many generative models in drug discovery
-\citep{gomez-bombarelliAutomaticChemicalDesign2018,seglerGeneratingFocusedMolecule2018,olivecronaMolecularDenovoDesign2017,guoAugmentedMemoryCapitalizing2023,thomasAugmentedHillClimbIncreases2022,jaquesSequenceTutorConservative2016,cohen-karlikOvercomingOrderAutoregressive2024,}
+\paragraph{Autoregressive models} make use of the chain rule of probability to factorize the
+likelihood of a molecule into a product of conditional probabilities of the individual tokens in the
+molecule. The model is trained maximizing the likelihood of the training data with respect to the
+model parameters. Autoregressive models are explicit density models, as the likelihood of sampling a
+molecule can be calculated exactly, which facilitates model evaluation. Models trained in this way
+form the backbone of many generative models in drug discovery
+\citep{gomez-bombarelliAutomaticChemicalDesign2018,seglerGeneratingFocusedMolecule2018,olivecronaMolecularDenovoDesign2017,guoAugmentedMemoryCapitalizing2023,thomasAugmentedHillClimbIncreases2022,jaquesSequenceTutorConservative2016,cohen-karlikOvercomingOrderAutoregressive2024}.
 
 \paragraph{Variational autoencoders} (VAEs) \citep{kingmaAutoEncodingVariationalBayes2013} generate molecules by first
-sampling from a simple latent distribution $p(z)$, and then mapping the samples to molecular space
-via a probabilistic decoder network $p(x|z)$. To make training tractable a second network, the
-encoder network $q(z|x)$ is used to map the data to the latent space. The model is then trained to
-maximize the evidence lower bound (ELBO) of the data
-\begin{align}
-      \log p(x) \geq \mathbb{E}_{q(z|x)}[\log p(x|z)] - \text{KL}(q(z|x) || p(z)),
-\end{align}
-where KL is the Kullback-Leibler divergence. This model has the advantage of providing a continuous
-latent space, which can be used to interpolate between molecules and allows the use continuous
-optimization algorithms in latent space. VAEs belong in the class of approximate density models, as
-the likelihood of a given molecule can be calculated approximately via monte carlo sampling. VAEs
-have been a popular choice for generating molecules
+sampling from a simple latent distribution and then mapping the samples to molecular space
+via a probabilistic decoder network. To make training tractable a second network, the
+encoder network is used to map the data to the latent space. The model is then trained to
+maximize the evidence lower bound (ELBO) of the data.
+% \begin{align}
+%       \log p(x) \geq \mathbb{E}_{q(z|x)}[\log p(x|z)] - \text{KL}(q(z|x) || p(z)),
+% \end{align}
+% where KL is the Kullback-Leibler divergence.
+This model has the advantage of providing a continuous latent space, which can be used to
+interpolate between molecules and allows the use continuous optimization algorithms for molecule
+optimization. VAEs belong in the class of approximate density models, as the likelihood of a given
+molecule can be calculated approximately via Monte Carlo sampling. VAEs have been a popular choice
+for generating molecules
 \citep{gomez-bombarelliAutomaticChemicalDesign2018,kusnerGrammarVariationalAutoencoder2017,simonovskyGraphVAEGenerationSmall2018,samantaNeVAEDeepGenerative2018,jinJunctionTreeVariational2018,daiSyntaxDirectedVariationalAutoencoder2018,liuConstrainedGraphVariational2018}.
 
-
 % moflow, graphnvp (has nice discussion on one-shot generation)
-\paragraph{Generative flows} \citep{rezendeVariationalInferenceNormalizing2016} are based on the idea of learning a bijective mapping between molecular
-space and a latent space. Generative flows transform from a simple distribution $p(z)$ in latent space
-to a distribution in chemical space, p(x), via a bijective mapping $f: z \rightarrow x$.
-The likelihood of the training data can then be directly calculated and optimized
-via the change of variables formula:
-\begin{align}
-      p_x(x) = p_z(f^{-1}(x)) \left|
-      \det \left[
-      \left. \frac{\partial f^{-1}(v)}{\partial v} \right|_{v=x}
-      \right]
-      \right|.
-\end{align}
-Originally generative flows have been proposed for continuous data, but have been adapted to
-discrete data such as molecules by using a continuous relaxation of the molecule
-\citep{madhawaGraphNVPInvertibleFlow2019}. These models also belong to the class of explicit density
-models, as the likelihood of a given molecule can be calculated exactly.
+\paragraph{Generative flows} \citep{rezendeVariationalInferenceNormalizing2016} are based on the
+idea of learning a bijective mapping between molecular space and a latent space. Generative flows
+transform a simple latent space distribution to the data distribution via a sequence of invertible
+transformations parameterized by neural networks. This makes it possible to calculate the likelihood
+of a given molecule using the change of variables formula of probability. Similarly to
+autoregressive models, generative flows are explicit density models, and are optimized by maximizing
+the likelihood of the training data. Originally generative flows have been proposed for continuous
+data, but have been adapted to discrete data such as molecules by using a continuous relaxation of
+the molecule \citep{madhawaGraphNVPInvertibleFlow2019}. These models also belong to the class of
+explicit density models, as the likelihood of a given molecule can be calculated exactly.
+% p(x), via a bijective mapping $f: z \rightarrow x$. The likelihood of the training data can then be
+% directly calculated and optimized via the change of variables formula:
+% \begin{align}
+%       p_x(x) = p_z(f^{-1}(x)) \left|
+%       \det \left[
+%       \left. \frac{\partial f^{-1}(v)}{\partial v} \right|_{v=x}
+%       \right]
+%       \right|.
+% \end{align}
 
 % molgan
 \textbf{Generative adversarial networks} (GANs) \citep{goodfellowGenerativeAdversarialNetworks2014}
 are latent space models that map a simple distribution in latent space to molecular space, but rely
 on a game-theoretic approach to training. A generator network is trained to generate data, which is
 then fed to a discriminator network. The two networks then engage in a minimax game, where the
-discriminator is trained to distinguish between real and generated data, while the generator
-is trained to generate samples that fool the discriminator.\@ \acp{GAN} are implicit density methods they sample from the
-model distribution, but do not provide a likelihood for a given sample. This approach has been
-combined with different generation strategies in the context of drug discovery \citep{decaoMolGANImplicitGenerative2018,kadurinDruGANAdvancedGenerative2017,guimaraesObjectiveReinforcedGenerativeAdversarial2017,mendez-lucioNovoGenerationHitlike2018,tangMolecularGenerativeAdversarial2024}
+discriminator is trained to distinguish between real and generated data, while the generator is
+trained to generate samples that fool the discriminator.\@ GANs are implicit density methods they
+sample from the model distribution, but do not provide a likelihood for a given sample. This
+approach has been combined with different generation strategies in the context of drug discovery
+\citep{decaoMolGANImplicitGenerative2018,kadurinDruGANAdvancedGenerative2017,guimaraesObjectiveReinforcedGenerativeAdversarial2017,mendez-lucioNovoGenerationHitlike2018,tangMolecularGenerativeAdversarial2024}.
 
 \subsection{Goal-directed molecule generation}
 \begin{figure}
@@ -374,25 +395,32 @@ combined with different generation strategies in the context of drug discovery \
             and is likely to miss high-scoring regions of chemical space. \label{fig:goal-directed-generation}}
 \end{figure}
 
-% TODO: Add figure with different goal directed strategies
+% Whats goal-directed generation
 Goal-directed molecule generation \citep{schneiderNovoMolecularDesign2013} is a computational
-approach for automatically designing molecules with desired property profiles. Goal-directed
-generation expands upon \ac{VS}, a method in which a library of molecules is ranked according to the
-output of a \ac{QSPR} model.\ \citet{waltersVirtualChemicalLibraries2019} estimates that
-approximately $10^{13}$ molecules can be routinely tested in a \ac{VS} experiment. While this number
-can vary significantly depending on the computational cost of running the \ac{QSPR} model, it is
-dwarfed by the size of drug-like chemical space, which is estimated to contain between $10^{30}$ and
-$10^{60}$ molecules \citep{waltersVirtualChemicalLibraries2019,ruddigkeitEnumeration166Billion2012}.
+approach for automatically designing molecules with desired property profiles. The desired
+property profile can be a single molecular property or a combination of multiple properties. In
+this thesis we assume that we are given a scoring function which assigns a score to each molecule
+based on whether it satisfies the desired property profile. The goal of goal-directed generation is
+to find molecules with the highest possible score.
+
+% Difference to VS
+Goal-directed generation expands upon \ac{VS}, which searches for molecules with the desired profile
+in a library of molecules.\ \citet{waltersVirtualChemicalLibraries2019} estimates that approximately
+$10^{13}$ molecules can be routinely tested in a \ac{VS} experiment. While this number can vary
+significantly depending on the computational cost of running the \ac{QSPR} model, it is dwarfed by
+the size of drug-like chemical space, which is estimated to contain between $10^{30}$ and $10^{60}$
+molecules \citep{waltersVirtualChemicalLibraries2019,ruddigkeitEnumeration166Billion2012}.
 Consequently, \ac{VS} is limited to exploring only a small fraction of chemical space and cannot
 fully leverage the vast number of possible candidates that drug-like chemical space offers.
 
 % How does DNDD help
 Goal-directed generators address this limitation of \ac{VS} by focusing the search on the most
 relevant parts of chemical space. In contrast to the random search approach taken by \ac{VS},
-goal-directed generators act more like optimizers that are able to efficiently locate maxima. This
-is achieved by an iterative process in which a model generates a set of molecules, which are then
-scored by a \ac{QSPR} model. These scores are then used to update the model, shifting the sampling
-distribution to regions of chemical space with higher scores.
+goal-directed generators act more like optimizers that are able to efficiently locate maxima as
+illustrated in \Cref{fig:goal-directed-generation}. This is achieved by an iterative process in
+which a model generates a set of molecules, which are then scored by a \ac{QSPR} model. These scores
+are then used to update the model, shifting the sampling distribution to regions of chemical space
+with higher scores.
 
 Recently, there has been a surge of deep learning-based goal-directed generators
 \citep{eltonDeepLearningMolecular2019,sanchez-lengelingInverseMolecularDesign2018,duMachineLearningaidedGenerative2024}.
@@ -409,15 +437,16 @@ Some of the most commonly used approaches to goal-directed molecular generation 
       \item \textbf{Hill-climbing}
             \citep{seglerGeneratingFocusedMolecule2018,xieMARSMarkovMolecular2021,thomasAugmentedHillClimbIncreases2022}
             is a simple optimization algorithm that relies on an underlying distribution-learning model.
-            Molecules are sampled from the model's learned distribution and their scores are evaluated.
+            Molecules are sampled from the model's distribution and their scores are evaluated.
             The model is then retrained on the top-scoring molecules and the process is repeated.
-      \item \textbf{Reinforcement learning} uses the molecule scores as a reward signal to update
+      \item \textbf{Reinforcement learning} uses the scores of generated molecules as a reward signal to update
             the model distribution. This is achieved through methods based on the REINFORCE algorithm
             \citep{williamsSimpleStatisticalGradientfollowing1992} which allows to update the model
             distribution in a way that increases expected scores of the generated molecules
             \citep{olivecronaMolecularDenovoDesign2017,thomasAugmentedHillClimbIncreases2022,youGraphConvolutionalPolicy2019,guoAugmentedMemoryCapitalizing2023}.
       \item \textbf{Genetic algorithms} in molecular generation operate by evolving an initial
-            population of molecules through iterative cycles of mutation, crossover, and selection \citep{jensenGraphbasedGeneticAlgorithm2019,nigamGenerativeModelsSuperfast2021,yoshikawaPopulationbasedNovoMolecule2018}.
+            population of molecules through iterative cycles of mutation, crossover, and selection
+            \citep{jensenGraphbasedGeneticAlgorithm2019,nigamGenerativeModelsSuperfast2021,yoshikawaPopulationbasedNovoMolecule2018}.
             Starting from an initial set of molecules, new molecules are generated by applying
             mutation and crossover operations. The molecules are then scored, and the best ones are
             selected for the next generation. This process is repeated for multiple generations,
@@ -428,7 +457,9 @@ Some of the most commonly used approaches to goal-directed molecular generation 
       \item \textbf{Continuous optimization} employ classical optimization algorithms in the continuous
             latent space of (variational) autoencoders
             \citep{gomez-bombarelliAutomaticChemicalDesign2018,kusnerGrammarVariationalAutoencoder2017,winterEfficientMultiobjectiveMolecular2019}
-            or generative flows \citep{madhawaGraphNVPInvertibleFlow2019}.
+            or generative flows \citep{madhawaGraphNVPInvertibleFlow2019}. If the scoring function can
+            be evaluated in the continuous space, these methods can be used to directly optimize the
+            molecular properties, without the need for sampling the molecular graph.
       \item \textbf{Generative Flow Networks} \citep{bengioFlowNetworkBased2021} aim to generate
             molecules with probability proportional to their score. This method relies on an
             iterative generation process and models chemical space as a directed acyclic graph, with
@@ -440,6 +471,11 @@ Some of the most commonly used approaches to goal-directed molecular generation 
 \end{itemize}
 
 \subsection{Challenges in Evaluating Generative Models in de Novo Design}
+The evaluation of generative models is a challenging task, as generative tasks usually allow for a
+range of valid solutions. This often makes it hard to define a single ground truth, on which model
+evaluation usually relies on. In this section we discuss some of the challenges in evaluating
+generative models in the context of de novo design.
+
 \subsubsection{Evaluation of distribution-learning models}
 The most basic and commonly used checks to assess the quality of the generated compounds are the
 validity, uniqueness and novelty of the generated molecules. A molecule is valid if it obeys
@@ -449,18 +485,17 @@ fraction of unique molecules in the set and can flag models that output many dup
 a set of generated molecules is the fraction of molecules that are not in the training set and can,
 to a certain extent, detect whether a model overfits to the training set.
 
-A variety approaches exist to assess how well a model can learn the distribution of the training
-set. Explicit/approximate density models allow principled evaluation using the negative
-log-likelihood on a hold-out test set. However, this is not applicable for implicit density models
-such as GANs. The KL-divergence between the distributions of scalar molecular properties (e.g.
-molecular weight, logP, ...) of the generated molecules and the training set is a commonly used
-metric to evaluate the distribution fit \citep{brownGuacaMolBenchmarkingModels2019}, but is usually
-determined using a limited number of properties. The Frechet ChemNet Distance (FCD)
+A variety of approaches exists to assess how well a model can learn the distribution of the training
+set. Explicit/approximate density models allow principled evaluation based on the likelihood on a
+hold-out test set. However, this is not applicable for implicit density models such as GANs. The
+KL-divergence between the distributions of scalar molecular properties (e.g. molecular weight or
+logP) of the generated molecules and the training set is a commonly used metric to evaluate the
+distribution fit \citep{brownGuacaMolBenchmarkingModels2019}, but is usually determined using a
+limited number of properties. The Frechet ChemNet Distance (FCD)
 \citep{preuerFrechetChemNetDistance2018} provides a more comprehensive check of the distribution
 fit. The FCD compares the distributions of the activations of a neural network trained to predict
-bioactivities. The Frechet distance between the distributions of the activations of the generated
-molecules has been shown to be sensitive to distributional differences in many different molecular
-properties.
+bioactivities and has been shown to be sensitive to distributional differences in many different
+molecular properties.
 
 The MOSES \citep{polykovskiyMolecularSetsMOSES2020} and GuacaMol
 \citep{brownGuacaMolBenchmarkingModels2019} benchmarks provide standardized frameworks for
@@ -469,48 +504,41 @@ progress in assessment methodology, questions remain about their comprehensivene
 fully capture the complexities of molecular generation tasks in drug discovery contexts.
 
 \subsubsection{Goal-directed optimization of ML-based scoring functions}
-Scoring functions based on machine learning models are commonly used in goal-directed generation
-tasks \citep{todo}. The fact that such machine learning models are trained on limited amounts of
-experimental data, adds additional aspects to a proper model evaluation. In this setting there
-already are known molecules with high scores which are  used to train the scoring function. The task
-thus becomes to find \emph{novel} high-scoring molecules using the ML model's generalization
-capabilities. However, the machine learning models are often biased towards their training data,
-which might lead to a lack of novelty in the generated molecules. It is not clear whether
-this actually leads to a lack of novelty and how to quantify such biases.
+Machine learning models have shown promise in predicting molecular properties
+\citep{mayrDeepToxToxicityPrediction2016,klambauerMachineLearningDrug2019,vamathevanApplicationsMachineLearning2019,chenRiseDeepLearning2018,stokesDeepLearningApproach2020},
+which makes them an often used target in goal-directed generation. However, the fact that such
+machine learning models are trained on limited amounts of experimental data, adds additional aspects
+to a proper model evaluation. In this setting there already are known molecules with high scores
+that were used to train the scoring function. The task thus becomes to find \emph{novel}
+high-scoring molecules that differ from the training data. Machine learning models, however, are
+often biased towards their training data, which might lead to a lack of novelty in the generated
+molecules. The extent of this bias and its impact on molecular novelty and how to quantify it
+remains an open question.
 
-Another issue is that optimizing an ML model's output with respect to its input can lead to
-unexpected problems. Research has demonstrated that samples generated through this optimization
-process can incorrectly receive high scores from the model, as shown in
-\citep{szegedyIntriguingPropertiesNeural2014,goodfellowExplainingHarnessingAdversarial2015}. This
-phenomenon occurs because discriminative models don't necessarily learn all characteristics of
-high-scoring samples to perform classification. Instead, they often rely on a limited set of
-correlations between the input sample and the target property.
+Furthermore, it has been shown that optimizing an ML model's output with respect to its input can
+lead to generated samples that incorrectly receive high scores from the model
+\citep{szegedyIntriguingPropertiesNeural2014,goodfellowExplainingHarnessingAdversarial2015}.
+This can happen when the optimization leaves the applicability domain of the model, where
+the scoring function is no longer reliable but scores can still be high. Especially for scoring
+functions trained on small datasets, the probability that the model drifts outside the applicability
+domain is high. Overall this can lead to the generation of high-scoring molecules that are not
+actually useful in practice.
 
-Consequently, the model may classify
-certain samples as high-scoring, even though they wouldn't actually score highly in reality. While
-this effect was readily detectable in the image domain, where human vision can easily provide ground
-truth evaluation, it's more challenging to identify in molecular optimization. It remains unclear
-whether this issue extends to the context of goal-directed molecule generation and how to
-quantitatively assess its impact in this field.
-
-% The generated molecules may be outside the applicability domain of the scoring function, in which
-% case the scores might become uninformative. In this case wet-lab validation is necessary to assess
-% the quality of the generated molecules. While initially rare
-% \citep{merkNovoDesignBioactive2018,merkTuningArtificialIntelligence2018} these early studies have
-% since been complemented by more recent studies \citep{duMachineLearningaidedGenerative2024}.
-% However, due to the cost of the training data, in-silico validation is still wide-spread in the
-% literature.
+While this effect was initially studied in the image domain, where human vision can easily provide
+ground truth evaluation, it is more challenging to identify this effect in molecular optimization.
+It remains unclear whether this issue extends to the context of goal-directed molecule generation
+and how to quantitatively assess it.
 
 \subsubsection{Diversity of generated molecules}
-The diversity of the generated molecules is an important aspect in the application of goal-directed
-generative models
-\citep{martinDiverseViewpointsComputational2001,gorseDiversityMedicinalChemistry2006}. The used
-scoring functions are usually only imperfect and incomplete approximations of the desired
-properties. Given the expected failure of some of the candidates in later experiments, it is
-important to generate diverse sets of molecules. Diversity encourages uncorrelated outcomes in
-downstream experiments, which increases the chances of finding a successful candidate. In essence, a
-varied molecular portfolio serves as a hedge against the inherent uncertainties in the modeling and
-experimental processes.
+Generating diverse sets of high scoring molecules can increase the success chances of a drug
+discovery project
+\citep{martinDiverseViewpointsComputational2001,gorseDiversityMedicinalChemistry2006}. Having
+multiple high-scoring molecules provides some insurance against the uncertainties and incompleteness
+of the scoring function. Given that it is expected that some of the generated molecules will fail in
+downstream testing, it is important to have a multitude of candidates. Diversity among those encourages
+uncorrelated outcomes in downstream testing, which increases the chances of finding at least one
+successful candidate. In essence, a varied molecular portfolio serves as a hedge against the
+inherent uncertainties in the modeling and experimental outcomes.
 
 % Bad diversity metrics
 The concept of diversity in molecular generation is complex, with its measurement depending on the
@@ -532,7 +560,7 @@ the question of how well different approaches perform in generating diverse, hig
 \subsubsection{Standardized Computational Resources}
 A frequently neglected aspect in evaluating goal-directed models is the use of standardized
 computational resources. At its core, optimizing molecular properties is a search problem
-that—given unlimited resources—can be solved through exhaustive enumeration of the chemical space.
+that—given unlimited resources—can be solved through exhaustive enumeration of drug-like chemical space.
 Consequently, the primary challenge in goal-directed generation lies in identifying high-scoring molecules
 while minimizing resource consumption.
 
@@ -542,16 +570,21 @@ potentially leading to biased comparisons. For instance, some algorithms might r
 weeks, while others operate for mere minutes or hours. Recently, this issue has gained increased
 attention, after \citep{gaoSampleEfficiencyMatters2022} proposed a benchmark that measures
 the sample efficiency of goal-directed generation algorithms. Other researchers have adapted to this approach
-\citep{thomasReevaluatingSampleEfficiency2022,thomasAugmentedHillClimbIncreases2022,guoAugmentedMemoryCapitalizing2023}.
+\citep{thomasReevaluatingSampleEfficiency2022,thomasAugmentedHillClimbIncreases2022,guoAugmentedMemoryCapitalizing2023},
+putting a stronger emphasis on controlling for computational budgets.
 
-% Whats missing 
-Both of these aspects remain underexplored in the literature especially in the context of finding
-diverse high-scoring molecules.
+However, sample efficiency is most relevant when using scoring functions that are expensive to
+evaluate. In many cases, the cost of evaluating the scoring function is on the same order of
+magnitude or smaller than the cost of generating the molecules. In this case, the computational
+budget needs to account for both the generation and scoring of molecules. Consequently, there is a
+need for a more comprehensive evaluation framework for goal-directed generation models that controls
+for various types of computational budgets, especially in the context of finding diverse high-scoring
+molecules.
 
 % Cross check with the paper
 \subsection{Retrosynthesis prediction}
 % Add figure of search tree 
-Drug candidates, whether designed by generative models or other means, eventually need to be
+Drug candidates, whether designed by generative models or other means, need to be
 synthesized for testing and eventually for use in patients. However, finding a synthesis route for a
 given molecule can be a complex and time-consuming process. \Ac{CASP} methods help
 chemists to find synthesis routes, enabling synthesis of previously inaccessible molecules or making
@@ -563,14 +596,14 @@ recursively deconstructs the target molecule into simpler precursors until they 
 starting materials. At each step, single-step retrosynthesis prediction models suggest sets of
 reactants that could theoretically combine to produce the current (intermediate) target molecule.
 The success of retrosynthesis planning hinges on highly accurate chemical reaction models, as these
-ensure that the proposed synthetic routes are feasible in laboratory conditions.
+ensure that the proposed synthetic routes are actually feasible.
 
 Early work in retrosynthesis prediction relied on carefully curated expert rules  encoding
 possible reactions. Recently, machine learning models that learn the patterns of chemical reactions
 from examples stored in reaction databases have received increased attention
 \citep{coleyMachineLearningComputerAided2018}. One line of work relies on sequence-to-sequence
-SMILES strings of reactants given that of the product, using models
-originally developed for machine translation
+originally developed for machine translation, to predict the SMILES strings of reactants given the
+that of the target molecule
 \citep{schwallerMolecularTransformerModel2019,namLinkingNeuralMachine2016,schwallerFoundTranslationPredicting2018,karpovTransformerModelRetrosynthesis2019,tetkoStateoftheartAugmentedNLP2020}.
 Another set of approaches exploit the fact that connectivity in a reaction is often preserved, and
 use graph neural networks to edit the connectivity of the target molecule in order to yield possible
@@ -579,9 +612,9 @@ reactants \citep{sachaMoleculeEditGraph2020,shiGraphGraphsFramework2020,somnathL
 Template-based methods represent another approach to retrosynthesis prediction
 \citep{seglerNeuralSymbolicMachineLearning2017,seglerPlanningChemicalSyntheses2018,daiRetrosynthesisPredictionConditional2020,sunEnergybasedViewRetrosynthesis2020}.
 These models first extract a set of graph transformation rules, or templates, from a large reaction
-database. These templates encode common reaction patterns. Given a target molecule ranks the
-templates based on their likelihood of producing a feasible reaction. Finally, the highest-ranked
-templates are applied to the target to yield sets of reactants.
+database, which encode reaction patterns. Given a target molecule template-based models rank the
+available templates based on their predicted likelihood of producing a feasible reaction.
+This results in a ranked list of possible reactions, which can be used to suggest synthesis routes.
 
 While template-based methods have shown excellent performance in retrosynthesis prediction, they
 face challenges with rare templates. Template extraction often leads to many templates being
@@ -610,33 +643,33 @@ The control scores are obtained by retraining the scoring function on a hold-out
 data or using a different random initialization.
 
 We show that the generated molecules are biased towards the high-scoring molecules in the training
-set, which might lead to a lack of novelty in the generated molecules. We also show that the
-generative models are able to overfit to the scoring function's random initialization.
-This might lead to an overestimation of the models' performance and might lead to the generation of
-molecules that are not high-scoring in reality. The proposed control scores serve as a diagnostic
-tool to detect these issues. \Cref{sec:failure-modes} reprints the corresponding publication.
+set, which leads to a lack of novelty in the generated molecules. We also show that the generative
+models are able to overfit to the scoring function's random initialization. This might lead to the
+generation of molecules that wrongly receive high scores from the scoring function, leading to an
+overestimation of the models' performance. The proposed control scores serve as a diagnostic tool to
+detect these issues. \Cref{sec:failure-modes} reprints the corresponding publication.
 
 \subsection{Diversity-based comparison of goal-directed generators\label{sec:divopt}} In
-\citep{renzDiverseHitsNovo2024} we introduce a benchmark for diverse optimization
-that addresses the above-mentioned issues. In this benchmark, we evaluate the diversity of the
-generated molecules using a recently proposed diversity metric \#Circles
-\citep{xieHowMuchSpace2023}. We compare the performance of diverse optimization approaches under two
-different compute budgets, namely a fixed number of scoring function evaluations and a fixed time
-budget. The first setting is relevant for applications where the cost of evaluating the scoring
-function dominates the optimization process, while the second setting is relevant for scoring
-functions that are cheap to evaluate. Using this setup we test 14 goal-directed optimization methods
-and show how SMILES-based auto-regressive models dominate the benchmark. \Cref{sec:diverse-hits}
-reprints the corresponding publication.
+\citep{renzDiverseHitsNovo2024} we introduce a benchmark for diverse optimization that addresses the
+above-mentioned issues. In this benchmark, we evaluate the diversity of the generated molecules
+using a recently proposed diversity metric \#Circles \citep{xieHowMuchSpace2023}. We compare the
+performance of diverse optimization approaches under two different compute budgets, namely a fixed
+number of scoring function evaluations and a fixed time budget. The first setting is relevant for
+applications where the cost of evaluating the scoring function dominates the optimization process,
+while the second setting is relevant for scoring functions that are relatively cheap to evaluate.
+Using this setup we test 14 goal-directed optimization methods and show how SMILES-based
+auto-regressive models dominate the benchmark. \Cref{sec:diverse-hits} reprints the corresponding
+publication.
 
 \subsection{Improving few-shot and zero-shot retrosynthesis prediction}
 In \citep{seidlImprovingFewZeroShot2022} we propose a novel approach to template-based
 retrosynthesis prediction. We use a multimodal learning approach that learns to associate relevant
 templates to product molecules using a Modern Hopfield Network
-\citep{ramsauerHopfieldNetworksAll2020}. Our model can leverage structural information about the
-templates and can make use of similarities between them. This allows for improved generalization,
-especially for templates with few training samples and even for unseen templates. This model is
-several times faster than comparable methods and shows good predictive performance.
-\Cref{sec:mhn-react} reprints the corresponding publication.
+\citep{ramsauerHopfieldNetworksAll2020}. In contrast to previous template-based methods, our model
+processes the structure of templates and can make use of similarities between them. This allows for
+improved generalization, especially for templates with few training samples and even for unseen
+templates. This model is several times faster than comparable methods and shows good predictive
+performance. \Cref{sec:mhn-react} reprints the corresponding publication.
 
 \section{List of publications\label{sec:publications}} This thesis comprises the work published in
 the following papers:
