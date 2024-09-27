@@ -24,7 +24,7 @@
     % total={6in, 9in}
 ]{scrreprt}%
 
-\usepackage[a4paper, top=3cm, bottom=3cm, left=4cm, right=2cm]{geometry} % Adjust margins as needed
+
 
 
 % config for titlepage
@@ -42,6 +42,7 @@
 % \usepackage[english]{babel}
 \usepackage[absolute]{textpos}
 \usepackage{amsmath,siunitx}
+\usepackage[format=plain]{caption}
 
 % \usepackage[onehalfspacing]{setspace}
 % \usepackage[section]{placeins} %\FloatBarrier
@@ -49,6 +50,9 @@
 \usepackage{enumitem}
 \usepackage{subfiles}
 \usepackage{cleveref}
+
+% \usepackage[a4paper top=3cm, bottom=3cm, left=0cm, right=2cm, margin=3cm]{geometry} % Adjust margins as needed
+\usepackage[margin=3.5cm, bottom=4cm, top=4cm]{geometry} % Adjust margins as needed
 
 \usepackage[
     natbib=true,
@@ -72,8 +76,6 @@
     }
 \DeclareNameAlias{sortname}{family-given}
 \addbibresource{references_zotero.bib}
-
-
 
 
 \usepackage{pdfpages}
