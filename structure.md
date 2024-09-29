@@ -1,11 +1,10 @@
-
-
 # Advancing Evaluation of Generative Models for Molecules and Deep Learning for Reaction Prediction
 
-## Introduction
-### Machine learning in drug discovery
-#### Generative models for molecules
-#### Reaction prediction
+# Small molecule drug discovery
+- Small molecule drugs: What do we want and why is it important.
+- The drug discovery pipeline: General overview of the drug discovery process.
+- The DMTA cycle: What does the drug discovery pipeline contain in the middle of the process
+
 
 # Publications
 ## On Failure Modes in Molecule Generation and Optimization

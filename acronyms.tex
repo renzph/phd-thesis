@@ -1,5 +1,13 @@
+% # load the acronyms package with no italics
 \usepackage{acro}
-\acsetup{list/display=all}
+\acsetup{
+  format/first-long = \textup,
+  format/long = \textup,
+  format/short = \textup,
+  format/alt = \textup
+}
+
+
 \DeclareAcronym{CADD}{
   short = CADD,
   long = computer-aided drug design,
@@ -24,6 +32,14 @@
   short = DL,
   long = deep learning,
 }
+\DeclareAcronym{RNN}{
+  short = RNN,
+  long = recurrent neural network,
+}
+\DeclareAcronym{GNN}{
+  short = GNN,
+  long = graph neural network,
+}
 \DeclareAcronym{QSPR}{
   short = QSPR,
   long = quantitative structure-property relationship,
@@ -43,11 +59,17 @@
 \DeclareAcronym{VAE}{
   short = VAE,
   long = variational autoencoder,
+  first-long-format=\textbf,
 }
 % \acrodefplural{VAE}[VAEs]{variational autoencoders}
 \DeclareAcronym{GAN}{
   short = GAN,
   long = generative adversarial network,
+  first-long-format=\textbf,
+}
+\DeclareAcronym{FCD}{
+  short = FCD,
+  long = Frechet ChemNet Distance,
 }
 
 \DeclareAcronym{CASP}{
@@ -63,4 +85,28 @@
 \DeclareAcronym{SMILES}{
   short = SMILES,
   long = simplified molecular input line entry system,
+}
+
+\DeclareAcronym{ADME}{
+  short = ADME,
+  long = {absorption, distribution, metabolism, and excretion},
+}
+
+\DeclareAcronym{FDA}{
+  short = FDA,
+  long = Food and Drug Administration,
+}
+
+\DeclareAcronym{EMA}{
+  short = EMA,
+  long = European Medicines Agency,
+}
+
+\DeclareAcronym{ELBO}{
+  short = ELBO,
+  long = evidence lower bound,
+}
+\DeclareAcronym{SEDiv}{
+  short = SEDiv,
+  long = sphere exclusion diversity,
 }

@@ -16,8 +16,8 @@ are relatively inexpensive to produce and can be easily synthesized in large qua
 % TODO find a source for this
 For a small molecule to be considered a viable drug candidate, it must fulfill a range of properties:
 \begin{itemize}
-      \item \textbf{On-target activity:} The molecule must be active against the desired target to exhibit
-            the intended therapeutic effect. At the molecular level, this means binding to the target and
+      \item \textbf{On-target activity:} The molecule must be active against the desired biological target to exhibit
+            the intended therapeutic effect. At the molecular level, this means binding to the target or
             modulating its activity in the desired manner.
       \item \textbf{Specificity:} The molecule should demonstrate high specificity, selectively
             interacting with the intended target while minimizing undesirable off-target interactions. Such
@@ -41,9 +41,10 @@ consideration in the pharmaceutical industry.
 
 The primary challenge in drug discovery lies in identifying a molecule that satisfies all these
 criteria simultaneously. The development of a new drug is a complex and expensive process, which can
-take 12--15 years and cost estimates range between \$1.8-2.5 billion \citep{paulHowImproveProductivity2010,dimasiInnovationPharmaceuticalIndustry2016}.
+take 12--15 years and cost estimates range between \$1.8-2.5 billion \citep{hughesPrinciplesEarlyDrug2011,paulHowImproveProductivity2010,dimasiInnovationPharmaceuticalIndustry2016}.
 
 \subsection{The drug discovery pipeline}
+% TODO: get rid of orange box
 \begin{figure}
       \centering
       \includegraphics[width=\textwidth]{figures/drug-discovery-pipeline_v2.pdf}
@@ -54,50 +55,56 @@ take 12--15 years and cost estimates range between \$1.8-2.5 billion \citep{paul
             experimental testing.\label{fig:drug-discovery-pipeline}}.
 \end{figure}
 
-The drug discovery process is usually divided into several stages \citep{todo} depicted in
-\Cref{fig:drug-discovery-pipeline} and described below.
-
+The drug discovery process typically comprises several distinct stages. We outline the stages
+described in \citet{hughesPrinciplesEarlyDrug2011} and \citep{umscheidKeyConceptsClinical2011} here and illustrate them in \Cref{fig:drug-discovery-pipeline}:
 \begin{itemize}
-      \item \textbf{Target Identification and Validation:} The drug discovery process begins with the
-            identification of a biological target, which is usually a molecule, protein, or gene involved
-            in a disease pathway. Understanding the target's role in the disease is crucial for developing
-            therapeutic interventions.
-      \item \textbf{Hit Discovery:} This stage aims at identifying "hits", which are molecules that
-            exhibit activity against the target. High-throughput screening (HTS) is a common approach
-            used to test large libraries of molecules against the target in a rapid and automated manner.
-            Computational methods such as virtual screening can also be employed to increase the hit-rate
-            of wet-lab experiments.
-      \item \textbf{Hit-to-lead and lead optimization:} Promising hits are then refined and optimized to produce lead
-            compounds. This stage focuses on improving the activity, selectivity, and pharmacological
-            properties of the molecules. The goal is to find a lead compounds with a desirable balance of potency,
-            selectivity, and drug-like properties.
+      \item \textbf{Target Identification and Validation:} The drug discovery process begins with
+            the identification of a biological target, such as a protein or nucleic acid, that is
+            believed to be associated with a disease. Then target validation is performed using
+            various experimental techniques to increase confidence that the target is indeed worth
+            pursuing.
+      \item \textbf{Hit Discovery:} The hit discovery stage aims at identifying molecules that
+            exhibit activity against the target in a compound screen. The screen is based on a
+            variety of assays designed to measure the activity of a molecule against the target. The
+            screened compound libraries range from large unfocussed libraries tested in \ac{HTS} to
+            smaller more focused libraries if there is already some knowledge of promising compound
+            classes. Computational models that predict molecular properties and activities can be
+            used in \ac{VS} to evaluate large compound libraries to prioritize compounds for
+            experimental testing.
+      \item \textbf{Hit-to-lead}: This phase aims to develop more potent and selective compounds
+            based on the hits identified in the hit discovery phase. This often involves a
+            systematic exploration of the structure activity relationship around the hit molecules
+            to identify more potent and selective compounds. The hits are further tested on their
+            pharmacokinetic properties and toxicity, further narrowing down the number of compounds.
+      \item \textbf{Lead Optimization:} This phase aims to optimize the properties of the
+            lead compounds identified in the hit-to-lead phase. The goal is to maintain the favorable
+            properties of the lead compounds while avoiding any unwanted side effects.
       \item \textbf{Preclinical Development:} The most promising lead compounds are then tested in
-            preclinical studies, which are typically conducted in animal models. These studies assess the
-            safety, efficacy, pharmacokinetics, and toxicology of the drug candidate in vivo. The data
-            generated during this stage are critical for determining whether the candidate is suitable for
-            clinical trials in humans.
+            preclinical studies, which are typically conducted in animal models. These studies focus
+            on exploring efficacy, pharmacokinetics, and toxicology of the drug candidate. The data
+            generated during this stage are critical for determining whether the candidate is
+            suitable for clinical trials in humans.
       \item \textbf{Clinical Trials:} Drug candidates that pass preclinical development proceed to
             clinical trials, which are conducted in humans and are typically divided into three phases:
             \begin{itemize}
-                  \item \textbf{Phase I:} This phase focuses on assessing the safety, tolerability, and
-                        pharmacokinetics of the drug in a small group of healthy volunteers or patients.
+                  \item \textbf{Phase I:} The drug is tested in a small group of "healthy" and/or "diseased" people to learn about
+                        dosage, safety, and side effects. This phase is usually the first time the drug is tested in humans.
                   \item \textbf{Phase II:} In this phase, the efficacy of the drug is tested in a larger
-                        group of patients with the target disease. Safety and dosage optimization are also
-                        evaluated.
+                        group of patients with the disease of interest to study its effectiveness and further investigate safety.
                   \item \textbf{Phase III:} This phase involves large-scale testing of the drug's safety
-                        and efficacy in a diverse patient population. It provides the critical data needed for
-                        regulatory approval.
+                        and effectiveness comparing it to existing treatments or a placebo.
             \end{itemize}
             The success rates of clinical trials are low, with only about 10\% of drugs that enter clinical
-            trials eventually being approved by regulatory agencies More specifically, the success rates in
-            Phase I/II/III and the final regulatory approval are 63\%, 31\%, 58\% and 85\% respectively
-            \citep{mullardParsingClinicalSuccess2016}.
-            This translates to 63\%, 19.5\%, 11.3\% and 9.6\% of projects that make it to the respective stages.
+            trials eventually being approved by regulatory agencies. More specifically, the success rates in
+            Phase I/II/III are 63\%, 31\%, 58\% which translates to 63\%, 19.5\% and 11.3\% of projects that
+            make it to the respective stages.
       \item \textbf{Regulatory Approval:} Upon successful completion of clinical trials, the drug is
-            submitted for regulatory approval. Agencies such as the U.S. Food and Drug Administration
-            (FDA) or the European Medicines Agency (EMA) review the comprehensive data package, including
-            preclinical and clinical trial results. If the drug is deemed safe and effective, it receives
-            approval for marketing and distribution.
+            submitted for regulatory approval. Agencies such as the U.S. \Ac{FDA} or the \Ac{EMA}
+            review the comprehensive data package, including preclinical and clinical trial results.
+            If the drug is deemed safe and effective, it receives approval for marketing and
+            distribution. The success rate for submissions for regulatory approval is 85\%
+            \citep{mullardParsingClinicalSuccess2016} which translates to 9.6\% of all projects that
+            obtain approval.
       \item \textbf{Post-Market Surveillance:} Post-market surveillance, or Phase IV studies, are
             conducted to monitor the long-term safety and efficacy of the drug in the general population.
             This stage can reveal rare side effects or long-term risks that were not apparent during
@@ -109,12 +116,11 @@ The drug discovery process is usually divided into several stages \citep{todo} d
 % General strategy
 The general strategy of this process is to start with a large number of molecules and then
 systematically reduce the number to a few candidates that finally are submitted to clinical trials.
+These range from hundreds of thousands to millions of molecules in the hit discovery phase to hundreds
+in the hit-to-lead and lead optimization phases, to finally one to two molecules in the clinical trials \citep{hughesPrinciplesEarlyDrug2011}.
 The early stages have lower per molecule costs but higher uncertainty about the success
 chances of a molecule. The later stages are more expensive, provide more accurate information
-whether a molecule is safe and effective in humans. The early stages of the
-drug discovery process, ranging from hit discovery to lead optimization, are particularly amenable
-to computational methods, and this thesis focuses on the molecular design part of the drug discovery
-pipeline.
+whether a molecule is safe and effective in humans.
 
 \subsection{The Design-Make-Test-Analyze cycle}
 \begin{figure}
@@ -129,61 +135,48 @@ pipeline.
             \label{fig:dmta-cycle}}
 \end{figure}
 The hit discovery, hit-to-lead and lead optimization stages usually operate in an iterative manner,
-resulting in a cycle of choosing molecules to be tested, synthesizing them, testing them in
-laboratory experiments and analyzing the results to guide the selection of the next molecule to be
-tested. This cycle is usually referred to as the \ac{DMTA}-cycle \citep{wesolowskiStrategiesPoliticsSuccessful2016}:
+resulting in an iterative process usually referred to as the \ac{DMTA}-cycle \citep{wesolowskiStrategiesPoliticsSuccessful2016}
+shown in \Cref{fig:dmta-cycle}. The cycle consists of four stages:
 \begin{itemize}
       \item \textbf{Design:} Under consideration of previous experimental results, the molecules to
             be tested are designed. The design generally aims to optimize the desired properties of
             the molecule, but also to explore chemical space to find structure activity relationships.
       \item \textbf{Make:} The designed molecules are then synthesized and prepared for testing in
             the laboratory. This step requires a synthesis plan that outlines the steps needed to
-            synthesize the molecule.
+            make the molecule.
       \item \textbf{Test:} The synthesized molecules are then tested in laboratory experiments to
             measure the properties of interest. This can range from the activity of the molecule
             against a target, to its pharmacokinetic properties, to its toxicity and others.
       \item \textbf{Analyze:} The results of the experiments are analyzed. The obtained insights
             can then be used to guide the design of the next molecules to be tested.
-            evaluation of the performance of the prediction models used in the design phase. The
-            results of the analysis are then used to guide the design of the next molecule to be
-            tested.
 \end{itemize}
 
-% TODO: Make this about ML
-\subsection{Computer-aided drug design}
-Recent years have seen a surge in the application of machine learning (ML) to various stages of the
+The \ac{DMTA}-cycle is particularly amenable to computational methods. \ac{QSAR} models can be used
+to predict the properties of molecules in the design phase and to guide the selection of molecules
+to be tested. Particularly \ac{ML} models can be iteratively refined using new experimental data to
+improve their predictive performance. Recently, advances in \ac{DL} have led to an increased
+interest in the application of generative models to tackle problems that require the generation of
+novel molecular structures to solve.
 
-Computer-aided drug design (CADD) has long been an integral part of the pharmaceutical research and
-development process. It encompasses a range of computational methods aimed at supporting and
-enhancing drug discovery. While traditional CADD approaches have proven valuable, the integration of
-machine learning (ML) has significantly expanded their capabilities.
-
-Machine learning has become an important tool in modern CADD, offering new approaches for predicting
-molecular properties and activities. ML models, trained on datasets molecular structures and their
-associated properties, can screen chemical libraries to identify potential drug candidates, reducing
-the time and resources required for experimental testing
-
-Recent advances in deep learning have led to a surge in interest in generative models, introducing
-new possibilities in drug discovery. These models expand the application of ML beyond property
-prediction to the creation of novel molecular structures. In this thesis we focus on two key
-applications of generative models in drug discovery:
+\section{Generative models in drug discovery}
+Generative models are a class of machine learning models that are able to create new data samples.
+Recently, advances in \ac{DL} have led to a surge in interest in generative models, with many new
+methods and architectures being developed.  In drug discovery, generative models for molecules have
+opened up new possibilities for tasks that rely on the creation of novel molecular structures,
+extending the application of machine learning beyond mere property prediction. This thesis focuses
+on two key applications of generative models in drug discovery:
 \begin{itemize}
       \item \textbf{De Novo Drug Design:} Generative models can create new molecular structures with desired property
             profiles. This approach enables the efficient exploration of chemical space, without the need of
             explicit enumeration large parts of chemical space.
-      \item \textbf{Computer-Aided Synthesis Planning:} Generative models are also applied to accurately model
-            chemical reactions. These models can be used to propose synthetic routes
-            for target molecules, addressing a core challenge in drug development. By suggesting potential synthesis
-            pathways, these models aim to support the transition from in silico design to experimental
-            realization.
+      \item \textbf{Computer-Aided Synthesis Planning:} Generative models are also applied to model
+            chemical reactions. The models can then be used to design synthetic routes for target
+            molecules, addressing a core challenge in drug development.
 \end{itemize}
 
-These applications of generative models show promise for improving the efficiency
-of pharmaceutical research. By facilitating the design of new molecules and plan their
-synthesis, these tools may accelerate the drug development process and increase the likelihood of
-identifying successful drug candidates.
+In this section we provide an overview of the key concepts and methods underlying generative models for molecules,
+and introduce current challenges in the field.
 
-\section{Generative models in drug discovery}
 \subsection{Molecular representations}
 \begin{figure}
       \centering
@@ -191,7 +184,7 @@ identifying successful drug candidates.
       \caption{Different ways to represent a caffeine molecule \textbf{A:}  The 3D structure of a
             molecule is given by the positions of its atoms in space. This structure is not
             necessarily fixed as some bonds can rotate and bonds can vibrate (Image source:
-            \citep{EnglishCaffeine3D2010}). \textbf{B:} The graph representation of the same
+            \citep{Caffeine3DStructure2010}). \textbf{B:} The graph representation of the same
             molecule. \textbf{C:} Smiles, DeepSmiles, SELFIES and InChI are line notations that
             linearize the molecules graph representation.\label{fig:molecular-graph}}
 \end{figure}
@@ -210,7 +203,7 @@ notations. Figure \ref{fig:molecular-graph}c shows examples of various line nota
 widely used line notation that represents molecules as strings of characters. SMILES strings encode
 the molecular graph in a human-readable format, making them convenient for storage and processing.
 Line notations have proven particularly valuable for generative models, as they are easily processed
-by sequence-based models like recurrent neural networks (RNNs) and Transformers
+by sequence-based models like \acp{RNN} and Transformers
 \citep{vaswaniAttentionAllYou2017}. While SMILES strings have seen widespread adoption,
 other line notations have been proposed to make them
 more amenable for use in machine learning models. DeepSmiles
@@ -229,21 +222,20 @@ in 3D space along with information about atom types and bonds, as shown in
 \Cref{fig:molecular-graph}. The most comprehensive representation is the quantum mechanical
 wavefunction, which captures the full complexity of molecular behavior. While these more
 detailled representations are valuable for modeling a wide range of molecular properties and
-interactions, but are not covered in the rest of this thesis.
+interactions, they are not covered in the rest of this thesis.
 
-% TODO: Add letters to the figure
 \subsection{Generation strategies}
 \begin{figure}
       \centering
       \includegraphics[width=\textwidth]{figures/generation_strategies_tryout.pdf}
-      \caption{Different approaches to generate molecules in drug discovery. \textbf{A:}
+      \caption{Different approaches to generate molecules in drug discovery. \textbf{A:} Graph-based
+            autoregressive models generate molecules by iteratively adding nodes and edges to the graph
+            making use of \acp{GNN} to decide which node or edge to add next. \textbf{B:}
             Sequence-based autoregressive models generate molecules by sampling one token at a time
-            conditioned on the previously sampled tokens. \textbf{B:} Graph-based autoregressive models
-            generate molecules by iteratively adding nodes and edges to the graph making use of Graph
-            Neural Networks to decide which node or edge to add next. \textbf{C:} One-shot methods
-            generate molecules in a single step by generating an adjacency matrix and node feature matrix
-            of a molecule. \textbf{D:} Rule-based models generate molecules by applying a set of
-            pre-defined graph transformation rules to iteratively combine a set of starting molecules.
+            conditioned on the previously sampled tokens. \textbf{C:} One-shot methods generate molecules
+            in a single step by generating an adjacency matrix and node feature matrix of a molecule.
+            \textbf{D:} Rule-based models generate molecules by applying a set of pre-defined graph
+            transformation rules to iteratively combine a set of starting molecules.
             \label{fig:generation-strategies}}
 \end{figure}
 There are several approaches to constructing up molecular graphs making use of different molecular
@@ -257,7 +249,7 @@ generating molecules. This approach makes use of a linearized representation of 
 as a SMILES string. The model generates molecules by sampling one token at a time,
 conditioned on the previously sampled tokens, similarly to how a language model generates text.
 Early work by \citep{seglerGeneratingFocusedMolecule2018} and
-\citep{gomez-bombarelliAutomaticChemicalDesign2018} relied on recurrent neural networks (RNNs) to
+\citep{gomez-bombarelliAutomaticChemicalDesign2018} relied on \acp{RNN} to
 generate SMILES strings. This approach has since been popular and there has been work on
 string-based representations more suitable to generation
 \citep{oboyleDeepSMILESAdaptationSMILES2018,krennSelfReferencingEmbeddedStrings2020,noutahiGottaBeSAFE2023},
@@ -269,7 +261,7 @@ learning architectures such as transformers
 \textbf{Graph-based autoregressive models} work similarly to its sequence-based counterpart, but
 instead of relying on a linearization of the molecule, they work directly on the graph
 representation of the molecule. The model generates the molecular graph by iteratively adding nodes
-and edges to the graph, often relying on graph neural networks to decide which node or edge to add
+and edges to the graph, often relying on \acp{GNN} to decide which node or edge to add
 next. These models are similar to the sequence-based models described above, as they also generate
 the molecule in an autoregressive manner, but are more complex as there is no prescribed order in
 which nodes and edges are added to the graph. This approach has been used in several works in drug
@@ -325,7 +317,7 @@ generation have been adapted and specialized to generate molecules. While all of
 approximate the data distribution, they differ in the way they model the distribution and the choice
 of molecular representation.
 
-\paragraph{Autoregressive models} make use of the chain rule of probability to factorize the
+\textbf{Autoregressive models} make use of the chain rule of probability to factorize the
 likelihood of a molecule into a product of conditional probabilities of the individual tokens in the
 molecule. The model is trained maximizing the likelihood of the training data with respect to the
 model parameters. Autoregressive models are explicit density models, as the likelihood of sampling a
@@ -333,24 +325,24 @@ molecule can be calculated exactly, which facilitates model evaluation. Models t
 form the backbone of many generative models in drug discovery
 \citep{gomez-bombarelliAutomaticChemicalDesign2018,seglerGeneratingFocusedMolecule2018,olivecronaMolecularDenovoDesign2017,guoAugmentedMemoryCapitalizing2023,thomasAugmentedHillClimbIncreases2022,jaquesSequenceTutorConservative2016,cohen-karlikOvercomingOrderAutoregressive2024}.
 
-\paragraph{Variational autoencoders} (VAEs) \citep{kingmaAutoEncodingVariationalBayes2013} generate molecules by first
+\Acp{VAE} \citep{kingmaAutoEncodingVariationalBayes2013} generate molecules by first
 sampling from a simple latent distribution and then mapping the samples to molecular space
 via a probabilistic decoder network. To make training tractable a second network, the
 encoder network is used to map the data to the latent space. The model is then trained to
-maximize the evidence lower bound (ELBO) of the data.
+maximize the \ac{ELBO} of the data.
 % \begin{align}
 %       \log p(x) \geq \mathbb{E}_{q(z|x)}[\log p(x|z)] - \text{KL}(q(z|x) || p(z)),
 % \end{align}
 % where KL is the Kullback-Leibler divergence.
 This model has the advantage of providing a continuous latent space, which can be used to
 interpolate between molecules and allows the use continuous optimization algorithms for molecule
-optimization. VAEs belong in the class of approximate density models, as the likelihood of a given
-molecule can be calculated approximately via Monte Carlo sampling. VAEs have been a popular choice
+optimization. \acp{VAE} belong in the class of approximate density models, as the likelihood of a given
+molecule can be calculated approximately via Monte Carlo sampling. \acp{VAE} have been a popular choice
 for generating molecules
 \citep{gomez-bombarelliAutomaticChemicalDesign2018,kusnerGrammarVariationalAutoencoder2017,simonovskyGraphVAEGenerationSmall2018,samantaNeVAEDeepGenerative2018,jinJunctionTreeVariational2018,daiSyntaxDirectedVariationalAutoencoder2018,liuConstrainedGraphVariational2018}.
 
 % moflow, graphnvp (has nice discussion on one-shot generation)
-\paragraph{Generative flows} \citep{rezendeVariationalInferenceNormalizing2016} are based on the
+\textbf{Generative flows} \citep{rezendeVariationalInferenceNormalizing2016} are based on the
 idea of learning a bijective mapping between molecular space and a latent space. Generative flows
 transform a simple latent space distribution to the data distribution via a sequence of invertible
 transformations parameterized by neural networks. This makes it possible to calculate the likelihood
@@ -358,7 +350,7 @@ of a given molecule using the change of variables formula of probability. Simila
 autoregressive models, generative flows are explicit density models, and are optimized by maximizing
 the likelihood of the training data. Originally generative flows have been proposed for continuous
 data, but have been adapted to discrete data such as molecules by using a continuous relaxation of
-the molecule \citep{madhawaGraphNVPInvertibleFlow2019}. Similarly to VAEs, generative flows provide
+the molecule \citep{madhawaGraphNVPInvertibleFlow2019}. Similarly to \acp{VAE}, generative flows provide
 a continuous latent space, which can be used for molecule optimization.
 % p(x), via a bijective mapping $f: z \rightarrow x$. The likelihood of the training data can then be
 % directly calculated and optimized via the change of variables formula:
@@ -371,12 +363,12 @@ a continuous latent space, which can be used for molecule optimization.
 % \end{align}
 
 % molgan
-\textbf{Generative adversarial networks} (GANs) \citep{goodfellowGenerativeAdversarialNetworks2014}
+\Acp{GAN} \citep{goodfellowGenerativeAdversarialNetworks2014}
 are latent space models that map a simple distribution in latent space to molecular space, but rely
 on a game-theoretic approach to training. A generator network is trained to generate data, which is
 then fed to a discriminator network. The two networks then engage in a minimax game, where the
 discriminator is trained to distinguish between real and generated data, while the generator is
-trained to generate samples that fool the discriminator.\@ GANs are implicit density methods they
+trained to generate samples that fool the discriminator.\@ \Acp{GAN} are implicit density methods they
 sample from the model distribution, but do not provide a likelihood for a given sample. This
 approach has been combined with different generation strategies in the context of drug discovery
 \citep{decaoMolGANImplicitGenerative2018,kadurinDruGANAdvancedGenerative2017,guimaraesObjectiveReinforcedGenerativeAdversarial2017,mendez-lucioNovoGenerationHitlike2018,tangMolecularGenerativeAdversarial2024}.
@@ -430,7 +422,8 @@ rule-based generation approaches that have been combined with graph search and e
 algorithms. \citep{schneiderComputerbasedNovoDesign2005,schneiderNovoMolecularDesign2013}. The new
 wave of deep-learning methods has shown great promise in generating novel molecules with desired
 property profiles and has led to success in a variety of applications, such as the design of new drugs,
-materials or catalysts \citep{todo}.
+materials or catalysts \citep{zahrtPredictionHigherselectivityCatalysts2019,daveAutonomousDiscoveryBattery2020,kimDatadrivenElectrolyteDesign2023,moonActiveLearningGuides2024}.
+% Found a paper the other day that lists good examples. Was it the retrosynthesis paper?
 
 Some of the most commonly used approaches to goal-directed molecular generation are:
 \begin{itemize}
@@ -487,15 +480,14 @@ to a certain extent, detect whether a model overfits to the training set.
 
 A variety of approaches exists to assess how well a model can learn the distribution of the training
 set. Explicit/approximate density models allow principled evaluation based on the likelihood on a
-hold-out test set. However, this is not applicable for implicit density models such as GANs. The
-KL-divergence between the distributions of scalar molecular properties (e.g. molecular weight or
+hold-out test set. However, this is not applicable for implicit density models such as \acp{GAN}.
+The KL-divergence between the distributions of scalar molecular properties (e.g. molecular weight or
 logP) of the generated molecules and the training set is a commonly used metric to evaluate the
 distribution fit \citep{brownGuacaMolBenchmarkingModels2019}, but is usually determined using a
-limited number of properties. The Frechet ChemNet Distance (FCD)
-\citep{preuerFrechetChemNetDistance2018} provides a more comprehensive check of the distribution
-fit. The FCD compares the distributions of the activations of a neural network trained to predict
-bioactivities and has been shown to be sensitive to distributional differences in many different
-molecular properties.
+limited number of properties. The \ac{FCD} \citep{preuerFrechetChemNetDistance2018} provides a more
+comprehensive check of the distribution fit. The \ac{FCD} compares the distributions of the activations
+of a neural network trained to predict bioactivities and has been shown to be sensitive to
+distributional differences in many different molecular properties.
 
 The MOSES \citep{polykovskiyMolecularSetsMOSES2020} and GuacaMol
 \citep{brownGuacaMolBenchmarkingModels2019} benchmarks provide standardized frameworks for
@@ -516,7 +508,7 @@ molecules. The extent of this bias and its impact on molecular novelty and how t
 remains an open question.
 
 
-Furthermore, it has been shown that optimizing an ML model's output with respect to its input can
+Furthermore, it has been shown that optimizing an \ac{ML} model's output with respect to its input can
 lead to generated samples that incorrectly receive high scores from the model
 \citep{szegedyIntriguingPropertiesNeural2014,goodfellowExplainingHarnessingAdversarial2015}.
 This can happen when the optimization leaves the applicability domain of the model, where
@@ -545,13 +537,13 @@ diversity metrics being inadequate for goal-directed generation. The most arguab
 diversity metric in the context of molecular generation is the internal diversity, which measures the
 average pairwise distance between molecules. However, this metric has been shown to be inadequate for
 goal-directed generation \citep{waldmanNovelAlgorithmsOptimization2000,xieMARSMarkovMolecular2021,thomasComparisonStructureLigandbased2021}.
-\citet{thomasComparisonStructureLigandbased2021} proposed the sphere exclusion diversity (SEDiv)
+\citet{thomasComparisonStructureLigandbased2021} proposed the \ac{SEDiv}
 metric, which aligns better with chemical intuition but can be misleading for differently sized
 sets.
 
 \citet{xieHowMuchSpace2023} recently addressed these shortcomings and introduced the \#Circles
 metric which better reflects the requirements of evaluating goal-directed generators. \#Circles is a
-non-normalized version of SEDiv and provides an absolute measure of the chemical space covered by
+non-normalized version of \ac{SEDiv} and provides an absolute measure of the chemical space covered by
 the generated molecules. It is motivated by an axiomatic approach similar to the one used in
 \citep{waldmanNovelAlgorithmsOptimization2000} and has been shown to correlate better with the
 functional diversity of the generated molecules. While initial evaluations of goal-directed generators using \#Circles have been conducted, most comparisons are limited by the
@@ -634,7 +626,7 @@ objectives \citep{daiRetrosynthesisPredictionConditional2020}, the problem remai
 the field.
 
 \section{Contributions\label{sec:contributions}}
-\subsection{Identifying Failure Modes in Generative Model Evaluation}
+\subsection{Identifying failure modes in generative model evaluation}
 In \citep{renzFailureModesMolecule2019} we investigate possible failure modes in the evaluation of
 distribution-learning and goal-directed generative models. We show that the distribution-learning
 benchmark proposed in GuacaMol \citep{brownGuacaMolBenchmarkingModels2019} is not able to
@@ -646,16 +638,16 @@ evaluation of distribution-learning models.
 % Todo rewrite this with phrasing above
 In the context of goal-directed optimization we introduce control scores that give
 information whether the optimization leads to the generation of molecules that are biased towards the
-training data and whether the optimization overfits to the used scoring function.
+training data and whether the optimization overfits to artifacts of the used scoring function.
 The control scores are obtained by retraining the scoring function on a hold-out set of the training
 data or using a different random initialization, and serve as a diagnostic tool to
 detect these issues.
 
-We show that the generated molecules are biased towards the high-scoring molecules in the training
-set, which leads to a lack of novelty in the generated molecules. We also show that the generative
-models are able to overfit to the scoring function's random initialization. This might lead to the
-generation of molecules that wrongly receive high scores from the scoring function, leading to an
-overestimation of the models' performance.  \Cref{sec:failure-modes} reprints the corresponding publication.
+Using the control scores we test various goal-directed generators and show that the generated
+molecules are biased towards the high-scoring molecules in the training set, which leads to a lack
+of novelty in the generated molecules. Furthermore the tested generative models overfit to artifacts
+depending on the scoring function's random initialization, leading to an overestimation of the
+models' performance.  \Cref{sec:failure-modes} reprints the corresponding publication.
 
 \subsection{Diversity-based comparison of goal-directed generators\label{sec:divopt}} In
 \citep{renzDiverseHitsNovo2024} we introduce a benchmark for diverse optimization that addresses the
@@ -674,18 +666,19 @@ In \citep{seidlImprovingFewZeroShot2022} we propose a novel approach to template
 retrosynthesis prediction. We use a multimodal learning approach that learns to associate relevant
 templates to product molecules using a Modern Hopfield Network
 \citep{ramsauerHopfieldNetworksAll2020}. In contrast to previous template-based methods, our model
-processes the structure of templates and can make use of similarities between them. This allows for
-improved generalization, especially for templates with few training samples and even for unseen
-templates. This model is several times faster than comparable methods and shows good predictive
-performance. \Cref{sec:mhn-react} reprints the corresponding publication.
+processes the structure of templates and can make use of similarities between them. We achieve state
+of the art performance in single-step retrosynthesis prediction, and perform especially well for
+templates with few training samples. The proposed model is several times faster than comparable
+methods and shows good predictive performance. \Cref{sec:mhn-react} reprints the corresponding
+publication.
 
 \section{List of publications\label{sec:publications}} This thesis comprises the work published in
 the following papers:
 
 \begin{itemize}
-      \item \fullcite{renzFailureModesMolecule2019}
-      \item \fullcite{renzDiverseHitsNovo2024}
-      \item \fullcite{seidlImprovingFewZeroShot2022}
+      \item \printpublication{renzFailureModesMolecule2019}
+      \item \printpublication{renzDiverseHitsNovo2024}
+      \item \printpublication{seidlImprovingFewZeroShot2022}
 \end{itemize}
 
 % give overview over my other publications
@@ -693,8 +686,8 @@ the following papers:
 following publications:
 
 \begin{itemize}
-      \item \fullcite{preuerFrechetChemNetDistance2018}
-      \item \fullcite{renzUncertaintyEstimationMethods2019}
-      \item \fullcite{hofmarcherLargescaleLigandbasedVirtual2020}
-      \item \fullcite{renzLowCountTimeSeries2023}
+      \item \printpublication{preuerFrechetChemNetDistance2018}
+      \item \printpublication{renzUncertaintyEstimationMethods2019}
+      \item \printpublication{hofmarcherLargescaleLigandbasedVirtual2020}
+      \item \printpublication{renzLowCountTimeSeries2023}
 \end{itemize}
