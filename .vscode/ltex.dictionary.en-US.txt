@@ -1,0 +1,8 @@
+retrosynthesis
+Hopfield
+novo
+Da
+ADME
+Synthesizability
+synthesizable
+DMTA
