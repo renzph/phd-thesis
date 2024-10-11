@@ -78,10 +78,11 @@
 
 \addbibresource{references_zotero.bib}
 \newcommand{\printpublication}[1]{\AtNextCite{\defcounter{maxnames}{99}}\fullcite{#1}}
-
+\hfuzz=11.002pt 
 \usepackage{pdfpages}
 \usepackage{blindtext}
 
+\usepackage{acro}
 \input{acronyms}
 
 \begin{document}
@@ -103,15 +104,18 @@
 \setcounter{tocdepth}{3}		% define depth of toc
 \tableofcontents				% display table of contents
 % 
-\clearpage
-% \printacronyms[sort=true]
 \printacronyms[name=List of Acronyms,heading=chapter*,display=used,sort=true]
 \acsetup{
     make-links = true , % boolean
-    format = \emph, % standard
+    format = \textup, % standard
     list / local, % boolean option of the list module
-    list / display = all % choice option of the list module
+    list / display = all, % choice option of the list module
+    format/first-long = \textup,
+    format/long = \textup,
+    format/short = \textup,
+    format/alt = \textup,
 }
+
 
 % --------------------------
 % Body matter

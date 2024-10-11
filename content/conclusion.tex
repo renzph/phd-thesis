@@ -1,35 +1,31 @@
-\chapter{Conclusion and Outlook\label{chap:conclusion}} The work in this thesis has focused on
-advancing the application of generative models in drug discovery, concentrating on two main aspects:
-Firstly, we identified limitations in the evaluation of generative models for de novo molecular
-design, and proposed ways to make evaluation more informative and relevant to practical
-applications. Secondly we introduced a novel template-based model for retrosynthesis prediction that
-exceeds the performance of existing methods, performing particularly well on rare reaction
-templates.
+\chapter{Conclusion and Outlook\label{chap:conclusion}}
 
-%TODO: This can be more compact and I can add novelty and overestimation as consequence
-In the first part of this thesis, we showed how an established benchmark for
-distribution-learning models cannot differentiate complex models from trivial baseline generators,
-highlighting the need for more informative evaluation metrics. Furthermore, we introduced control
-scores as a diagnostic tool to identify overfitting and biases when optimizing \ac{ML}-based scoring
-functions in goal-directed molecular generation. We studied a range of generative models
-using the control scores, and found that generated molecules indeed show biases towards the
-training data and that the generators were able to overfit to artifacts of the scoring functions.
+The work in this thesis has focused on advancing the application of generative models in drug
+discovery, concentrating on two main aspects: Firstly, we identified limitations in the evaluation
+of generative models for de novo molecular design, and proposed ways to make evaluation more
+informative and relevant to practical applications. Secondly we introduced a novel template-based
+model for retrosynthesis prediction.
 
+In the first part of this thesis, we showed how an established benchmark for distribution-learning
+models cannot differentiate complex models from trivial baseline generators, highlighting the need
+for more informative evaluation metrics. Furthermore, we introduced control scores as a diagnostic
+tool to identify overfitting and biases when optimizing \ac{ML}-based scoring functions in
+goal-directed molecular generation. We used these control scores to study a range of goal-directed
+generative models and found that they indeed show biases towards the training data, and that the
+generators were able to overfit to artifacts of the scoring functions.
 
-In the second part of this thesis we introduced a diversity-based benchmark for goal-directed
-molecule generators. This benchmark measures the performance of goal-directed generators in finding
-diverse high-scoring molecules under controlled compute constraints, leading to a principled
-evaluation. We used this benchmark to test a range of established generative models, after adapting
-them for the diverse optimization setting, leading to the most comprehensive benchmark for diverse
-molecule optimization. We found that SMILES-based autoregressive models performed best,
+In the second part of this thesis we introduced a benchmark for diverse goal-directed molecule
+generation. This benchmark measures the performance of goal-directed generators in finding diverse
+high-scoring molecules under controlled compute constraints, leading to a principled evaluation. We
+used this benchmark to test a range of established generative models, after adapting them for the
+diverse optimization setting. We found that SMILES-based autoregressive models performed best,
 outperforming other models, such as genetic algorithms or GFlowNets.
 
 The third and last part of this thesis introduced a novel template-based model for retrosynthesis
 prediction based on Modern Hopfield Networks. This model leverages a multi-modal approach that
-combines reaction templates and target molecules. Our model reaches state-of-the-art performance
-while maintaining significantly lower computational costs in comparison to existing methods. The model
-is able to generalize over reaction templates and performs particularly well on rare ones when
-compared to existing methods.
+associates reaction templates and target molecules. Our model reaches state-of-the-art performance
+while maintaining significantly lower computational costs in comparison to other methods. The model
+is able to generalize over reaction templates and performs particularly well on rare templates.
 
 The control scores have since been further investigated in \citep{turkMolecularAssaysSimulator2022}.
 We join them in their emphasis that while the control scores can identify the presence of biases,
@@ -38,7 +34,10 @@ correlated, even outside the applicability domain of the models.
 \citet{thomasComparisonStructureLigandbased2021} showed that optimizing structure-based scoring
 functions leads to more diverse and novel molecules compared to \ac{ML}-based scoring functions.
 This further supports the existence of a bias towards active compounds in the training data when
-optimizing \ac{ML}-based scoring functions.
+optimizing \ac{ML}-based scoring functions. \citet{lyuModelingExpansionVirtual2023} and
+\citet{wuIdentifyingArtifactsLarge2024} observed a similar effect when docking large molecule libraries
+and found that the top-ranked molecules are dominated by rare artifacts that cheat their scoring
+functions.
 
 Going forward we see more comprehensive benchmarks for goal-directed generators as a key aspect to
 advance de novo molecular design. Despite significant efforts by others
@@ -46,9 +45,9 @@ advance de novo molecular design. Despite significant efforts by others
 and the work in this thesis, there is a lack of unifying these efforts. One challenge is the
 establishment of relevant scoring functions that better reflect the difficulties in real-world drug
 discovery projects \citep{fromerComputeraidedMultiobjectiveOptimization2023} without suffering from
-the problems observed in \Cref{sec:failure-modes} and \citep{lyuModelingExpansionVirtual2023}. These
+the problems observed in \Cref{sec:failure-modes} and \citep{lyuModelingExpansionVirtual2023,wuIdentifyingArtifactsLarge2024}. These
 benchmarks should also better incorporate whether the chemistry of the generated molecules is
-reasonable \citep{thomasReevaluatingSampleEfficiency2022} and diverse. Furthermore the benchmarks
+reasonable \citep{thomasReevaluatingSampleEfficiency2022} and diverse. Furthermore, the benchmarks
 should be run at scales that are more comparable to real-world drug discovery projects, given that
 relative performance of the models can be influenced by the available compute budget. Finally, we
 think that evaluating synthesizability of the generated molecules is a crucial aspect, which is a
@@ -58,14 +57,14 @@ benchmark would spur the development of more practically relevant generative mod
 In the field of retrosynthesis prediction, we also believe there is a need for better evaluation
 strategies. Efforts in this direction have been made by
 \citet{maziarzReevaluatingRetrosynthesisAlgorithms2024a} who list some best practices for evaluation
-and implemented a software library for standardized testing which also includes multi-step planning
+and implemented a software library for standardized testing, including multistep planning
 methods. We think that progress in this field could also lead to consensus models for rating
 synthesizability in the de novo molecular design. Furthermore, we believe it is important to
-acknowledege the limitations of a purely data-driven ML approach to retrosynthesis modelling as
+acknowledge the limitations of a purely data-driven ML approach to retrosynthesis modelling as
 pointed out in \citep{strieth-kalthoffArtificialIntelligenceRetrosynthetic2024}, as lots of useful
 chemical knowledge is available outside of reaction databases.
 
-Overall we think that both fields would benefit from increased collaboration between machine
+In general, we think that the field would benefit from increased collaboration between machine
 learning researchers and chemists, to better identify practical problems
 \citep{benderArtificialIntelligenceDrug2021} and to find ways to solve them.
 

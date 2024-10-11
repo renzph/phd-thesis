@@ -1,0 +1,6 @@
+{"rule":"SOME_OF_THE","sentence":"^\\QIn this section we discuss some of the challenges in evaluating generative models in the context of de novo design.\\E$"}
+{"rule":"EN_A_VS_AN","sentence":"^\\QFurthermore, it has been shown that optimizing an \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q model's output with respect to its input can lead to generated samples that incorrectly receive high scores from the model \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"EN_COMPOUNDS","sentence":"^\\QEfforts in this direction have been made by \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q who list some best practices for evaluation and implemented a software library for standardized testing which also includes multi-step planning methods.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Qpublisher eprintclass\\E$"}
+{"rule":"COPYRIGHT","sentence":"^\\Q(c) Test: The compounds are experimentally evaluated.\\E$"}
+{"rule":"EN_A_VS_AN","sentence":"^\\QFurthermore, it has been shown that optimizing an \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q model's output with respect to its input can lead to generated samples that incorrectly receive high scores \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}

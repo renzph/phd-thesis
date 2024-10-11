@@ -15,9 +15,9 @@ prediction.
 The first part of this thesis examines observed failure modes in evaluating generative models for de
 novo molecular design. We demonstrate that commonly used metrics used to evaluate
 distribution-learning models are not sufficient to differentiate complex models from trivial
-baseline generators. Secondly, we show how goal-directed molecular generators can overfit to machine
-learning-based objective functions, leading to biases towards the training data causing a lack of
-novelty and overestimation of model performance.
+baseline generators. Furthermore, we show how goal-directed molecule generators can overfit to
+machine learning-based objective functions, leading to biases towards the training data causing a
+lack of novelty and overestimation of model performance.
 
 The second part introduces a diversity-based benchmark for goal-directed molecule generators, which
 quantifies a model's ability to generate diverse sets of molecules with desired properties. Previous
@@ -27,12 +27,14 @@ benchmark addresses these shortcomings, providing a standardized framework for e
 goal-directed molecule generators in diverse optimization settings, enabling fair model
 comparisons.
 
+% Given a target molecule, our model predicts which reaction templates lead to
+% feasible reactions when applied to the target molecule, thus generating sets of reactants that can
+% be used to synthesize the target molecule.
 In the third part, we propose a novel template-based retrosynthesis prediction model based on Modern
-Hopfield Networks, that given a target molecule, generates reactants that can be used to synthesize
-it. Our model processes both the target molecule and the reaction templates as input, enabling
-generalization over reaction templates and improving performance, particularly for rare templates.
-Our model achieves state-of-the-art performance while maintaining significantly lower computational
-costs compared to existing methods.
+Hopfield Networks. Our model learns representations of the target molecule and reaction templates,
+and how to associate them. This enables generalization over reaction templates and improves
+performance, particularly for rare templates. Our model achieves state-of-the-art performance while
+maintaining significantly lower computational costs compared to existing methods.
 
 Through our work, we provide insights into the limitations of current evaluation strategies for
 generative models for molecules while proposing new ones. Additionally, our
