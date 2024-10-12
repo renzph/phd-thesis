@@ -611,13 +611,13 @@ ensure that the proposed synthetic routes are actually feasible.
 Early work in retrosynthesis prediction relied on carefully curated expert rules encoding possible
 reactions. Recently, machine learning models that learn the patterns of chemical reactions from
 examples stored in reaction databases have received increased attention
-\citep{coleyMachineLearningComputerAided2018}. One line of work relies on sequence-to-sequence
-models originally developed for machine translation, to predict the SMILES strings of reactants
-given the SMILES string of the target molecule
+\citep{coleyMachineLearningComputerAided2018,strieth-kalthoffMachineLearningRopes2020}. One line of
+work relies on sequence-to-sequence models originally developed for machine translation, to predict
+the SMILES strings of reactants given the SMILES string of the target molecule
 \citep{schwallerMolecularTransformerModel2019,namLinkingNeuralMachine2016,schwallerFoundTranslationPredicting2018,karpovTransformerModelRetrosynthesis2019,tetkoStateoftheartAugmentedNLP2020}.
-Another set of approaches exploits the fact that connectivity in a reaction is often highly preserved, and
-use graph neural networks to edit the connectivity of the target molecule in order to yield possible
-reactants
+Another set of approaches exploits the fact that connectivity in a reaction is often highly
+preserved, and use graph neural networks to edit the connectivity of the target molecule in order to
+yield possible reactants
 \citep{sachaMoleculeEditGraph2020,shiGraphGraphsFramework2020,somnathLearningGraphModels2020,yanRetroXpertDecomposeRetrosynthesis2020}.
 
 Template-based methods represent another approach to retrosynthesis prediction

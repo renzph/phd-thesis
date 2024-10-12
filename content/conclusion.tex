@@ -11,47 +11,57 @@ models cannot differentiate complex models from trivial baseline generators, hig
 for more informative evaluation metrics. Furthermore, we introduced control scores as a diagnostic
 tool to identify overfitting and biases when optimizing \ac{ML}-based scoring functions in
 goal-directed molecular generation. We used these control scores to study a range of goal-directed
-generative models and found that they indeed show biases towards the training data, and that the
-generators were able to overfit to artifacts of the scoring functions.
+generative models and found that they show biases towards already known high-scoring molecules,
+and that the generators overfit to artifacts of the scoring functions leading to an overestimation
+of performance.
 
 In the second part of this thesis we introduced a benchmark for diverse goal-directed molecule
 generation. This benchmark measures the performance of goal-directed generators in finding diverse
 high-scoring molecules under controlled compute constraints, leading to a principled evaluation. We
 used this benchmark to test a range of established generative models, after adapting them for the
-diverse optimization setting. We found that SMILES-based autoregressive models performed best,
-outperforming other models, such as genetic algorithms or GFlowNets.
+diverse optimization setting. We found that there are large differences in the performance of the
+tested models and that the type of compute constraint has a significant impact on the performance of
+the models. In our test SMILES-based autoregressive models performed best, outperforming other
+models, such as genetic algorithms or GFlowNets.
 
 The third and last part of this thesis introduced a novel template-based model for retrosynthesis
-prediction based on Modern Hopfield Networks. This model leverages a multi-modal approach that
-associates reaction templates and target molecules. Our model reaches state-of-the-art performance
-while maintaining significantly lower computational costs in comparison to other methods. The model
-is able to generalize over reaction templates and performs particularly well on rare templates.
+prediction based on Modern Hopfield Networks. Our model reaches state-of-the-art performance on the
+USPTO-50k dataset, while maintaining significantly lower computational costs in comparison to other
+methods. Our approach allows for generalization over reaction templates and improves performance
+particularly for rare templates.
 
-The control scores have since been further investigated in \citep{turkMolecularAssaysSimulator2022}.
-We join them in their emphasis that while the control scores can identify the presence of biases,
-they cannot establish their absence as the optimization and control scores might be highly
-correlated, even outside the applicability domain of the models.
-\citet{thomasComparisonStructureLigandbased2021} showed that optimizing structure-based scoring
-functions leads to more diverse and novel molecules compared to \ac{ML}-based scoring functions.
-This further supports the existence of a bias towards active compounds in the training data when
-optimizing \ac{ML}-based scoring functions. \citet{lyuModelingExpansionVirtual2023} and
-\citet{wuIdentifyingArtifactsLarge2024} observed a similar effect when docking large molecule libraries
-and found that the top-ranked molecules are dominated by rare artifacts that cheat their scoring
-functions.
+The control scores have since been further investigated in \citep{turkMolecularAssaysSimulator2022},
+basing their scoring functions on an artificial oracle defining the ground truth. We join them in
+their emphasis that while a deviation of the control scores from the optimization score can identify
+the presence of biases, the converse need not be true. The model control score may be highly
+correlated with the optimization score even when the ground truth differs. Furthermore, the data
+control score may be highly correlated with the optimization score if the data splits they are based
+on are highly similar \citep{langevinExplainingAvoidingFailure2022}. Both of these observations lead
+to cases where the control scores are not able to detect biases in the generated molecules.
+
+Related findings were made in \citep{thomasReevaluatingSampleEfficiency2022}, in which the authors
+showed that optimizing structure-based scoring functions leads to more diverse and novel molecules
+compared to \ac{ML}-based scoring functions. This further supports the existence of a bias towards
+high-scoring molecules in the training data when optimizing \ac{ML}-based scoring functions.
+\citet{lyuModelingExpansionVirtual2023} and \citet{wuIdentifyingArtifactsLarge2024} observed
+molecules that cheat structure-based scoring functions. They found that these molecules dominate the
+top-ranked molecules when performing large-scale virtual screening runs. This underlines our
+broader point of molecule optimization exploiting unwanted artifacts in the scoring functions.
 
 Going forward we see more comprehensive benchmarks for goal-directed generators as a key aspect to
 advance de novo molecular design. Despite significant efforts by others
-\citep{brownGuacaMolBenchmarkingModels2019,gaoSampleEfficiencyMatters2022,gaoSynthesizabilityMoleculesProposed2020,thomasMolScoreScoringEvaluation2024}
+\citep{brownGuacaMolBenchmarkingModels2019,polykovskiyMolecularSetsMOSES2020,gaoSynthesizabilityMoleculesProposed2020,gaoSampleEfficiencyMatters2022,thomasMolScoreScoringEvaluation2024}
 and the work in this thesis, there is a lack of unifying these efforts. One challenge is the
 establishment of relevant scoring functions that better reflect the difficulties in real-world drug
 discovery projects \citep{fromerComputeraidedMultiobjectiveOptimization2023} without suffering from
-the problems observed in \Cref{sec:failure-modes} and \citep{lyuModelingExpansionVirtual2023,wuIdentifyingArtifactsLarge2024}. These
-benchmarks should also better incorporate whether the chemistry of the generated molecules is
-reasonable \citep{thomasReevaluatingSampleEfficiency2022} and diverse. Furthermore, the benchmarks
-should be run at scales that are more comparable to real-world drug discovery projects, given that
-relative performance of the models can be influenced by the available compute budget. Finally, we
-think that evaluating synthesizability of the generated molecules is a crucial aspect, which is a
-challenge in its own right. While being a significant effort, we believe the establishment of such a
+the problems observed in \Cref{sec:failure-modes} and
+\citep{lyuModelingExpansionVirtual2023,wuIdentifyingArtifactsLarge2024}. These benchmarks should
+also better incorporate whether the chemistry of the generated molecules is reasonable
+\citep{thomasReevaluatingSampleEfficiency2022} and diverse. Furthermore, the benchmarks should be
+run at scales that are more comparable to real-world drug discovery projects, given that relative
+performance of the models can be influenced by the available compute budget. Finally, we think that
+evaluating synthesizability of the generated molecules is a crucial aspect, which is a challenge in
+its own right. While being a significant effort, we believe the establishment of such an improved
 benchmark would spur the development of more practically relevant generative models.
 
 In the field of retrosynthesis prediction, we also believe there is a need for better evaluation
