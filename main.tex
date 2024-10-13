@@ -1,6 +1,7 @@
 % !TeX encoding = UTF-8
 % !TeX program = pdflatex
 % !BIB program = biber
+% LTeX: enabled=false 
 
 \NeedsTeXFormat{LaTeX2e}[2019-10-01]
 % **************************************************
@@ -69,14 +70,23 @@
     backref=true,
     date=year,
     ]{biblatex}
+\addbibresource{references_zotero.bib}
+
 \AtEveryBibitem{%
-        \clearfield{publisher}
-        \clearname{publisher}
-        \clearname{eprintclass}
-    }
+    \ifentrytype{inproceedings}{%
+        \clearfield{publisher} 
+        \clearfield{location}  
+        \clearlist{publisher}
+    }{}
+    % \clearfield{publisher}
+    % \clearname{publisher}
+    \clearfield{eprintclass} 
+    \clearfield{pubstate}
+    % \clearfield{eprint}
+}
+
 \DeclareNameAlias{sortname}{family-given}
 
-\addbibresource{references_zotero.bib}
 \newcommand{\printpublication}[1]{\AtNextCite{\defcounter{maxnames}{99}}\fullcite{#1}}
 \hfuzz=11.002pt 
 \usepackage{pdfpages}
@@ -84,6 +94,9 @@
 
 \usepackage{acro}
 \input{content/acronyms.tex}
+\usepackage{tocloft}
+\setlength{\cftbeforechapskip}{2pt}
+
 
 \begin{document}
 \pagenumbering{roman}			% roman page numbing (invisible for empty page style)
@@ -102,9 +115,10 @@
 % 
 \currentpdfbookmark{\contentsname}{toc}
 \setcounter{tocdepth}{3}		% define depth of toc
+\vspace{-3cm}
 \tableofcontents				% display table of contents
 % 
-\printacronyms[name=List of Acronyms,heading=chapter*,display=used,sort=true]
+% \printacronyms[name=List of Acronyms,heading=chapter*,display=used,sort=true]
 \acsetup{
     make-links = true , % boolean
     format = \textup, % standard

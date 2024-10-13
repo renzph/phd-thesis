@@ -2,7 +2,7 @@
 
 The work in this thesis has focused on advancing the application of generative models in drug
 discovery, concentrating on two main aspects: Firstly, we identified limitations in the evaluation
-of generative models for de novo molecular design, and proposed ways to make evaluation more
+of generative models for de novo molecular design, and proposed improvements to make evaluation more
 informative and relevant to practical applications. Secondly we introduced a novel template-based
 model for retrosynthesis prediction.
 
@@ -10,31 +10,31 @@ In the first part of this thesis, we showed how an established benchmark for dis
 models cannot differentiate complex models from trivial baseline generators, highlighting the need
 for more informative evaluation metrics. Furthermore, we introduced control scores as a diagnostic
 tool to identify overfitting and biases when optimizing \ac{ML}-based scoring functions in
-goal-directed molecular generation. We used these control scores to study a range of goal-directed
-generative models and found that they show biases towards already known high-scoring molecules,
-and that the generators overfit to artifacts of the scoring functions leading to an overestimation
-of performance.
+goal-directed molecular generation. We used these control scores to study a range of generative
+models and found that the generated molecules show biases towards already known high-scoring
+molecules, and that the generators overfit to artifacts of the scoring functions leading to an
+overestimation of performance.
 
-In the second part of this thesis we introduced a benchmark for diverse goal-directed molecule
-generation. This benchmark measures the performance of goal-directed generators in finding diverse
-high-scoring molecules under controlled compute constraints, leading to a principled evaluation. We
-used this benchmark to test a range of established generative models, after adapting them for the
-diverse optimization setting. We found that there are large differences in the performance of the
-tested models and that the type of compute constraint has a significant impact on the performance of
-the models. In our test SMILES-based autoregressive models performed best, outperforming other
-models, such as genetic algorithms or GFlowNets.
+In the second part of this thesis, we introduced a benchmark measuring the performance of
+goal-directed generators in finding diverse high-scoring molecules under controlled compute
+constraints, leading to a principled evaluation. We used this benchmark to test a range of
+established generative models, after adapting them to the diverse optimization setting. We found
+that there are large differences in the performance of the tested models and that the type of
+compute constraint has a significant impact on the ranking of the models. In our test
+SMILES-based autoregressive models performed best, outperforming other models, such as genetic
+algorithms or GFlowNets.
 
-The third and last part of this thesis introduced a novel template-based model for retrosynthesis
-prediction based on Modern Hopfield Networks. Our model reaches state-of-the-art performance on the
-USPTO-50k dataset, while maintaining significantly lower computational costs in comparison to other
-methods. Our approach allows for generalization over reaction templates and improves performance
-particularly for rare templates.
+In the third and last part of this thesis, we introduced a novel template-based model for
+retrosynthesis prediction based on Modern Hopfield Networks. Our approach allows for generalization
+over reaction templates and improves performance particularly for rare templates. Our model reaches
+state-of-the-art performance on the USPTO-50k dataset, while maintaining significantly lower
+computational costs in comparison to other methods.
 
-The control scores have since been further investigated in \citep{turkMolecularAssaysSimulator2022},
+The control scores have since been further investigated in \citep{gendreauMolecularAssaysSimulator2023},
 basing their scoring functions on an artificial oracle defining the ground truth. We join them in
 their emphasis that while a deviation of the control scores from the optimization score can identify
 the presence of biases, the converse need not be true. The model control score may be highly
-correlated with the optimization score even when the ground truth differs. Furthermore, the data
+correlated with the optimization score, even when the ground truth differs. Furthermore, the data
 control score may be highly correlated with the optimization score if the data splits they are based
 on are highly similar \citep{langevinExplainingAvoidingFailure2022}. Both of these observations lead
 to cases where the control scores are not able to detect biases in the generated molecules.
@@ -45,11 +45,12 @@ compared to \ac{ML}-based scoring functions. This further supports the existence
 high-scoring molecules in the training data when optimizing \ac{ML}-based scoring functions.
 \citet{lyuModelingExpansionVirtual2023} and \citet{wuIdentifyingArtifactsLarge2024} observed
 molecules that cheat structure-based scoring functions. They found that these molecules dominate the
-top-ranked molecules when performing large-scale virtual screening runs. This underlines our
-broader point of molecule optimization exploiting unwanted artifacts in the scoring functions.
+top-ranked molecules when performing large-scale virtual screening runs. This underlines our broader
+point of molecule optimization methods exploiting unwanted artifacts of computational scoring
+functions.
 
 Going forward we see more comprehensive benchmarks for goal-directed generators as a key aspect to
-advance de novo molecular design. Despite significant efforts by others
+advance the field. Despite significant efforts by others
 \citep{brownGuacaMolBenchmarkingModels2019,polykovskiyMolecularSetsMOSES2020,gaoSynthesizabilityMoleculesProposed2020,gaoSampleEfficiencyMatters2022,thomasMolScoreScoringEvaluation2024}
 and the work in this thesis, there is a lack of unifying these efforts. One challenge is the
 establishment of relevant scoring functions that better reflect the difficulties in real-world drug
@@ -58,21 +59,21 @@ the problems observed in \Cref{sec:failure-modes} and
 \citep{lyuModelingExpansionVirtual2023,wuIdentifyingArtifactsLarge2024}. These benchmarks should
 also better incorporate whether the chemistry of the generated molecules is reasonable
 \citep{thomasReevaluatingSampleEfficiency2022} and diverse. Furthermore, the benchmarks should be
-run at scales that are more comparable to real-world drug discovery projects, given that relative
-performance of the models can be influenced by the available compute budget. Finally, we think that
-evaluating synthesizability of the generated molecules is a crucial aspect, which is a challenge in
-its own right. While being a significant effort, we believe the establishment of such an improved
-benchmark would spur the development of more practically relevant generative models.
+run at scales that are more comparable to real-world drug discovery projects, to better reflect
+practical scenarios. Finally, we think that evaluating synthesizability of the generated molecules
+is a crucial aspect, which is a challenge in its own right. While being a significant effort, we
+believe the establishment of such a combined benchmark would spur the development of more
+practically relevant generative models.
 
 In the field of retrosynthesis prediction, we also believe there is a need for better evaluation
 strategies. Efforts in this direction have been made by
-\citet{maziarzReevaluatingRetrosynthesisAlgorithms2024a} who list some best practices for evaluation
-and implemented a software library for standardized testing, including multistep planning
-methods. We think that progress in this field could also lead to consensus models for rating
-synthesizability in the de novo molecular design. Furthermore, we believe it is important to
-acknowledge the limitations of a purely data-driven ML approach to retrosynthesis modelling as
-pointed out in \citep{strieth-kalthoffArtificialIntelligenceRetrosynthetic2024}, as lots of useful
-chemical knowledge is available outside of reaction databases.
+\citet{maziarzReevaluatingRetrosynthesisAlgorithms2024}, who define best practices for evaluation
+and implemented a software library for standardized testing, including multistep planning methods.
+We think that progress in this field could also lead to consensus models for rating synthesizability
+in the de novo molecular design. Furthermore, we believe it is important to acknowledge the
+limitations of a purely data-driven ML approach to retrosynthesis modelling as pointed out in
+\citep{strieth-kalthoffArtificialIntelligenceRetrosynthetic2024}, as some of the data required for
+robust retrosynthesis models is missing in current reaction databases.
 
 In general, we think that the field would benefit from increased collaboration between machine
 learning researchers and chemists, to better identify practical problems

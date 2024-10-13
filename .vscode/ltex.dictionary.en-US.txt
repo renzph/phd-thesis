@@ -26,3 +26,5 @@ GFlowNets
 synthesizability
 toc
 VAEs
+eprintclass
+pubstate

@@ -5,8 +5,8 @@
    version="1.1"
    id="svg1"
    width="1268.8231"
-   height="205.69969"
-   viewBox="0 0 1268.8231 205.6997"
+   height="174.1078"
+   viewBox="0 0 1268.8231 174.10781"
    sodipodi:docname="drug-discovery-pipeline_v2.svg"
    inkscape:version="1.3.2 (091e20e, 2023-11-25)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -496,13 +496,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="3.6296968"
-     inkscape:cx="169.57339"
-     inkscape:cy="134.03323"
+     inkscape:zoom="0.60561426"
+     inkscape:cx="514.35381"
+     inkscape:cy="250.98484"
      inkscape:window-width="1920"
-     inkscape:window-height="1172"
+     inkscape:window-height="1147"
      inkscape:window-x="0"
-     inkscape:window-y="43"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:current-layer="g1">
     <inkscape:page
@@ -511,7 +511,7 @@
        inkscape:label="1"
        id="page1"
        width="1268.8231"
-       height="205.69971"
+       height="174.1078"
        margin="0"
        bleed="0"
        inkscape:export-filename="drug-discovery-pipeline_v2.pdf"
@@ -522,7 +522,7 @@
      id="g1"
      inkscape:groupmode="layer"
      inkscape:label="1"
-     transform="translate(-52.227232,-34.390537)">
+     transform="translate(-52.227232,-65.98243)">
     <g
        id="g7"
        transform="translate(1.0476471,50.76529)">
@@ -553,16 +553,6 @@
          inkscape:transform-center-y="6.7985027e-06" />
     </g>
     <rect
-       style="font-variation-settings:normal;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#d57839;stroke-width:4.10215;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
-       id="rect45-6-37-1-0"
-       width="596.28485"
-       height="174.2563"
-       x="264.27866"
-       y="36.441612"
-       sodipodi:type="rect"
-       ry="21.157534"
-       rx="21.157534" />
-    <rect
        style="font-variation-settings:normal;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#3985d5;stroke-width:4.10214;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
        id="rect45-6-37-1"
        width="188.75014"
@@ -579,7 +569,7 @@
        style="font-weight:bold;font-size:6.70301px;line-height:1.1;font-family:Arial;-inkscape-font-specification:'Arial, Bold';white-space:pre;shape-inside:url(#rect45-9-9-8-9);display:inline;fill:#000000;fill-opacity:0.873529;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="578.18945"
          y="237.27723"
-         id="tspan1">Hit discovery</tspan></text>
+         id="tspan3">Hit discovery</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(2.0604964,0,0,2.0604964,-911.67917,-361.52549)"
@@ -587,18 +577,18 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.47093px;line-height:1.1;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect45-9-9-8-9-2);display:inline;fill:#000000;fill-opacity:0.873529;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="578.18945"
          y="237.08559"
-         id="tspan2">Identification of molecules
+         id="tspan4">Identification of molecules
 </tspan><tspan
          x="578.18945"
          y="244.20361"
-         id="tspan6">with desired activity against 
+         id="tspan5">with desired activity against 
 </tspan><tspan
          x="578.18945"
          y="251.32164"
-         id="tspan30">the target in High Throughput </tspan><tspan
+         id="tspan7">the target in High Throughput </tspan><tspan
          x="578.18945"
          y="258.43967"
-         id="tspan31">Screens.</tspan></text>
+         id="tspan8">Screens.</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(1.6789734,0,0,1.6789734,-863.4654,-252.07131)"
@@ -621,16 +611,16 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.8225px;line-height:1.1;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect45-9-9-8-9-2-8);display:inline;fill:#000000;fill-opacity:0.873529;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="578.18945"
          y="237.3759"
-         id="tspan32">Synthesis and testing of </tspan><tspan
+         id="tspan9">Synthesis and testing of </tspan><tspan
          x="578.18945"
          y="244.88064"
-         id="tspan36">analogs of hits to establish </tspan><tspan
+         id="tspan10">analogs of hits to establish </tspan><tspan
          x="578.18945"
          y="252.38539"
-         id="tspan39">structure-activity </tspan><tspan
+         id="tspan11">structure-activity </tspan><tspan
          x="578.18945"
          y="259.89013"
-         id="tspan41">relationships</tspan></text>
+         id="tspan12">relationships</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(2.2937098,0,0,2.2937098,-793.96493,-448.86688)"
@@ -638,15 +628,7 @@
        style="font-weight:bold;font-size:6.70301px;line-height:1.1;font-family:Arial;-inkscape-font-specification:'Arial, Bold';white-space:pre;shape-inside:url(#rect45-9-9-8-30);display:inline;fill:#000000;fill-opacity:0.873529;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="578.18945"
          y="237.27723"
-         id="tspan42">Hit-to-lead</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(2.2937098,0,0,2.2937098,-820.0506,-488.258)"
-       id="text44-1-6-5-5-3"
-       style="font-weight:bold;font-size:6.70301px;line-height:1.1;font-family:Arial;-inkscape-font-specification:'Arial, Bold';white-space:pre;shape-inside:url(#rect45-9-9-8-30-1);display:inline;fill:#000000;fill-opacity:0.873529;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"><tspan
-         x="578.18945"
-         y="237.27723"
-         id="tspan43">Molecular Design</tspan></text>
+         id="tspan13">Hit-to-lead</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(2.2937098,0,0,2.2937098,-860.05119,-499.7824)"
@@ -669,13 +651,13 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.2653px;line-height:1.1;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect45-9-9-8-9-2-8-6);display:inline;fill:#000000;fill-opacity:0.873529;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="578.18945"
          y="237.74154"
-         id="tspan44">Iterative refinement of  lead </tspan><tspan
+         id="tspan14">Iterative refinement of  lead </tspan><tspan
          x="578.18945"
          y="245.73338"
-         id="tspan45">compounds to optimize </tspan><tspan
+         id="tspan15">compounds to optimize </tspan><tspan
          x="578.18945"
          y="253.72521"
-         id="tspan46">complete property profile.</tspan></text>
+         id="tspan16">complete property profile.</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(2.2937098,0,0,2.2937098,-631.71917,-450.29325)"
@@ -683,7 +665,7 @@
        style="font-weight:bold;font-size:6.70301px;line-height:1.1;font-family:Arial;-inkscape-font-specification:'Arial, Bold';white-space:pre;shape-inside:url(#rect45-9-9-8-2);display:inline;fill:#000000;fill-opacity:0.873529;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="578.18945"
          y="237.27723"
-         id="tspan47">Lead optimization</tspan></text>
+         id="tspan17">Lead optimization</tspan></text>
     <rect
        style="font-variation-settings:normal;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#3985d5;stroke-width:4.10214;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
        id="rect45-6-37-13-9"
@@ -701,16 +683,16 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.15996px;line-height:1.1;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect45-9-9-8-9-2-8-6-5);display:inline;fill:#000000;fill-opacity:0.873529;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="578.18945"
          y="237.65456"
-         id="tspan48">Test of most promising lead </tspan><tspan
+         id="tspan18">Test of most promising lead </tspan><tspan
          x="578.18945"
          y="245.53052"
-         id="tspan49">compounds in multiple </tspan><tspan
+         id="tspan19">compounds in multiple </tspan><tspan
          x="578.18945"
          y="253.40648"
-         id="tspan50">species. Results important </tspan><tspan
+         id="tspan20">species. Results important </tspan><tspan
          x="578.18945"
          y="261.28244"
-         id="tspan51">for approval of clinical </tspan></text>
+         id="tspan21">for approval of clinical </tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(2.2937098,0,0,2.2937098,-407.30502,-448.86688)"
@@ -718,7 +700,7 @@
        style="font-weight:bold;font-size:6.70301px;line-height:1.1;font-family:Arial;-inkscape-font-specification:'Arial, Bold';white-space:pre;shape-inside:url(#rect45-9-9-8-2-5);display:inline;fill:#000000;fill-opacity:0.873529;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="578.18945"
          y="237.27723"
-         id="tspan52">Preclinical</tspan></text>
+         id="tspan22">Preclinical</tspan></text>
     <rect
        style="font-variation-settings:normal;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#3985d5;stroke-width:4.10214;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
        id="rect45-6-37-13-9-8"
@@ -736,7 +718,7 @@
        style="font-weight:bold;font-size:6.70301px;line-height:1.1;font-family:Arial;-inkscape-font-specification:'Arial, Bold';white-space:pre;shape-inside:url(#rect45-9-9-8-2-5-6);display:inline;fill:#000000;fill-opacity:0.873529;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="578.18945"
          y="237.27723"
-         id="tspan53">Clinical trials</tspan></text>
+         id="tspan23">Clinical trials</tspan></text>
     <text
        xml:space="preserve"
        id="text32"
@@ -768,11 +750,11 @@
        style="font-weight:bold;font-size:6.70301px;line-height:1.1;font-family:Arial;-inkscape-font-specification:'Arial, Bold';white-space:pre;shape-inside:url(#rect45-9-9-8);display:inline;fill:#000000;fill-opacity:0.873529;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="578.18945"
          y="237.27723"
-         id="tspan54">Target identification
+         id="tspan24">Target identification
 </tspan><tspan
          x="578.18945"
          y="244.65053"
-         id="tspan55">&amp; validation</tspan></text>
+         id="tspan25">&amp; validation</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(1.8622091,0,0,1.8622091,3.3131107,-315.73672)"
@@ -780,17 +762,17 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.15996px;line-height:1.1;font-family:Arial;-inkscape-font-specification:Arial;white-space:pre;shape-inside:url(#rect45-9-9-8-9-2-8-6-5-2);display:inline;fill:#000000;fill-opacity:0.873529;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="578.18945"
          y="237.65456"
-         id="tspan56">Drug candidates are tested </tspan><tspan
+         id="tspan26">Drug candidates are tested </tspan><tspan
          x="578.18945"
          y="245.53052"
-         id="tspan57">in humans and assessed for 
+         id="tspan27">in humans and assessed for 
 </tspan><tspan
          x="578.18945"
          y="253.40648"
-         id="tspan58">safety and efficacy to </tspan><tspan
+         id="tspan28">safety and efficacy to </tspan><tspan
          x="578.18945"
          y="261.28244"
-         id="tspan59">warrant regulatory approval.</tspan></text>
+         id="tspan29">warrant regulatory approval.</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:1.1;font-family:Arial;-inkscape-font-specification:Arial;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#343434;stroke-width:0;stroke-linejoin:bevel;stroke-dashoffset:0.177565;stroke-opacity:0.97542"
