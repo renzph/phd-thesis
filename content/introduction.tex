@@ -73,7 +73,7 @@ described in \citet{hughesPrinciplesEarlyDrug2011} and \citep{umscheidKeyConcept
     \item \textbf{Hit-to-lead}: This phase aims to develop more potent and selective compounds
           based on the identified hits. This often involves a systematic exploration of the
           structure-activity relationship around the hit molecules.  The hits are further tested on
-          their pharmacokinetic properties and toxicity, further narrowing down the number of
+          their pharmacokinetic properties and toxicity, narrowing down the number of
           compounds.
     \item \textbf{Lead Optimization:} This phase aims to optimize the properties of the
           lead compounds identified in the hit-to-lead phase. The goal is to maintain the favorable
@@ -100,10 +100,9 @@ described in \citet{hughesPrinciplesEarlyDrug2011} and \citep{umscheidKeyConcept
     \item \textbf{Regulatory Approval:} Upon successful completion of clinical trials, the drug is
           submitted for regulatory approval. Agencies such as the U.S. \Ac{FDA} or the \Ac{EMA}
           review the comprehensive data package, including preclinical and clinical trial results.
-          If the drug is deemed safe and effective, it receives approval for marketing and
-          distribution. The success rate for submissions for regulatory approval is 85\% which
-          translates to 9.6\% of all projects that obtain approval
-          \citep{mullardParsingClinicalSuccess2016}.
+          If the drug is deemed safe and effective, it receives approval for distribution. The
+          success rate for submissions for regulatory approval is 85\% which translates to 9.6\% of
+          all projects that obtain approval \citep{mullardParsingClinicalSuccess2016}.
     \item \textbf{Post-Market Surveillance:} Post-market surveillance, or Phase IV studies, are
           conducted to monitor the long-term safety and efficacy of the drug in the general population.
           This stage can reveal rare side effects or long-term risks that were not apparent during
@@ -141,7 +140,7 @@ shown in \Cref{fig:dmta-cycle}. The cycle consists of four stages:
           be tested are designed. The design generally aims to optimize the desired properties of
           the molecule, but also to explore chemical space to establish structure-activity relationships.
     \item \textbf{Make:} The designed molecules are then synthesized and prepared for testing. This
-          step requires a synthesis plan that outlines the steps needed to make the molecule.
+          step requires a synthesis plan that outlines the steps needed to make the molecules.
     \item \textbf{Test:} The synthesized molecules are then tested in laboratory experiments to
           measure the properties of interest. This can range from the activity of the molecule
           against a target, to its pharmacokinetic properties, to its toxicity and others.
@@ -167,14 +166,14 @@ training strategies and model architectures being developed
 \citep{bond-taylorDeepGenerativeModelling2022,brownLanguageModelsAre2020,goodfellowGenerativeAdversarialNets2014,
     dinhDensityEstimationUsing2017,kingmaAutoEncodingVariationalBayes2013,hoDenoisingDiffusionProbabilistic2020,vaswaniAttentionAllYou2017}.
 In drug discovery, these models have opened up new possibilities for tasks that rely on the creation
-of novel molecular structures, extending the applicability of \ac{ML}. This thesis focuses on two
-key applications of generative models in drug discovery:
+of molecular structures. This thesis focuses on two key applications of generative models in
+drug discovery:
 \begin{itemize}
     \item \textbf{De novo molecular design}: A computational technique aiming at the generation of
           novel molecules with desired properties by efficiently exploring chemical space
           \citep{schneiderNovoMolecularDesign2013}.
     \item \textbf{Computer-aided synthesis planning}: A computational approach designed to predict and optimize synthetic routes for
-          target molecules, facilitating the efficient synthesis of novel compounds.
+          target molecules.
 \end{itemize}
 
 In the remainder of this section, we provide an overview of the key concepts and methods underlying
@@ -239,14 +238,13 @@ Figure~\ref{fig:generation-strategies} and described next.
     \centering
     \includegraphics[width=\textwidth]{figures/generation_strategies.pdf}
     \caption{Different approaches to generate molecules in drug discovery. \textbf{A:} Graph-based
-        autoregressive models generate molecules by iteratively adding nodes and edges to the
-        graph, often relying on \acp{GNN} \textbf{B:} Sequence-based autoregressive models
-        generate molecules by sampling one token at a time conditioned on the previously sampled
-        tokens, relying on \acp{RNN} or Transformers \textbf{C:} Matrix-based models generate an
-        adjacency matrix and node feature matrix of a molecule, followed by a discretization
-        step. \textbf{D:} Rule-based models generate molecules by applying a set of pre-defined
-        graph transformation rules to iteratively combine a set of starting molecules.
-        \label{fig:generation-strategies}}
+        autoregressive models generate molecules by iteratively adding nodes and edges to the graph,
+        often relying on \acp{GNN} \textbf{B:} Sequence-based autoregressive models generate
+        molecules by sampling one token at a time conditioned on the previously sampled tokens,
+        relying on \acp{RNN} or Transformers \textbf{C:} Matrix-based models generate an adjacency
+        matrix and node feature matrix of a molecule, followed by a discretization step. \textbf{D:}
+        Rule-based models generate molecules by iteratively applying a set of pre-defined graph
+        transformation rules to a set of starting molecules. \label{fig:generation-strategies}}
 \end{figure}
 \textbf{Sequence-based autoregressive models} constitute one of the most popular approaches for
 generating molecules. This approach makes use of a linearized representation of the molecule, such
@@ -280,13 +278,13 @@ molecular graph, by sampling from the predicted probabilities. Some notable exam
 matrix-based models are \citep{simonovskyGraphVAEGenerationSmall2018,caoMolGANImplicitGenerative2022,madhawaGraphNVPInvertibleFlow2019}.
 
 % https://www.frontiersin.org/journals/hematology/articles/10.3389/frhem.2024.1305741/full#h4
-\textbf{Rule-based models} generate molecules by applying a set of pre-defined graph transformation
-rules to combine a set of starting compounds. By iteratively applying these rules, these models are
-able to generate a wide range of molecular structures. The BRICS \citep{degenArtCompilingUsing2008}
-method provides a set of molecular fragments and rules how to meaningfully combine them.
+\textbf{Rule-based models} generate molecules by applying pre-defined graph transformation rules to
+a set of starting compounds. By iteratively applying these rules, these models are able to generate
+a wide range of molecular structures. The BRICS \citep{degenArtCompilingUsing2008} method provides a
+set of molecular fragments and rules how to meaningfully combine them.
 \citet{jensenGraphbasedGeneticAlgorithm2019} defines graph mutation and crossover operations to
-generate new molecules, which are then used in the context of molecule optimization.
-Transformation rules are well-suited to describe chemical reactions. The DOGS method
+generate new molecules, which are then used in the context of molecule optimization. Transformation
+rules are well-suited to describe chemical reactions. The DOGS method
 \citep{hartenfellerDOGSReactionDrivenNovo2012} generates new molecules by applying chemical reaction
 rules to a set of starting molecules, which allows the generation of new molecules with known
 synthetic routes. Rule-based models are often combined with machine learning models to predict the
@@ -301,7 +299,7 @@ outcome of chemical reactions
     \caption{Different types of distribution-learning models. All model types
         try to fit the data distribution, but differ in the way they achieve this goal.
         While for autoregressive models and generative flows the exact likelihood of the data can be calculated,
-        and optimized, \emph{VAEs} rely on a variational approximation of the likelihood. Generative adversarial networks
+        and optimized, VAEs rely on a variational approximation of the likelihood. Generative adversarial networks
         indirectly fit the data distribution using a game-theoretic approach. \label{fig:distribution-learning-models}}
 \end{figure}
 % Whats distribution learning
@@ -327,7 +325,7 @@ a molecule is obtained by factorizing the joint probability of the molecule into
 conditional probabilities of the individual tokens. Autoregressive models are explicit density
 models, as the likelihood of sampling a molecule can be calculated exactly, which facilitates model
 evaluation. Sequence-based autoregressive models trained using maximum likelihood, form the backbone
-of many generative models for molecules
+of many goal-directed generators discussed in the next section
 \citep{gomez-bombarelliAutomaticChemicalDesign2018,seglerGeneratingFocusedMolecule2018,olivecronaMolecularDenovoDesign2017,guoAugmentedMemorySampleEfficient2024,thomasAugmentedHillClimbIncreases2022,jaquesSequenceTutorConservative2016,cohen-karlikOvercomingOrderAutoregressive2024}.
 
 \Acp{VAE} \citep{kingmaAutoEncodingVariationalBayes2013} generate molecules by first sampling from a
@@ -352,7 +350,7 @@ parameterized by neural networks. This makes it possible to calculate the likeli
 molecule using the change of variables formula of probability. Similarly to autoregressive models,
 generative flows are explicit density models, and are optimized by maximizing the likelihood of the
 training data. Originally generative flows have been proposed for continuous data, but have been
-adapted the discrete modality of graphs
+adapted to the discrete modality of graphs
 \citep{madhawaGraphNVPInvertibleFlow2019,satorrasEquivariantNormalizingFlows2021,shiGraphAFFlowbasedAutoregressive2019,kuznetsovMolGrowGraphNormalizing2021}.
 Similarly to \acp{VAE}, generative flows provide a continuous latent space, which can be used for
 molecule optimization.
@@ -368,7 +366,7 @@ molecule optimization.
 
 % molgan
 \Acp{GAN} \citep{goodfellowGenerativeAdversarialNets2014} are latent space models that map a
-simple distribution in latent space to molecular space, but rely on a game-theoretic approach to
+simple distribution in latent space to molecular space and rely on a game-theoretic approach to
 training. A generator network is trained to generate data, which is then fed to a discriminator
 network along with real data. The two networks then engage in a minimax game, where the
 discriminator is trained to distinguish between real and generated data, while the generator is
@@ -545,7 +543,7 @@ of the generated molecules
 \citep{waldmanNovelAlgorithmsOptimization2000,xieHowMuchSpace2023,thomasComparisonStructureLigandbased2021}.
 \citet{thomasComparisonStructureLigandbased2021} proposed the \ac{SEDiv} metric, which better aligns
 with chemical intuition but can be misleading when comparing sets of different sizes. These
-shortcomings have led to a lack of informative evaluations of diversity in goal-directed generation.
+limitations have led to a lack of informative evaluations of diversity in goal-directed generation.
 
 \citet{xieHowMuchSpace2023} recently addressed these shortcomings and introduced the \#Circles
 metric, which better reflects the requirements of evaluating goal-directed generators. \#Circles is
@@ -560,7 +558,7 @@ A comprehensive comparison of models specifically designed for diverse optimizat
 missing, leaving open the question of how well various approaches perform in generating diverse,
 high-scoring molecules.
 
-\subsubsection{Standardized Computational Resources}
+\subsubsection{Standardized computational resources}
 A frequently neglected aspect in evaluating goal-directed models is the use of standardized
 computational resources. At its core, goal-directed generation is a search problem
 that, given infinite resources, can be solved through exhaustive enumeration of drug-like chemical space.

@@ -17,16 +17,15 @@ overestimation of performance.
 
 In the second part of this thesis, we introduced a benchmark measuring the performance of
 goal-directed generators in finding diverse high-scoring molecules under controlled compute
-constraints, leading to a principled evaluation. We used this benchmark to test a range of
-established generative models, after adapting them to the diverse optimization setting. We found
-that there are large differences in the performance of the tested models and that the type of
-compute constraint has a significant impact on the ranking of the models. In our test
-SMILES-based autoregressive models performed best, outperforming other models, such as genetic
-algorithms or GFlowNets.
+constraints. We used this benchmark to test a range of established generative models, after adapting
+them to the diverse optimization setting. We found that there are large differences in the
+performance of the tested models and that the type of compute constraint has a significant impact on
+the ranking of the models. In our tests SMILES-based autoregressive models performed best,
+outperforming other models, such as genetic algorithms or GFlowNets.
 
 In the third and last part of this thesis, we introduced a novel template-based model for
 retrosynthesis prediction based on Modern Hopfield Networks. Our approach allows for generalization
-over reaction templates and improves performance particularly for rare templates. Our model reaches
+over reaction templates and improves performance, particularly for rare templates. Our model reaches
 state-of-the-art performance on the USPTO-50k dataset, while maintaining significantly lower
 computational costs in comparison to other methods.
 
@@ -36,7 +35,7 @@ their emphasis that while a deviation of the control scores from the optimizatio
 the presence of biases, the converse need not be true. The model control score may be highly
 correlated with the optimization score, even when the ground truth differs. Furthermore, the data
 control score may be highly correlated with the optimization score if the data splits they are based
-on are highly similar \citep{langevinExplainingAvoidingFailure2022}. Both of these observations lead
+on are highly similar \citep{langevinExplainingAvoidingFailure2022}. Both of these scenarios lead
 to cases where the control scores are not able to detect biases in the generated molecules.
 
 Related findings were made in \citep{thomasReevaluatingSampleEfficiency2022}, in which the authors
