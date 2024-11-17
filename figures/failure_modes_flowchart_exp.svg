@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="153.06439mm"
+   height="64.679993mm"
+   viewBox="0 0 153.06439 64.679993"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="ConcaveTriangle-83"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path7-6" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ConcaveTriangle-83-4"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path7-6-9" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ConcaveTriangle-83-5"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path7-6-4" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ConcaveTriangle-83-5-8"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path7-6-4-1" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ConcaveTriangle-83-5-8-8"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path7-6-4-1-2" />
+    </marker>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-6.400044,-15.796745)">
+    <rect
+       style="fill:#d5d5e6;fill-opacity:1;stroke:#898989;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       id="rect1"
+       width="46.447632"
+       height="21.175678"
+       x="6.400044"
+       y="37.825211"
+       rx="1.6294062"
+       ry="1.5570093" />
+    <rect
+       style="fill:#99ffff;fill-opacity:1;stroke:#898989;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       id="rect1-7"
+       width="22.797249"
+       height="21.175678"
+       x="79.695732"
+       y="26.136038"
+       rx="1.6294062"
+       ry="1.5570093" />
+    <rect
+       style="fill:#ffa5a5;fill-opacity:1;stroke:#898989;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       id="rect1-7-0"
+       width="22.992172"
+       height="21.175678"
+       x="79.500809"
+       y="48.79892"
+       rx="1.6294062"
+       ry="1.5570095" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       x="29.623859"
+       y="47.354717"
+       id="text1"><tspan
+         id="tspan1"
+         style="font-weight:bold;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.795858"
+         x="29.623859"
+         y="47.354717">Dataset</tspan><tspan
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.795858"
+         x="29.623859"
+         y="51.323467"
+         id="tspan11">Bioactivity classification task</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;font-family:Helvetica;-inkscape-font-specification:Helvetica;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       x="86.111214"
+       y="37.560261"
+       id="text2"><tspan
+         id="tspan2"
+         style="font-weight:bold;stroke-width:0"
+         x="86.111214"
+         y="37.560261">Split 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;font-family:Helvetica;-inkscape-font-specification:Helvetica;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       x="86.573952"
+       y="60.223141"
+       id="text3"><tspan
+         id="tspan3"
+         style="font-weight:bold;stroke-width:0"
+         x="86.573952"
+         y="60.223141">Split 2</tspan></text>
+    <rect
+       style="fill:#9c9aff;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       id="rect3"
+       width="24.411974"
+       height="19.428774"
+       x="134.77187"
+       y="15.796745"
+       rx="1.6294062"
+       ry="1.5570093" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       x="147.3569"
+       y="24.664673"
+       id="text5"><tspan
+         style="font-weight:bold;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0"
+         x="147.3569"
+         y="24.664673"
+         id="tspan6">Optimization </tspan><tspan
+         style="font-weight:bold;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0"
+         x="147.3569"
+         y="28.633423"
+         id="tspan7">score</tspan></text>
+    <rect
+       style="fill:#91ffab;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       id="rect3-0"
+       width="24.411974"
+       height="19.428774"
+       x="135.05246"
+       y="38.422356"
+       rx="1.6294062"
+       ry="1.5570093" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       x="147.58246"
+       y="47.263153"
+       id="text5-4"><tspan
+         style="font-weight:bold;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0"
+         x="147.58246"
+         y="47.263153"
+         id="tspan7-4">Model control </tspan><tspan
+         style="font-weight:bold;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0"
+         x="147.58246"
+         y="51.231903"
+         id="tspan8">score</tspan></text>
+    <rect
+       style="fill:#ffa5a5;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       id="rect3-0-8"
+       width="24.411974"
+       height="19.428774"
+       x="135.05246"
+       y="61.047966"
+       rx="1.6294062"
+       ry="1.5570093" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.758663;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       x="147.23752"
+       y="69.888763"
+       id="text5-4-6"><tspan
+         style="font-weight:bold;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.758663;stroke-width:0"
+         x="147.23752"
+         y="69.888763"
+         id="tspan8-5">Data control</tspan><tspan
+         style="font-weight:bold;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.758663;stroke-width:0"
+         x="147.23752"
+         y="73.857513"
+         id="tspan10">score</tspan></text>
+    <path
+       style="fill:#53e590;fill-opacity:0;stroke:#c8cfc8;stroke-width:0.8;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#ConcaveTriangle-83)"
+       d="M 52.847675,48.41305 H 66.470864 V 36.883856 h 7.872868"
+       id="path10-4" />
+    <path
+       style="fill:#53e590;fill-opacity:0;stroke:#c8cfc8;stroke-width:0.8;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#ConcaveTriangle-83-4)"
+       d="m 52.847676,48.41305 h 13.623188 v 11.742202 h 7.731965"
+       id="path10-4-9" />
+    <rect
+       style="fill:#d5d5e6;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       id="rect3-3"
+       width="19.419167"
+       height="13.2509"
+       x="56.349617"
+       y="42.535591"
+       rx="1.6294062"
+       ry="1.5570092" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       x="66.04525"
+       y="48.01305"
+       id="text1-0"><tspan
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.795858"
+         x="66.04525"
+         y="48.01305"
+         id="tspan11-6">Stratified </tspan><tspan
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.795858"
+         x="66.04525"
+         y="51.9818"
+         id="tspan12">50:50 split</tspan></text>
+    <path
+       style="fill:#53e590;fill-opacity:0;stroke:#c8cfc8;stroke-width:0.8;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#ConcaveTriangle-83-5)"
+       d="m 102.49298,36.723876 h 13.62319 V 25.194682 h 13.79082"
+       id="path10-4-96" />
+    <path
+       style="fill:#53e590;fill-opacity:0;stroke:#c8cfc8;stroke-width:0.8;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#ConcaveTriangle-83-5-8)"
+       d="m 102.49298,36.723876 h 13.62319 v 11.569002 h 13.79082"
+       id="path10-4-96-8" />
+    <path
+       style="fill:#53e590;fill-opacity:0;stroke:#c8cfc8;stroke-width:0.8;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#ConcaveTriangle-83-5-8-8)"
+       d="m 102.49298,59.525289 h 13.88117 v 11.569002 h 13.79082"
+       id="path10-4-96-8-0" />
+    <rect
+       style="fill:#9c9aff;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       id="rect3-9"
+       width="16.542124"
+       height="10.251022"
+       x="108.43756"
+       y="20.290262"
+       rx="1.6294061"
+       ry="1.5570093" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.772277;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       x="116.82951"
+       y="24.471548"
+       id="text5-1"><tspan
+         style="font-size:2.11667px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.772277;stroke-width:0"
+         x="116.82951"
+         y="24.471548"
+         id="tspan7-46">Train model</tspan><tspan
+         style="font-size:2.11667px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.772277;stroke-width:0"
+         x="116.82951"
+         y="27.117386"
+         id="tspan13">Random seed 1</tspan></text>
+    <rect
+       style="fill:#91ffab;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       id="rect3-9-9"
+       width="16.542124"
+       height="10.251022"
+       x="107.8942"
+       y="43.74976"
+       rx="1.6294061"
+       ry="1.5570093" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.772277;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       x="116.11617"
+       y="48.292877"
+       id="text5-1-5"><tspan
+         style="font-size:2.11667px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.772277;stroke-width:0"
+         x="116.11617"
+         y="48.292877"
+         id="tspan7-46-7">Train model</tspan><tspan
+         style="font-size:2.11667px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.772277;stroke-width:0"
+         x="116.11617"
+         y="50.938713"
+         id="tspan13-2"
+         dx="0 0 0 0 0 0 0.27137411">Randomseed 2</tspan></text>
+    <rect
+       style="fill:#ffa5a5;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       id="rect3-9-9-9"
+       width="16.542124"
+       height="10.251022"
+       x="108.10309"
+       y="65.309792"
+       rx="1.6294061"
+       ry="1.5570093" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.11667px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.772277;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:0.795858"
+       x="116.32506"
+       y="69.852905"
+       id="text5-1-5-6"><tspan
+         style="font-size:2.11667px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.772277;stroke-width:0"
+         x="116.32506"
+         y="69.852905"
+         id="tspan7-46-7-5">Train model</tspan><tspan
+         style="font-size:2.11667px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0.772277;stroke-width:0"
+         x="116.32506"
+         y="72.498741"
+         id="tspan13-2-1"
+         dx="0 0 0 0 0 0 0.27137411">Randomseed 3</tspan></text>
+  </g>
+</svg>
