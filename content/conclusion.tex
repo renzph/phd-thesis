@@ -29,7 +29,7 @@ over reaction templates and improves performance, particularly for rare template
 state-of-the-art performance on the USPTO-50k dataset, while maintaining significantly lower
 computational costs in comparison to other methods.
 
-The control scores have since been further investigated in \citep{gendreauMolecularAssaysSimulator2023},
+The control scores have since been further investigated in \citet{gendreauMolecularAssaysSimulator2023},
 basing their scoring functions on an artificial oracle defining the ground truth. We join them in
 their emphasis that while a deviation of the control scores from the optimization score can identify
 the presence of biases, the converse need not be true. The model control score may be highly
@@ -38,7 +38,7 @@ control score may be highly correlated with the optimization score if the data s
 on are highly similar \citep{langevinExplainingAvoidingFailure2022}. Both of these scenarios lead
 to cases where the control scores are not able to detect biases in the generated molecules.
 
-Related findings were made in \citep{thomasReevaluatingSampleEfficiency2022}, in which the authors
+Related findings were made in \citet{thomasReevaluatingSampleEfficiency2022}, in which the authors
 showed that optimizing structure-based scoring functions leads to more diverse and novel molecules
 compared to \ac{ML}-based scoring functions. This further supports the existence of a bias towards
 high-scoring molecules in the training data when optimizing \ac{ML}-based scoring functions.
@@ -71,7 +71,7 @@ and implemented a software library for standardized testing, including multistep
 We think that progress in this field could also lead to consensus models for rating synthesizability
 in the de novo molecular design. Furthermore, we believe it is important to acknowledge the
 limitations of a purely data-driven ML approach to retrosynthesis modelling as pointed out in
-\citep{strieth-kalthoffArtificialIntelligenceRetrosynthetic2024}, as some of the data required for
+\citet{strieth-kalthoffArtificialIntelligenceRetrosynthetic2024}, as some of the data required for
 robust retrosynthesis models is missing in current reaction databases.
 
 In general, we think that the field would benefit from increased collaboration between machine

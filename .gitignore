@@ -36,3 +36,7 @@
 
 # macos
 .DS_Store
+
+# vscode
+.vscode
+main.pdf
