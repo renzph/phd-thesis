@@ -153,8 +153,7 @@ shown in \Cref{fig:dmta-cycle}. The cycle consists of four stages:
 \end{itemize}
 
 The iterative nature of the \ac{DMTA} cycle not only improves molecular candidates but also builds a growing knowledge
-base that aids future discovery efforts. In modern drug discovery each phase is influenced by computational tools, which
-play a pivotal role in automating tasks in the drug discovery workflow. 
+base that aids future discovery efforts.
 
 % TODO: Read this again
 \subsection{Computer-aided drug design}
@@ -167,13 +166,14 @@ to market
 \citep{brownArtificialIntelligenceChemistry2020,niaziComputerAidedDrugDesign2023,sliwoskiComputationalMethodsDrug2014}.
 
 % One specific paragraph about molecular property and activity prediction
-Molecular property and activity prediction guides decision making in the "Design" phase. The field is roughly divided
-into ligand-based and structure-based methods \citep{yuComputerAidedDrugDesign2017}. Structure-based methods rely on the
-known 3D-structure of the biological target, e.g. a protein, and predict how a small molecule will interact with the
-target, often via molecular docking \citep{morrisMolecularDocking2008} or dynamics simulations
-\citep{weiStructureDynamicsDrug2024,hospitalMolecularDynamicsSimulations2015}. Recent breakthroughs in protein structure prediction
-\citep{jumperHighlyAccurateProtein2021,baekAccuratePredictionProtein2021} and protein-ligand complexes
-\citep{abramsonAccurateStructurePrediction2024} have increased interest in this field. 
+Molecular property and activity prediction guides decision making in the Design phase of the \ac{DMTA} cycle. The
+field is roughly divided into ligand-based and structure-based methods \citep{yuComputerAidedDrugDesign2017}.
+Structure-based methods rely on the known 3D-structure of the biological target, e.g. a protein, and predict how a small
+molecule will interact with the target, often via molecular docking \citep{morrisMolecularDocking2008} or dynamics
+simulations \citep{weiStructureDynamicsDrug2024,hospitalMolecularDynamicsSimulations2015}. Recent breakthroughs in
+protein structure prediction, notably AlphaFold \citep{jumperHighlyAccurateProtein2021} and RoseTTAFold
+\citep{baekAccuratePredictionProtein2021}, have revolutionized the field by achieving high accuracy in
+determining protein 3D structures, spurring increased interest in structure-based methods.
 
 In contrast, ligand-based methods employ quantitative structure-activity relationship (QSAR) models and machine learning
 algorithms to extract patterns and correlations from experimental data \citep{cherkasovQSARModelingWhere2014}.
@@ -181,19 +181,19 @@ Recently, advancements in \ac{DL} have contributed to the field, enabling the de
 \citep{lusciDeepArchitecturesDeep2013,unterthinerDeepLearningOpportunity2015,chenRiseDeepLearning2018,hochreiterMachineLearningDrug2018,mayrLargescaleComparisonMachine2018,stanleyFSMolFewShotLearning2021,seidlEnhancingActivityPrediction2023}.
 
 \Ac{DNDD} is a computational technique aiming at the generation of novel molecules with desired properties
-\citep{schneiderNovoMolecularDesign2013}. By integrating property prediction models, \ac{DNDD} approaches can
-efficiently navigate chemical space to propose candidate molecules with desired property profiles
-\citep{gaoSampleEfficiencyMatters2022}. This allows for the identification of novel structures that may not be present
-in existing chemical libraries \citep{brownGuacaMolBenchmarkingModels2019}. \ac{DNDD} models are employed during the
-design phase of the \ac{DMTA} cycle to generate molecules to be tested next. Recent advances in generative \ac{DL}
-methods
+\citep{schneiderNovoMolecularDesign2013}. \ac{DNDD} approaches efficiently explore chemical space by iteratively
+generating candidate molecules, evaluating their properties with predictive models, and refining the generation process
+based on feedback \citep{gaoSampleEfficiencyMatters2022}. This allows for the identification of novel structures that
+may not be present in existing chemical libraries \citep{brownGuacaMolBenchmarkingModels2019}. \ac{DNDD} models are
+employed during the Design phase of the \ac{DMTA} cycle to generate molecules to be tested next. Recent advances in
+generative \ac{DL} methods
 \citep{bond-taylorDeepGenerativeModelling2022,brownLanguageModelsAre2020,goodfellowGenerativeAdversarialNets2014,
 dinhDensityEstimationUsing2017,kingmaAutoEncodingVariationalBayes2013,hoDenoisingDiffusionProbabilistic2020,vaswaniAttentionAllYou2017}
 have driven a surge of interest and advances in the field
 \citep{eltonDeepLearningMolecular2019,sanchez-lengelingInverseMolecularDesign2018,ekinsIntroductionGenerativeDrug2025}.
 
 % One paragraph on casp
-\Ac{CASP} methods support chemists during the “Make” phase of the \ac{DMTA} cycle, assisting them in finding viable
+\Ac{CASP} methods support chemists during the Make phase of the \ac{DMTA} cycle, assisting them in finding viable
 synthesis plans for molecules of interest
 \citep{coreyComputerAssistedDesignComplex1969,coreyLogicChemicalSynthesis1989,seglerPlanningChemicalSyntheses2018}.
 These algorithms streamline the process of determining how to synthesize proposed molecules, bridging the gap between
@@ -329,7 +329,7 @@ outcome of chemical reactions
 		indirectly fit the data distribution using a game-theoretic approach. \label{fig:distribution-learning-models}}
 \end{figure}
 % Whats distribution learning
-Distribution-learning is a fundamental application of generative models in de novo molecular design
+Distribution-learning is a fundamental application of generative models in \ac{DNDD}
 \citep{seglerGeneratingFocusedMolecule2018,gomez-bombarelliAutomaticChemicalDesign2018,brownGuacaMolBenchmarkingModels2019}.
 Its objective is to create a model that captures the distribution of molecules within a dataset and is able to sample
 new molecules from it. These models can be trained in a self-supervised manner on large chemical libraries of stable
@@ -533,17 +533,18 @@ questions remain about their comprehensiveness and ability to fully capture mode
 \ac{ML} models have shown promise in predicting molecular properties
 \citep{mayrDeepToxToxicityPrediction2016,klambauerMachineLearningDrug2019,vamathevanApplicationsMachineLearning2019,chenRiseDeepLearning2018,stokesDeepLearningApproach2020},
 which makes them an attractive target for goal-directed generation. However, these \ac{ML} models are imperfect
-approximations real-world phenomena, which introduces optimization challenges. This issue resembles problems in
+approximations of real-world phenomena, which introduces optimization challenges. This issue resembles problems in
 reinforcement learning \citep{suttonIntroductionReinforcementLearning1998} where inaccurate environmental models can
-lead to suboptimal performance \citep{abbeelUsingInaccurateModels2006} or where agents exploit the reward function in
+lead to suboptimal performance \citep{abbeelUsingInaccurateModels2006}, or where agents exploit the scoring function in
 unintended and counterproductive ways \citep{lehmanSurprisingCreativityDigital2019}. These challenges underscore the
-importance of robust evaluation and careful design of both the optimization process and the scoring function itself.
+importance of robust evaluation of the generated molecules and the scoring function itself.
 
-The use of ML models as scoring function, can lead to a lack of novelty of the generated molecules. This is because ML
-models are often biased towards their training data, especially when trained on small datasets which is often the case
-in drug discovery applications. This bias can lead to the generation of molecules that are biased towards the already
-known high-scoring molecules used to train the scoring function, which can reduce the practical utility of the generated
-molecules.
+When ML models are used as scoring functions in goal-directed optimization, one issue that arises is the potential lack
+of novelty in the generated molecules. This occurs because ML models often reflect biases present in their training
+data, particularly when trained on small or limited datasets, which is a common challenge in drug discovery
+applications. As a result, the models may generate molecules that are overly similar to the known, high-scoring
+compounds used for training the scoring function. This reduced novelty can limit the practical utility of
+the proposed molecules.
 
 Furthermore, it has been shown that optimizing an \ac{ML} model's output with respect to its input can lead to generated
 samples that incorrectly receive high scores
@@ -554,7 +555,7 @@ will drift outside the applicability domain is high. While this effect was initi
 human vision can easily provide ground truth evaluation, it is more challenging to identify this effect in molecular
 optimization.
 
-The extent of these effects are unknown, and it is not clear how to best quantify them.
+The extent of these effects is unknown, and it is not clear how to best quantify them.
 
 \subsubsection{Diversity of generated molecules}
 Generating diverse sets of high-scoring molecules can increase the success chances of drug discovery
