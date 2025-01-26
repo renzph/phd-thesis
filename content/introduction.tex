@@ -98,7 +98,7 @@ described in \citet{hughesPrinciplesEarlyDrug2011} and \citep{umscheidKeyConcept
 	      trials eventually being approved by regulatory agencies. More specifically, the success rates in
 	      Phase I/II/III are 63\%, 31\%, 58\% which translates to 63\%, 19.5\% and 11.3\% of projects that
 	      make it through the respective stages \citep{mullardParsingClinicalSuccess2016}. \citet{arrowsmithPhaseIIFailures2011}
-		  reports a decrease from 28\%(2006-2007) to 18\%(2008-2009) success rate in phase II trials and \citet{arrowsmithPhaseIIISubmission2011}
+		  reports a decrease from 28\% (2006-2007) to 18\% (2008-2009) success rate in phase II trials and \citet{arrowsmithPhaseIIISubmission2011}
 		  gives a 50\% success rate for Phase III trials between 2007 and 2010.
 	      % TODO: Recheck arrowsmith
 	\item \textbf{Regulatory Approval:} Upon successful completion of clinical trials, the drug is
@@ -158,11 +158,11 @@ base that aids future discovery efforts.
 % TODO: Read this again
 \subsection{Computer-aided drug design}
 % A general paragraph. What is CADD
-\Ac{CADD} is an interdisciplinary field that leverages computational tools to assist in various areas of the drug
-discovery process. In general \ac{CADD} relates to the use of computers to model chemical and biological systems,
-spanning the fields of physics, chemistry, biology and computer science. These computational methods have become
-increasingly important in modern drug discovery, helping to reduce the time and cost associated with bringing new drugs
-to market
+Computer-Aided Drug Design (\ac{CADD}) involves leveraging computational tools to model chemical and biological systems,
+to assist in various stages of the drug discovery process. It is an interdisciplinary field that integrates
+principles from physics, chemistry, biology, and computer science to accelerate and optimize drug development.
+These computational methods have become increasingly important in modern drug discovery, helping to reduce the time and cost
+associated with bringing new drugs to market
 \citep{brownArtificialIntelligenceChemistry2020,niaziComputerAidedDrugDesign2023,sliwoskiComputationalMethodsDrug2014}.
 
 % One specific paragraph about molecular property and activity prediction
@@ -175,8 +175,8 @@ protein structure prediction, notably AlphaFold \citep{jumperHighlyAccurateProte
 \citep{baekAccuratePredictionProtein2021}, have revolutionized the field by achieving high accuracy in
 determining protein 3D structures, spurring increased interest in structure-based methods.
 
-In contrast, ligand-based methods employ quantitative structure-activity relationship (QSAR) models and machine learning
-algorithms to extract patterns and correlations from experimental data \citep{cherkasovQSARModelingWhere2014}.
+In contrast, ligand-based methods employ quantitative structure-activity relationship (QSAR) models, often employing
+machine learning algorithms to extract patterns and correlations from experimental data \citep{cherkasovQSARModelingWhere2014}.
 Recently, advancements in \ac{DL} have contributed to the field, enabling the development of more accurate models
 \citep{lusciDeepArchitecturesDeep2013,unterthinerDeepLearningOpportunity2015,chenRiseDeepLearning2018,hochreiterMachineLearningDrug2018,mayrLargescaleComparisonMachine2018,stanleyFSMolFewShotLearning2021,seidlEnhancingActivityPrediction2023}.
 
@@ -427,8 +427,8 @@ Goal-directed generation expands upon \ac{VS}, which searches for molecules with
 in an existing library of molecules.\ \citet{waltersVirtualChemicalLibraries2019} estimates that approximately
 $10^{13}$ molecules can be routinely tested in a \ac{VS} experiment. While this number can vary
 significantly depending on the computational cost of evaluating the scoring function, it is dwarfed
-by the size of drug-like chemical space, which is estimated to contain between $10^{30}$ and
-$10^{60}$ molecules \citep{waltersVirtualChemicalLibraries2019,ruddigkeitEnumeration166Billion2012}.
+by the size of drug-like chemical space, which is estimated to contain between $10^{23}$ and
+$10^{60}$ molecules \citep{waltersVirtualChemicalLibraries2019,polishchukEstimationSizeDruglike2013}.
 Consequently, \ac{VS} is limited to exploring only a small fraction of drug-like chemical space and cannot
 fully leverage the vast number of possible candidates that it contains.
 
@@ -531,7 +531,7 @@ questions remain about their comprehensiveness and ability to fully capture mode
 % TODO: Double-check this
 \subsubsection{Goal-directed optimization of ML-based scoring functions}
 \ac{ML} models have shown promise in predicting molecular properties
-\citep{mayrDeepToxToxicityPrediction2016,klambauerMachineLearningDrug2019,vamathevanApplicationsMachineLearning2019,chenRiseDeepLearning2018,stokesDeepLearningApproach2020},
+\citep{unterthinerDeepLearningOpportunity2015,mayrDeepToxToxicityPrediction2016,klambauerMachineLearningDrug2019,vamathevanApplicationsMachineLearning2019,chenRiseDeepLearning2018,stokesDeepLearningApproach2020},
 which makes them an attractive target for goal-directed generation. However, these \ac{ML} models are imperfect
 approximations of real-world phenomena, which introduces optimization challenges. This issue resembles problems in
 reinforcement learning \citep{suttonIntroductionReinforcementLearning1998} where inaccurate environmental models can
