@@ -1,44 +1,33 @@
-% !TeX encoding = UTF-8
-% !TeX root = main.tex
+% !TeX encoding = UTF-8 !TeX root = main.tex
 
 {%
 \selectlanguage{english}
 \chapter*{Abstract}
-In recent years, the use of generative models in drug discovery has gained significant attention.
-Advances in deep learning have led to the application of deep neural networks to solve various tasks
-requiring the generation of molecular structures. This thesis focuses on two major applications of
-generative models in drug discovery: de novo molecular design and retrosynthesis prediction. We investigate
-limitations of existing evaluation strategies for generative models in de novo molecular design and
-propose improved methodologies. Furthermore, we present a novel method for retrosynthesis
-prediction.
+In recent years, the use of generative models in drug discovery has gained significant attention. Advances in deep
+learning have led to the application of deep neural networks to solve various tasks requiring the generation of
+molecular structures. This thesis focuses on two major applications of generative models in drug discovery: de novo
+molecular design and retrosynthesis prediction. We investigate limitations of existing evaluation strategies for
+generative models in de novo molecular design and propose improved methodologies. Furthermore, we present a novel method
+for retrosynthesis prediction. 
 
-The first part of this thesis examines observed failure modes in evaluating generative models for de
-novo molecular design. We demonstrate that commonly used metrics used to evaluate
-distribution-learning models are not sufficient to differentiate complex models from trivial
-baseline generators. Furthermore, we show how goal-directed molecule generators can overfit to
-machine learning-based objective functions, leading to overestimation of model performance and
-generation of molecules that are biased towards already known high scoring molecules.
+The first part of this thesis examines observed failure modes in evaluating generative models for de novo molecular
+design. We demonstrate that commonly used metrics used to evaluate distribution-learning models are not sufficient to
+differentiate complex models from trivial baseline generators. Furthermore, we show how goal-directed molecule
+generators can overfit to machine learning-based objective functions, leading to overestimation of model performance and
+generation of molecules that are biased towards already known high scoring molecules. 
 
-The second part introduces a diversity-based benchmark for goal-directed molecule generators, which
-quantifies a model's ability to generate diverse sets of molecules with desired properties. Previous
-studies on diverse molecule optimization have been limited by inadequate diversity measures,
-non-standardized compute budgets, and lack of model adaptation to diverse optimization settings. Our
-benchmark addresses these shortcomings, providing a standardized framework for evaluating
-goal-directed molecule generators in diverse optimization settings, enabling fair model
-comparisons.
+The second part introduces a diversity-based benchmark for goal-directed molecule generators, which quantifies a model's
+ability to generate diverse sets of molecules with desired properties. Previous studies on diverse molecule optimization
+have been limited by inadequate diversity measures, non-standardized compute budgets, and lack of model adaptation to
+the diverse optimization setting. Our benchmark addresses these shortcomings, providing a standardized framework for
+evaluating goal-directed molecule generators in the diverse optimization setting, enabling fair model comparisons.
 
-% Given a target molecule, our model predicts which reaction templates lead to
-% feasible reactions when applied to the target molecule, thus generating sets of reactants that can
-% be used to synthesize the target molecule.
-In the third part, we propose a novel template-based retrosynthesis prediction model based on Modern
-Hopfield Networks. Our model learns representations of the target molecule and reaction templates,
-and how to associate them. This enables generalization over reaction templates and improves
-performance, particularly for rare templates. Our model achieves state-of-the-art performance while
-maintaining significantly lower computational costs compared to existing methods.
+In the third part, we propose a novel template-based retrosynthesis prediction model based on Modern Hopfield Networks.
+Our model learns representations of the target molecule and reaction templates, and how to associate them. This enables
+generalization over reaction templates and improves performance, particularly for rare templates. Our model achieves
+state-of-the-art performance while maintaining significantly lower computational costs compared to existing methods.
 
-Through our work, we provide insights into the limitations of current evaluation strategies for
-generative models for molecules while proposing new ones. Additionally, our
-contribution in retrosynthesis prediction enables more accurate computer-aided synthesis planning.
-Collectively, these advances have the potential to accelerate the drug discovery pipeline and
-facilitate the development of novel pharmaceutical treatments.
-}%
+Through our work, we provide insights into the limitations of current evaluation strategies for generative models for
+molecules while proposing new ones. Additionally, our contribution in retrosynthesis prediction enables more accurate
+computer-aided synthesis planning. Collectively, these advances have the potential to accelerate the drug discovery
+pipeline and facilitate the development of novel pharmaceutical treatments. }%
